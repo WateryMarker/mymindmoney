@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>คู่มือการผ่อนชำระ | MindMyMoney</title>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root{
+      --brand:#10b981;
+      --ink:#0f172a;
+      --muted:#475569;
+      --paper:#ffffff;
+      --bg:#f7fafb;
+      --accent:#3b82f6;
+    }
+    html,body{margin:0}
+    body{font-family:'Prompt',sans-serif;background:var(--bg);color:var(--ink);line-height:1.8}
+    .navbar{position:sticky;top:0;z-index:10;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.06);display:flex;align-items:center;gap:12px;padding:12px 16px}
+    .brand{margin:0;color:var(--brand);font-weight:700;font-size:1.05rem}
+    .nav-right{margin-left:auto;display:flex;gap:10px;align-items:center}
+    .lang{padding:6px 10px;border:1px solid #cbd5e1;border-radius:9999px}
+    .btn{background:var(--accent);color:#fff;border:none;border-radius:9999px;padding:8px 14px;cursor:pointer}
+    .article{max-width:980px;margin:22px auto;background:var(--paper);border:1px solid #e2e8f0;border-radius:20px;padding:28px 22px;box-shadow:0 2px 12px rgba(0,0,0,.04)}
+    .kicker{color:var(--brand);font-weight:600;letter-spacing:.02em}
+    h1{font-size:1.6rem;margin:.25rem 0 1rem}
+    h2{font-size:1.25rem;margin:2rem 0 .5rem;color:#0f766e}
+    h3{font-size:1.05rem;margin:1rem 0 .25rem}
+    p{margin:.5rem 0;color:var(--ink)}
+    .muted{color:var(--muted)}
+    .figure{margin:20px 0}
+    .figure img{width:100%;height:auto;border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,.05)}
+    .figure .cap{font-size:.95rem;color:#64748b;margin-top:6px}
+    ul,ol{margin:.25rem 0 .5rem 1.2rem}
+    .tip{background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:12px 14px;border-radius:12px}
+    footer{max-width:980px;margin:14px auto 26px;text-align:center;color:#64748b;font-size:.9rem}
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <div class="brand" id="brand">คู่มือการผ่อนชำระ</div>
+    <div class="nav-right">
+      <select id="lang" class="lang" onchange="applyLang()">
+        <option value="th">ไทย</option>
+        <option value="en">English</option>
+      </select>
+      <button class="btn" id="backBtn" onclick="location.href='index.html'">← กลับหน้าแรก</button>
+    </div>
+  </div>
+  <article class="article">
+    <div class="kicker" id="kicker">MindMyMoney • คู่มือการผ่อนชำระ</div>
+    <h1 id="title">การผ่อนชำระ: รูปแบบและการวางแผน</h1>
+    <p id="intro" class="muted">การผ่อนชำระสามารถจำแนกออกเป็นรูปแบบหลัก ๆ ได้ตามลักษณะการจ่ายและการคิดดอกเบี้ยในแต่ละเดือน ดังนี้ครับ</p>
+    <h2 id="h_types">รูปแบบการผ่อนชำระ</h2>
+    <h3 id="h_zero">1. การผ่อนชำระแบบไม่มีดอกเบี้ย (ผ่อน 0%)</h3>
+    <ul id="ul_zero">
+      <li>ลักษณะการจ่าย: ผู้ซื้อจะชำระค่าสินค้าหรือบริการเป็นงวด ๆ เท่ากันทุกเดือน โดยยอดรวมที่ชำระจะเท่ากับราคาสินค้าพอดี ไม่มีดอกเบี้ยหรือค่าใช้จ่ายเพิ่มเติม</li>
+      <li>การคิดดอกเบี้ย: ไม่มีดอกเบี้ย</li>
+      <li>เงื่อนไข:
+        <ul>
+          <li>มักเป็นโปรโมชั่นพิเศษจากร้านค้าและสถาบันการเงิน (บัตรเครดิต) สำหรับสินค้าหรือบริการที่ร่วมรายการ</li>
+          <li>มีระยะเวลาผ่อนชำระที่จำกัด เช่น 3, 6, 10, 12 เดือน หรือนานกว่านั้นตามโปรโมชั่น</li>
+          <li>ผู้ซื้อต้องมีบัตรเครดิตที่ร่วมรายการ หรือใช้บริการ Buy Now Pay Later (BNPL) ที่มีโปรโมชั่น 0%</li>
+        </ul>
+      </li>
+      <li>เหมาะสำหรับ: ผู้ที่ต้องการซื้อสินค้าที่มีราคาสูงโดยไม่ต้องการแบกรับภาระดอกเบี้ย และสามารถชำระคืนได้ตรงเวลาตามงวดที่กำหนด</li>
+    </ul>
+    <h3 id="h_interest">2. การผ่อนชำระแบบมีดอกเบี้ย</h3>
+    <p id="p_interest">การผ่อนชำระรูปแบบนี้จะมีการคิดดอกเบี้ยเพิ่มเติมจากราคาสินค้า ทำให้ยอดรวมที่ต้องชำระสูงกว่าราคาสินค้าจริง แบ่งย่อยได้อีกหลายประเภทตามผลิตภัณฑ์ทางการเงิน:</p>
+    <h3 id="h_credit">2.1 การผ่อนชำระผ่านบัตรเครดิตแบบมีดอกเบี้ย</h3>
+    <ul id="ul_credit">
+      <li>ลักษณะการจ่าย: ผู้ซื้อชำระค่าสินค้าเป็นงวด ๆ พร้อมดอกเบี้ยที่คำนวณจากยอดคงเหลือในแต่ละเดือน</li>
+      <li>การคิดดอกเบี้ย:
+        <ul>
+          <li>ดอกเบี้ยจะถูกคิดเป็นรายวันจากยอดคงค้าง และนำมารวมในยอดที่ต้องชำระในแต่ละรอบบิล</li>
+          <li>อัตราดอกเบี้ยเป็นไปตามที่ธนาคารผู้ออกบัตรกำหนด (ปัจจุบันสูงสุดไม่เกิน 16% ต่อปี)</li>
+          <li>หากชำระขั้นต่ำ ดอกเบี้ยจะถูกคิดจากยอดคงเหลือทั้งหมด และยอดดอกเบี้ยจะเพิ่มขึ้นเรื่อย ๆ หากไม่ชำระเต็มจำนวน</li>
+        </ul>
+      </li>
+      <li>เงื่อนไข: ใช้บัตรเครดิตในการทำรายการ มักใช้เมื่อไม่มีโปรโมชั่น 0% หรือต้องการผ่อนในระยะเวลาที่นานกว่าโปรโมชั่น</li>
+      <li>เหมาะสำหรับ: ผู้ที่ต้องการความยืดหยุ่นในการชำระเงิน หรือต้องการผ่อนสินค้าที่ไม่มีโปรโมชั่น 0%</li>
+    </ul>
+    <h3 id="h_personal">2.2 สินเชื่อส่วนบุคคล/สินเชื่อเงินสด (สำหรับซื้อสินค้า)</h3>
+    <ul id="ul_personal">
+      <li>ลักษณะการจ่าย: ผู้กู้จะได้รับเงินก้อนจากสถาบันการเงินเพื่อนำไปซื้อสินค้า และผ่อนชำระคืนเป็นงวด ๆ (รวมเงินต้นและดอกเบี้ย) ตามสัญญา</li>
+      <li>การคิดดอกเบี้ย:
+        <ul>
+          <li>เป็นอัตราดอกเบี้ยแบบลดต้นลดดอก (Effective Rate) หรือแบบคงที่ (Flat Rate) ขึ้นอยู่กับเงื่อนไขของสินเชื่อ</li>
+          <li>ดอกเบี้ยจะถูกคำนวณจากยอดเงินต้นคงเหลือในแต่ละงวด (สำหรับลดต้นลดดอก) หรือคำนวณจากเงินต้นทั้งหมดตลอดอายุสัญญา (สำหรับคงที่)</li>
+          <li>อัตราดอกเบี้ยมักสูงกว่าบัตรเครดิต 0% แต่ต่ำกว่าการกดเงินสดจากบัตรเครดิต</li>
+        </ul>
+      </li>
+      <li>เงื่อนไข: ต้องยื่นเอกสารเพื่อขออนุมัติสินเชื่อจากธนาคารหรือสถาบันการเงิน</li>
+      <li>เหมาะสำหรับ: ผู้ที่ไม่มีบัตรเครดิต หรือต้องการซื้อสินค้าชิ้นใหญ่ที่ต้องการระยะเวลาผ่อนนาน และต้องการดอกเบี้ยที่ชัดเจน</li>
+    </ul>
+    <h3 id="h_hire">2.3 การผ่อนชำระกับร้านค้าโดยตรง (Hire Purchase / Leasing)</h3>
+    <ul id="ul_hire">
+      <li>ลักษณะการจ่าย: ผู้ซื้อทำสัญญาเช่าซื้อกับร้านค้าหรือบริษัทไฟแนนซ์ และผ่อนชำระเป็นงวด ๆ จนครบตามสัญญา กรรมสิทธิ์ของสินค้าจะโอนให้เมื่อผ่อนชำระครบถ้วน</li>
+      <li>การคิดดอกเบี้ย:
+        <ul>
+          <li>มักเป็นอัตราดอกเบี้ยแบบคงที่ (Flat Rate) คำนวณจากราคาสินค้าตลอดอายุสัญญา และนำมารวมในยอดผ่อนแต่ละงวด</li>
+          <li>อัตราดอกเบี้ยอาจแตกต่างกันไปตามประเภทสินค้าและเงื่อนไขของผู้ให้บริการ</li>
+        </ul>
+      </li>
+      <li>เงื่อนไข: ใช้สำหรับการซื้อสินค้าเฉพาะอย่าง เช่น รถยนต์ รถจักรยานยนต์ เครื่องใช้ไฟฟ้าขนาดใหญ่</li>
+      <li>เหมาะสำหรับ: ผู้ที่ต้องการซื้อสินค้าเฉพาะประเภท และต้องการผ่อนชำระโดยตรงกับผู้ขายหรือบริษัทไฟแนนซ์</li>
+    </ul>
+    <h3 id="h_bnpl">2.4 แอปพลิเคชันผ่อนสินค้า (Buy Now Pay Later - BNPL) แบบมีดอกเบี้ย</h3>
+    <ul id="ul_bnpl">
+      <li>ลักษณะการจ่าย: ผู้ซื้อผ่อนชำระเป็นงวด ๆ ผ่านแอปพลิเคชัน โดยมีดอกเบี้ยหรือค่าธรรมเนียมเพิ่มเติม</li>
+      <li>การคิดดอกเบี้ย: อาจเป็นดอกเบี้ยรายเดือน หรือค่าธรรมเนียมการใช้บริการ ขึ้นอยู่กับเงื่อนไขของแต่ละแพลตฟอร์ม</li>
+      <li>เงื่อนไข: สมัครใช้งานผ่านแอปพลิเคชัน ผูกกับบัญชีธนาคารหรือบัตรเดบิต อาจมีวงเงินอนุมัติจำกัด</li>
+      <li>เหมาะสำหรับ: ผู้ที่ไม่มีบัตรเครดิต หรือต้องการความสะดวกในการผ่อนสินค้าออนไลน์ในวงเงินที่ไม่สูงมากนัก</li>
+    </ul>
+    <div class="figure">
+      <img id="img1" src="50a.jpg" alt="เปรียบเทียบรูปแบบการผ่อนชำระ">
+      <div class="cap" id="cap1">เปรียบเทียบรูปแบบการผ่อนชำระ</div>
+    </div>
+    <h2 id="h_consider">การเลือกรูปแบบการผ่อนชำระที่เหมาะสม</h2>
+    <ul id="ul_consider">
+      <li>ความสามารถในการชำระคืน: ต้องมั่นใจว่าสามารถชำระได้ตรงเวลาทุกงวด</li>
+      <li>อัตราดอกเบี้ยและค่าธรรมเนียม: เปรียบเทียบเงื่อนไขของแต่ละแบบเพื่อเลือกที่คุ้มค่าที่สุด</li>
+      <li>ความจำเป็นและประเภทของสินค้า: สินค้าบางประเภทอาจเหมาะกับการผ่อนแบบใดแบบหนึ่งมากกว่า</li>
+      <li>สถานะทางการเงิน: มีบัตรเครดิตหรือไม่ หรือต้องการขอสินเชื่อ</li>
+    </ul>
+    <h2 id="h_plan">การวางแผนการผ่อนชำระ: กุญแจสู่การเงินที่มั่นคง</h2>
+    <p id="p_plan">การผ่อนชำระเป็นเครื่องมือทางการเงินที่ช่วยให้เราเข้าถึงสินค้าและบริการที่มีมูลค่าสูงได้ง่ายขึ้น แต่หากไม่มีการวางแผนที่ดี ก็อาจกลายเป็นภาระที่บั่นทอนสุขภาพทางการเงินได้ การวางแผนการผ่อนชำระอย่างรอบคอบจึงเป็นสิ่งสำคัญ เพื่อให้คุณสามารถจัดการหนี้ได้อย่างมีประสิทธิภาพและรักษาความมั่นคงทางการเงินไว้ได้</p>
+    <div class="figure">
+      <img id="img2" src="51.jpg" alt="การวางแผนการผ่อนชำระ">
+      <div class="cap" id="cap2">การวางแผนการผ่อนชำระ</div>
+    </div>
+    <h2 id="h_steps">ขั้นตอนการวางแผนการผ่อนชำระ</h2>
+    <h3 id="h_step1">1. ประเมินความสามารถในการผ่อนชำระของตนเอง</h3>
+    <ul id="ul_step1">
+      <li>คำนวณรายได้สุทธิ: หักลบค่าใช้จ่ายจำเป็นในแต่ละเดือนออก เพื่อให้ทราบว่ามีเงินเหลือเท่าไรที่สามารถจัดสรรมาผ่อนชำระได้</li>
+      <li>ใช้กฎ 30-40%: โดยทั่วไป ภาระหนี้สินผ่อนชำระทั้งหมด (ไม่รวมหนี้บ้าน) ไม่ควรเกิน 30-40% ของรายได้สุทธิ ต่อเดือน เช่น ถ้ามีรายได้ 20,000 บาท ไม่ควรก่อหนี้ผ่อนชำระเกิน 6,000 - 8,000 บาทต่อเดือน</li>
+      <li>พิจารณาภาระหนี้เดิม: หากมีภาระหนี้อื่น ๆ อยู่แล้ว เช่น ผ่อนรถยนต์ สินเชื่อส่วนบุคคล จะต้องนำมารวมคำนวณด้วย เพื่อไม่ให้ภาระหนี้เกินกำลัง</li>
+    </ul>
+    <h3 id="h_step2">2. เลือกรูปแบบการผ่อนชำระที่เหมาะสม</h3>
+    <p id="p_step2">ปัจจุบันมีรูปแบบการผ่อนชำระหลากหลาย ทั้งแบบผ่านสถาบันการเงินและไม่ผ่านสถาบันการเงิน ควรเลือกให้ตรงกับความต้องการและสถานะของคุณ</p>
+    <h3 id="h_step3">3. เปรียบเทียบเงื่อนไขและดอกเบี้ย</h3>
+    <ul id="ul_step3">
+      <li>อัตราดอกเบี้ย: สิ่งที่สำคัญที่สุดในการเปรียบเทียบ เลือกอัตราที่ต่ำที่สุด</li>
+      <li>ค่าธรรมเนียม: ตรวจสอบค่าธรรมเนียมแอบแฝง เช่น ค่าธรรมเนียมการอนุมัติ ค่าธรรมเนียมการจัดการ หรือค่าปรับหากชำระล่าช้า</li>
+      <li>ระยะเวลาผ่อนชำระ: เลือกช่วงเวลาที่เหมาะสมกับความสามารถในการชำระของคุณ ไม่สั้นเกินไปจนตึงตัว และไม่ยาวเกินไปจนต้องจ่ายดอกเบี้ยมาก</li>
+      <li>โปรโมชั่น: บางครั้งอาจมีโปรโมชั่นพิเศษ เช่น ส่วนลด หรือของแถม ควรนำมาพิจารณาประกอบ</li>
+    </ul>
+    <h3 id="h_step4">4. จัดทำแผนการชำระหนี้</h3>
+    <ul id="ul_step4">
+      <li>กำหนดวันที่ชำระ: ตั้งค่าการแจ้งเตือนหรือตัดบัญชีอัตโนมัติ เพื่อไม่ให้ลืมชำระ</li>
+      <li>บันทึกรายการ: จดบันทึกยอดเงินที่ต้องผ่อนชำระ วันครบกำหนด และยอดคงเหลือ เพื่อติดตามสถานะหนี้สิน</li>
+      <li>กันเงินไว้ล่วงหน้า: จัดสรรเงินสำหรับค่าผ่อนชำระไว้ทันทีที่ได้รับรายได้ เพื่อให้มั่นใจว่ามีเงินเพียงพอ</li>
+    </ul>
+    <h3 id="h_step5">5. รักษาวินัยทางการเงิน</h3>
+    <ul id="ul_step5">
+      <li>ชำระให้ตรงเวลา: การชำระหนี้ตรงเวลาจะช่วยรักษาประวัติเครดิตที่ดี และหลีกเลี่ยงค่าปรับหรือดอกเบี้ยเพิ่มเติม</li>
+      <li>หลีกเลี่ยงการก่อหนี้ใหม่โดยไม่จำเป็น: ควบคุมการใช้จ่าย และหลีกเลี่ยงการผ่อนชำระเพิ่ม หากภาระหนี้เดิมยังหนักอยู่</li>
+      <li>ทบทวนแผนเป็นระยะ: ตรวจสอบแผนการผ่อนชำระของคุณเป็นประจำ เพื่อปรับเปลี่ยนให้เข้ากับสถานการณ์ทางการเงินที่เปลี่ยนแปลงไป</li>
+    </ul>
+  </article>
+  <footer id="foot">MindMyMoney • เอกสารให้ความรู้สำหรับผู้วางแผนผ่อนชำระ</footer>
+  <script>
+    // รูปภาพประกอบภาษาไทย/อังกฤษ
+    const IMG = {
+      th: { compare:"50a.jpg", plan:"51.jpg" },
+      en: { compare:"95.jpg", plan:"97.jpg" }
+    };
+    // ข้อความภาษาไทย/อังกฤษ (เริ่มต้นเฉพาะภาษาไทย)
+    const T = {
+      th: {
+        brand:"คู่มือการผ่อนชำระ",
+        back:"← กลับหน้าแรก",
+        kicker:"MindMyMoney • คู่มือการผ่อนชำระ",
+        title:"การผ่อนชำระ: รูปแบบและการวางแผน",
+        intro:"การผ่อนชำระสามารถจำแนกออกเป็นรูปแบบหลัก ๆ ได้ตามลักษณะการจ่ายและการคิดดอกเบี้ยในแต่ละเดือน ดังนี้ครับ",
+        cap1:"เปรียบเทียบรูปแบบการผ่อนชำระ",
+        cap2:"การวางแผนการผ่อนชำระ",
+        foot:"MindMyMoney • เอกสารให้ความรู้สำหรับผู้วางแผนผ่อนชำระ",
+        h_types:"รูปแบบการผ่อนชำระ",
+        h_zero:"1. การผ่อนชำระแบบไม่มีดอกเบี้ย (ผ่อน 0%)",
+        ul_zero:[
+          "ลักษณะการจ่าย: ผู้ซื้อจะชำระค่าสินค้าหรือบริการเป็นงวด ๆ เท่ากันทุกเดือน โดยยอดรวมที่ชำระจะเท่ากับราคาสินค้าพอดี ไม่มีดอกเบี้ยหรือค่าใช้จ่ายเพิ่มเติม",
+          "การคิดดอกเบี้ย: ไม่มีดอกเบี้ย",
+          "เงื่อนไข:",
+          [
+            "มักเป็นโปรโมชั่นพิเศษจากร้านค้าและสถาบันการเงิน (บัตรเครดิต) สำหรับสินค้าหรือบริการที่ร่วมรายการ",
+            "มีระยะเวลาผ่อนชำระที่จำกัด เช่น 3, 6, 10, 12 เดือน หรือนานกว่านั้นตามโปรโมชั่น",
+            "ผู้ซื้อต้องมีบัตรเครดิตที่ร่วมรายการ หรือใช้บริการ Buy Now Pay Later (BNPL) ที่มีโปรโมชั่น 0%"
+          ],
+          "เหมาะสำหรับ: ผู้ที่ต้องการซื้อสินค้าที่มีราคาสูงโดยไม่ต้องการแบกรับภาระดอกเบี้ย และสามารถชำระคืนได้ตรงเวลาตามงวดที่กำหนด"
+        ],
+        h_interest:"2. การผ่อนชำระแบบมีดอกเบี้ย",
+        p_interest:"การผ่อนชำระรูปแบบนี้จะมีการคิดดอกเบี้ยเพิ่มเติมจากราคาสินค้า ทำให้ยอดรวมที่ต้องชำระสูงกว่าราคาสินค้าจริง แบ่งย่อยได้อีกหลายประเภทตามผลิตภัณฑ์ทางการเงิน:",
+        h_credit:"2.1 การผ่อนชำระผ่านบัตรเครดิตแบบมีดอกเบี้ย",
+        ul_credit:[
+          "ลักษณะการจ่าย: ผู้ซื้อชำระค่าสินค้าเป็นงวด ๆ พร้อมดอกเบี้ยที่คำนวณจากยอดคงเหลือในแต่ละเดือน",
+          "การคิดดอกเบี้ย:",
+          [
+            "ดอกเบี้ยจะถูกคิดเป็นรายวันจากยอดคงค้าง และนำมารวมในยอดที่ต้องชำระในแต่ละรอบบิล",
+            "อัตราดอกเบี้ยเป็นไปตามที่ธนาคารผู้ออกบัตรกำหนด (ปัจจุบันสูงสุดไม่เกิน 16% ต่อปี)",
+            "หากชำระขั้นต่ำ ดอกเบี้ยจะถูกคิดจากยอดคงเหลือทั้งหมด และยอดดอกเบี้ยจะเพิ่มขึ้นเรื่อย ๆ หากไม่ชำระเต็มจำนวน"
+          ],
+          "เงื่อนไข: ใช้บัตรเครดิตในการทำรายการ มักใช้เมื่อไม่มีโปรโมชั่น 0% หรือต้องการผ่อนในระยะเวลาที่นานกว่าโปรโมชั่น",
+          "เหมาะสำหรับ: ผู้ที่ต้องการความยืดหยุ่นในการชำระเงิน หรือต้องการผ่อนสินค้าที่ไม่มีโปรโมชั่น 0%"
+        ],
+        h_personal:"2.2 สินเชื่อส่วนบุคคล/สินเชื่อเงินสด (สำหรับซื้อสินค้า)",
+        ul_personal:[
+          "ลักษณะการจ่าย: ผู้กู้จะได้รับเงินก้อนจากสถาบันการเงินเพื่อนำไปซื้อสินค้า และผ่อนชำระคืนเป็นงวด ๆ (รวมเงินต้นและดอกเบี้ย) ตามสัญญา",
+          "การคิดดอกเบี้ย:",
+          [
+            "เป็นอัตราดอกเบี้ยแบบลดต้นลดดอก (Effective Rate) หรือแบบคงที่ (Flat Rate) ขึ้นอยู่กับเงื่อนไขของสินเชื่อ",
+            "ดอกเบี้ยจะถูกคำนวณจากยอดเงินต้นคงเหลือในแต่ละงวด (สำหรับลดต้นลดดอก) หรือคำนวณจากเงินต้นทั้งหมดตลอดอายุสัญญา (สำหรับคงที่)",
+            "อัตราดอกเบี้ยมักสูงกว่าบัตรเครดิต 0% แต่ต่ำกว่าการกดเงินสดจากบัตรเครดิต"
+          ],
+          "เงื่อนไข: ต้องยื่นเอกสารเพื่อขออนุมัติสินเชื่อจากธนาคารหรือสถาบันการเงิน",
+          "เหมาะสำหรับ: ผู้ที่ไม่มีบัตรเครดิต หรือต้องการซื้อสินค้าชิ้นใหญ่ที่ต้องการระยะเวลาผ่อนนาน และต้องการดอกเบี้ยที่ชัดเจน"
+        ],
+        h_hire:"2.3 การผ่อนชำระกับร้านค้าโดยตรง (Hire Purchase / Leasing)",
+        ul_hire:[
+          "ลักษณะการจ่าย: ผู้ซื้อทำสัญญาเช่าซื้อกับร้านค้าหรือบริษัทไฟแนนซ์ และผ่อนชำระเป็นงวด ๆ จนครบตามสัญญา กรรมสิทธิ์ของสินค้าจะโอนให้เมื่อผ่อนชำระครบถ้วน",
+          "การคิดดอกเบี้ย:",
+          [
+            "มักเป็นอัตราดอกเบี้ยแบบคงที่ (Flat Rate) คำนวณจากราคาสินค้าตลอดอายุสัญญา และนำมารวมในยอดผ่อนแต่ละงวด",
+            "อัตราดอกเบี้ยอาจแตกต่างกันไปตามประเภทสินค้าและเงื่อนไขของผู้ให้บริการ"
+          ],
+          "เงื่อนไข: ใช้สำหรับการซื้อสินค้าเฉพาะอย่าง เช่น รถยนต์ รถจักรยานยนต์ เครื่องใช้ไฟฟ้าขนาดใหญ่",
+          "เหมาะสำหรับ: ผู้ที่ต้องการซื้อสินค้าเฉพาะประเภท และต้องการผ่อนชำระโดยตรงกับผู้ขายหรือบริษัทไฟแนนซ์"
+        ],
+        h_bnpl:"2.4 แอปพลิเคชันผ่อนสินค้า (Buy Now Pay Later - BNPL) แบบมีดอกเบี้ย",
+        ul_bnpl:[
+          "ลักษณะการจ่าย: ผู้ซื้อผ่อนชำระเป็นงวด ๆ ผ่านแอปพลิเคชัน โดยมีดอกเบี้ยหรือค่าธรรมเนียมเพิ่มเติม",
+          "การคิดดอกเบี้ย: อาจเป็นดอกเบี้ยรายเดือน หรือค่าธรรมเนียมการใช้บริการ ขึ้นอยู่กับเงื่อนไขของแต่ละแพลตฟอร์ม",
+          "เงื่อนไข: สมัครใช้งานผ่านแอปพลิเคชัน ผูกกับบัญชีธนาคารหรือบัตรเดบิต อาจมีวงเงินอนุมัติจำกัด",
+          "เหมาะสำหรับ: ผู้ที่ไม่มีบัตรเครดิต หรือต้องการความสะดวกในการผ่อนสินค้าออนไลน์ในวงเงินที่ไม่สูงมากนัก"
+        ],
+        h_consider:"การเลือกรูปแบบการผ่อนชำระที่เหมาะสม",
+        ul_consider:[
+          "ความสามารถในการชำระคืน: ต้องมั่นใจว่าสามารถชำระได้ตรงเวลาทุกงวด",
+          "อัตราดอกเบี้ยและค่าธรรมเนียม: เปรียบเทียบเงื่อนไขของแต่ละแบบเพื่อเลือกที่คุ้มค่าที่สุด",
+          "ความจำเป็นและประเภทของสินค้า: สินค้าบางประเภทอาจเหมาะกับการผ่อนแบบใดแบบหนึ่งมากกว่า",
+          "สถานะทางการเงิน: มีบัตรเครดิตหรือไม่ หรือต้องการขอสินเชื่อ"
+        ],
+        h_plan:"การวางแผนการผ่อนชำระ: กุญแจสู่การเงินที่มั่นคง",
+        p_plan:"การผ่อนชำระเป็นเครื่องมือทางการเงินที่ช่วยให้เราเข้าถึงสินค้าและบริการที่มีมูลค่าสูงได้ง่ายขึ้น แต่หากไม่มีการวางแผนที่ดี ก็อาจกลายเป็นภาระที่บั่นทอนสุขภาพทางการเงินได้ การวางแผนการผ่อนชำระอย่างรอบคอบจึงเป็นสิ่งสำคัญ เพื่อให้คุณสามารถจัดการหนี้ได้อย่างมีประสิทธิภาพและรักษาความมั่นคงทางการเงินไว้ได้",
+        h_steps:"ขั้นตอนการวางแผนการผ่อนชำระ",
+        h_step1:"1. ประเมินความสามารถในการผ่อนชำระของตนเอง",
+        ul_step1:[
+          "คำนวณรายได้สุทธิ: หักลบค่าใช้จ่ายจำเป็นในแต่ละเดือนออก เพื่อให้ทราบว่ามีเงินเหลือเท่าไรที่สามารถจัดสรรมาผ่อนชำระได้",
+          "ใช้กฎ 30-40%: โดยทั่วไป ภาระหนี้สินผ่อนชำระทั้งหมด (ไม่รวมหนี้บ้าน) ไม่ควรเกิน 30-40% ของรายได้สุทธิ ต่อเดือน เช่น ถ้ามีรายได้ 20,000 บาท ไม่ควรก่อหนี้ผ่อนชำระเกิน 6,000 - 8,000 บาทต่อเดือน",
+          "พิจารณาภาระหนี้เดิม: หากมีภาระหนี้อื่น ๆ อยู่แล้ว เช่น ผ่อนรถยนต์ สินเชื่อส่วนบุคคล จะต้องนำมารวมคำนวณด้วย เพื่อไม่ให้ภาระหนี้เกินกำลัง"
+        ],
+        h_step2:"2. เลือกรูปแบบการผ่อนชำระที่เหมาะสม",
+        p_step2:"ปัจจุบันมีรูปแบบการผ่อนชำระหลากหลาย ทั้งแบบผ่านสถาบันการเงินและไม่ผ่านสถาบันการเงิน ควรเลือกให้ตรงกับความต้องการและสถานะของคุณ",
+        h_step3:"3. เปรียบเทียบเงื่อนไขและดอกเบี้ย",
+        ul_step3:[
+          "อัตราดอกเบี้ย: สิ่งที่สำคัญที่สุดในการเปรียบเทียบ เลือกอัตราที่ต่ำที่สุด",
+          "ค่าธรรมเนียม: ตรวจสอบค่าธรรมเนียมแอบแฝง เช่น ค่าธรรมเนียมการอนุมัติ ค่าธรรมเนียมการจัดการ หรือค่าปรับหากชำระล่าช้า",
+          "ระยะเวลาผ่อนชำระ: เลือกช่วงเวลาที่เหมาะสมกับความสามารถในการชำระของคุณ ไม่สั้นเกินไปจนตึงตัว และไม่ยาวเกินไปจนต้องจ่ายดอกเบี้ยมาก",
+          "โปรโมชั่น: บางครั้งอาจมีโปรโมชั่นพิเศษ เช่น ส่วนลด หรือของแถม ควรนำมาพิจารณาประกอบ"
+        ],
+        h_step4:"4. จัดทำแผนการชำระหนี้",
+        ul_step4:[
+          "กำหนดวันที่ชำระ: ตั้งค่าการแจ้งเตือนหรือตัดบัญชีอัตโนมัติ เพื่อไม่ให้ลืมชำระ",
+          "บันทึกรายการ: จดบันทึกยอดเงินที่ต้องผ่อนชำระ วันครบกำหนด และยอดคงเหลือ เพื่อติดตามสถานะหนี้สิน",
+          "กันเงินไว้ล่วงหน้า: จัดสรรเงินสำหรับค่าผ่อนชำระไว้ทันทีที่ได้รับรายได้ เพื่อให้มั่นใจว่ามีเงินเพียงพอ"
+        ],
+        h_step5:"5. รักษาวินัยทางการเงิน",
+        ul_step5:[
+          "ชำระให้ตรงเวลา: การชำระหนี้ตรงเวลาจะช่วยรักษาประวัติเครดิตที่ดี และหลีกเลี่ยงค่าปรับหรือดอกเบี้ยเพิ่มเติม",
+          "หลีกเลี่ยงการก่อหนี้ใหม่โดยไม่จำเป็น: ควบคุมการใช้จ่าย และหลีกเลี่ยงการผ่อนชำระเพิ่ม หากภาระหนี้เดิมยังหนักอยู่",
+          "ทบทวนแผนเป็นระยะ: ตรวจสอบแผนการผ่อนชำระของคุณเป็นประจำ เพื่อปรับเปลี่ยนให้เข้ากับสถานการณ์ทางการเงินที่เปลี่ยนแปลงไป"
+        ]
+      },
+      en: {
+        brand:"Installment Guide",
+        back:"← Back to Home",
+        kicker:"MindMyMoney • Installment Guide",
+        title:"Installments: Types and Planning",
+        intro:"Installments can be categorized by payment method and interest calculation. Here are the main types:",
+        cap1:"Comparison of Installment Types",
+        cap2:"Installment Planning",
+        foot:"MindMyMoney • Educational material for installment planning",
+        h_types:"Types of Installments",
+        h_zero:"1. Interest-Free Installments (0%)",
+        ul_zero:[
+          "Payment: The buyer pays equal monthly installments. The total paid equals the product price, with no interest or extra fees.",
+          "Interest: None",
+          "Conditions:",
+          [
+            "Usually a special promotion from stores or banks (credit cards) for selected products/services.",
+            "Limited installment period, e.g. 3, 6, 10, 12 months or longer depending on the promotion.",
+            "Buyer must have a participating credit card or use Buy Now Pay Later (BNPL) with 0% promotion."
+          ],
+          "Best for: Those who want to buy high-value items without interest and can pay on time."
+        ],
+        h_interest:"2. Installments with Interest",
+        p_interest:"This type includes interest added to the product price, so the total paid is higher. There are several subtypes:",
+        h_credit:"2.1 Credit Card Installments with Interest",
+        ul_credit:[
+          "Payment: Buyer pays monthly installments plus interest calculated on the remaining balance.",
+          "Interest:",
+          [
+            "Interest is calculated daily on the outstanding balance and added to each billing cycle.",
+            "Interest rate is set by the issuing bank (currently up to 16% per year).",
+            "If paying the minimum, interest is charged on the full balance and accumulates if not paid in full."
+          ],
+          "Conditions: Use a credit card for the transaction. Common when no 0% promotion or for longer terms.",
+          "Best for: Those needing payment flexibility or buying items without 0% promotions."
+        ],
+        h_personal:"2.2 Personal Loan / Cash Loan (for purchases)",
+        ul_personal:[
+          "Payment: Borrower receives a lump sum from a financial institution to buy the product, then repays in installments (principal + interest) per contract.",
+          "Interest:",
+          [
+            "Effective rate (reducing balance) or flat rate, depending on loan terms.",
+            "Interest is calculated on the remaining principal each period (reducing balance) or on the full principal for the contract (flat rate).",
+            "Rates are usually higher than 0% credit card but lower than cash advances."
+          ],
+          "Conditions: Must submit documents for loan approval from a bank or financial institution.",
+          "Best for: Those without credit cards or buying big-ticket items needing longer terms and clear interest."
+        ],
+        h_hire:"2.3 Direct Installments with Store (Hire Purchase / Leasing)",
+        ul_hire:[
+          "Payment: Buyer signs a hire purchase contract with the store or finance company and pays installments until complete. Ownership transfers after full payment.",
+          "Interest:",
+          [
+            "Usually a flat rate calculated on the product price for the contract term and included in each installment.",
+            "Rates vary by product type and provider."
+          ],
+          "Conditions: Used for specific items like cars, motorcycles, large appliances.",
+          "Best for: Those buying specific items and wanting to pay directly to the seller or finance company."
+        ],
+        h_bnpl:"2.4 Installment Apps (Buy Now Pay Later - BNPL) with Interest",
+        ul_bnpl:[
+          "Payment: Buyer pays installments via app, with interest or service fees added.",
+          "Interest: May be monthly interest or service fees, depending on platform terms.",
+          "Conditions: Register via app, link to bank account or debit card, may have limited approval amount.",
+          "Best for: Those without credit cards or wanting convenient online installments for smaller amounts."
+        ],
+        h_consider:"How to Choose the Right Installment Type",
+        ul_consider:[
+          "Ability to pay: Be sure you can pay every installment on time.",
+          "Interest rates and fees: Compare terms to choose the best value.",
+          "Necessity and product type: Some products suit certain installment types better.",
+          "Financial status: Do you have a credit card or need a loan?"
+        ],
+        h_plan:"Installment Planning: Key to Financial Stability",
+        p_plan:"Installments help you access high-value products and services more easily. But without good planning, they can become a financial burden. Careful planning helps you manage debt efficiently and maintain financial stability.",
+        h_steps:"Steps for Installment Planning",
+        h_step1:"1. Assess Your Ability to Pay",
+        ul_step1:[
+          "Calculate net income: Subtract necessary monthly expenses to see how much is left for installments.",
+          "Use the 30-40% rule: Total installment debt (excluding mortgage) should not exceed 30-40% of net monthly income. For example, with 20,000 THB income, don't take on more than 6,000-8,000 THB/month in installment debt.",
+          "Consider existing debt: If you already have car loans or personal loans, include them in your calculation to avoid overburdening yourself."
+        ],
+        h_step2:"2. Choose the Right Installment Type",
+        p_step2:"There are many installment options, both through financial institutions and not. Choose what fits your needs and status.",
+        h_step3:"3. Compare Terms and Interest",
+        ul_step3:[
+          "Interest rate: The most important factor. Choose the lowest rate.",
+          "Fees: Check for hidden fees like approval, management, or late payment fees.",
+          "Installment period: Pick a term that fits your ability to pay—not too short to strain, not too long to pay excess interest.",
+          "Promotions: Sometimes there are special offers or gifts. Consider these too."
+        ],
+        h_step4:"4. Make a Repayment Plan",
+        ul_step4:[
+          "Set payment dates: Use reminders or auto-debit to avoid missing payments.",
+          "Record payments: Track amounts, due dates, and balances to monitor debt status.",
+          "Set aside money in advance: Allocate funds for installments as soon as you get paid to ensure you have enough."
+        ],
+        h_step5:"5. Maintain Financial Discipline",
+        ul_step5:[
+          "Pay on time: Timely payments help maintain good credit and avoid penalties or extra interest.",
+          "Avoid unnecessary new debt: Control spending and avoid new installments if current debt is heavy.",
+          "Review your plan regularly: Check your installment plan often and adjust as your financial situation changes."
+        ]
+      }
+    };
+    function applyLang(){
+      const lang = document.getElementById('lang').value || 'th';
+      const t = T[lang];
+      document.getElementById('brand').innerText = t.brand;
+      document.getElementById('backBtn').innerText = t.back;
+      document.getElementById('kicker').innerText = t.kicker;
+      document.getElementById('title').innerText = t.title;
+      document.getElementById('intro').innerText = t.intro;
+      document.getElementById('cap1').innerText = t.cap1;
+      document.getElementById('cap2').innerText = t.cap2;
+      document.getElementById('img1').src = IMG[lang].compare;
+      document.getElementById('img2').src = IMG[lang].plan;
+      document.getElementById('foot').innerText = t.foot;
+      // เปลี่ยนหัวเรื่องและเนื้อหาทุกจุด
+      document.getElementById('h_types').innerText = t.h_types;
+      document.getElementById('h_zero').innerText = t.h_zero;
+      setList('ul_zero', t.ul_zero);
+      document.getElementById('h_interest').innerText = t.h_interest;
+      document.getElementById('p_interest').innerText = t.p_interest;
+      document.getElementById('h_credit').innerText = t.h_credit;
+      setList('ul_credit', t.ul_credit);
+      document.getElementById('h_personal').innerText = t.h_personal;
+      setList('ul_personal', t.ul_personal);
+      document.getElementById('h_hire').innerText = t.h_hire;
+      setList('ul_hire', t.ul_hire);
+      document.getElementById('h_bnpl').innerText = t.h_bnpl;
+      setList('ul_bnpl', t.ul_bnpl);
+      document.getElementById('h_consider').innerText = t.h_consider;
+      setList('ul_consider', t.ul_consider);
+      document.getElementById('h_plan').innerText = t.h_plan;
+      document.getElementById('p_plan').innerText = t.p_plan;
+      document.getElementById('h_steps').innerText = t.h_steps;
+      document.getElementById('h_step1').innerText = t.h_step1;
+      setList('ul_step1', t.ul_step1);
+      document.getElementById('h_step2').innerText = t.h_step2;
+      document.getElementById('p_step2').innerText = t.p_step2;
+      document.getElementById('h_step3').innerText = t.h_step3;
+      setList('ul_step3', t.ul_step3);
+      document.getElementById('h_step4').innerText = t.h_step4;
+      setList('ul_step4', t.ul_step4);
+      document.getElementById('h_step5').innerText = t.h_step5;
+      setList('ul_step5', t.ul_step5);
+      document.documentElement.lang = lang;
+      localStorage.setItem('lang', lang);
+    }
+    // รองรับ nested list
+    function setList(id, arr){
+      const el = document.getElementById(id);
+      if(!el) return;
+      if(Array.isArray(arr[0])){
+        el.innerHTML = arr.map(item=>{
+          if(Array.isArray(item)){
+            return '<ul>' + item.map(sub=>`<li>${sub}</li>`).join('') + '</ul>';
+          }else{
+            return `<li>${item}</li>`;
+          }
+        }).join('');
+      }else{
+        el.innerHTML = arr.map(x=>`<li>${x}</li>`).join('');
+      }
+    }
+    (function init(){
+      const saved = localStorage.getItem('lang') || 'th';
+      document.getElementById('lang').value = saved;
+      applyLang();
+    })();
+  </script>
+</body>
+</html>

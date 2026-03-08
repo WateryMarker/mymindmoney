@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>ความรู้สินเชื่อบ้าน | MindMyMoney</title>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <style>
+  /* ...existing styles... */
+  .lang { padding:6px 10px; border:1px solid #cbd5e1; border-radius:9999px; margin-left:8px; }
+    :root{
+      --brand:#10b981;
+      --ink:#0f172a;
+      --muted:#475569;
+      --paper:#ffffff;
+      --bg:#f7fafb;
+      --accent:#3b82f6;
+    }
+    html,body{margin:0}
+    body{font-family:'Prompt',sans-serif;background:var(--bg);color:var(--ink);line-height:1.8}
+    .navbar{position:sticky;top:0;z-index:10;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.06);
+      display:flex;align-items:center;gap:12px;padding:12px 16px}
+    .brand{margin:0;color:var(--brand);font-weight:700;font-size:1.05rem}
+    .nav-right{margin-left:auto;display:flex;gap:10px;align-items:center}
+    .lang{padding:6px 10px;border:1px solid #cbd5e1;border-radius:9999px}
+    .btn{background:var(--accent);color:#fff;border:none;border-radius:9999px;padding:8px 14px;cursor:pointer}
+    .article{max-width:980px;margin:22px auto;background:var(--paper);border:1px solid #e2e8f0;border-radius:20px;
+      padding:28px 22px;box-shadow:0 2px 12px rgba(0,0,0,.04)}
+    .kicker{color:var(--brand);font-weight:600;letter-spacing:.02em}
+    h1{font-size:1.6rem;margin:.25rem 0 1rem}
+    h2{font-size:1.25rem;margin:2rem 0 .5rem;color:#0f766e}
+    h3{font-size:1.05rem;margin:1rem 0 .25rem}
+    p{margin:.5rem 0;color:var(--ink)}
+    .muted{color:var(--muted)}
+    .figure{margin:20px 0}
+    .figure img{width:100%;height:auto;border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,.05)}
+    .figure .cap{font-size:.95rem;color:#64748b;margin-top:6px}
+    ul,ol{margin:.25rem 0 .5rem 1.2rem}
+    .tip{background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:12px 14px;border-radius:12px}
+    .canva-placeholder{width:100%;height:180px;background:#e0e7ef;border-radius:14px;display:flex;align-items:center;justify-content:center;color:#64748b;font-size:1.1rem;margin:18px 0;}
+    footer{max-width:980px;margin:14px auto 26px;text-align:center;color:#64748b;font-size:.9rem}
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="brand" id="brand">ความรู้สินเชื่อบ้าน</div>
+    <div class="nav-right">
+      <select id="lang" class="lang" onchange="applyLang()">
+        <option value="th">ไทย</option>
+        <option value="en">English</option>
+      </select>
+      <button class="btn" id="backBtn" onclick="location.href='index.html'">← กลับหน้าแรก</button>
+    </div>
+  </div>
+
+  <!-- Article -->
+  <article class="article">
+    <div class="kicker" id="kicker">MindMyMoney • Home Loan Guide</div>
+    <h1 id="title">คู่มือทำความเข้าใจสินเชื่อบ้านแบบครบถ้วน</h1>
+    <p class="muted" id="intro">
+      กู้บ้าน<br>
+      บ้านเป็นอสังหาริมทรัพย์ประเภทหนึ่ง ซึ่งหมายถึงทรัพย์สินที่ไม่สามารถเคลื่อนย้ายได้ หรือเคลื่อนย้ายได้ยาก โดยทั่วไปจะหมายถึงที่ดินและสิ่งปลูกสร้างที่ติดอยู่กับที่ดินอย่างถาวร เช่น บ้าน อาคารพาณิชย์ หรือคอนโดมิเนียม
+    </p>
+    <h2 id="h_what">สินเชื่อบ้านคืออะไร?</h2>
+    <p id="p_what">
+      สินเชื่อเพื่อที่อยู่อาศัย หรือ สินเชื่อบ้าน คือ เงินกู้ที่ทางสถาบันการเงินปล่อยให้สำหรับการซื้อ/สร้างที่อยู่อาศัย ในระยะยาว ซึ่งยาวนานตั้งแต่ 10 – 30 ปี หรือสูงสุดถึง 40 ปี เพื่อนำมาสร้างหรือซื้อบ้านที่เราต้องการ ซึ่งหมายรวมถึง อาคารพาณิชย์คอนโด ทาวโฮม และทาวเฮาส์ด้วย โดยจำนวนเงินที่ผู้ขอกู้จะได้ตามที่ธนาคารประเมินให้จะเรียกว่า “วงเงิน” และเมื่อถึงคราวที่ต้องชำระเงินคืน ก็จะมี “เงินต้น” หรือจำนวนเงินจริงๆ ที่ผู้กู้ยืมไป กับ “ดอกเบี้ย” หรือเงินส่วนที่ธนาคารคิดเพิ่มเติมที่ผู้กู้ต้องชำระเป็น “งวดๆ” ซึ่งโดยมากรอบงวด คือ ทุกๆ 1 เดือน ตลอด ระยะเวลากู้ โดยผู้กู้จะต้องนำที่อยู่อาศัยเป็นสิ่งค้ำประกันการจำนอง และหากคุณมีสินเชื่อบ้านอยู่แล้วแต่อยากเปลี่ยนไปกู้กับสถาบันการเงินใหม่ที่มีข้อเสนอที่ดีกว่า ก็สามารถทำการไถ่ถอนสินเชื่อเดิมที่มีอยู่และมาเข้ากับสถาบันการเงินใหม่ได้ เรียกวิธีการนี้ว่า “รีไฟแนนซ์บ้าน”
+    </p>
+    <div class="figure"><img id="img21" src="21.jpg"><div class="cap" id="cap21"></div></div>
+    <p id="p_interest">
+      เงินกู้จากธนาคารหรือสถาบันการเงินสำหรับผู้ที่ต้องการซื้อที่อยู่อาศัย เช่น บ้านเดี่ยว ทาวน์โฮม คอนโดมิเนียม โดยมีการแบ่งประเภทดอกเบี้ยบ้านออกเป็น 4 ประเภทหลัก ได้แก่ อัตราดอกเบี้ยคงที่ อัตราดอกเบี้ยลอยตัว อัตราดอกเบี้ยปรับคงที่ใหม่ทุกรอบ และอัตราดอกเบี้ยแบบผสม เพื่อให้เข้าใจค่าใช้จ่ายดอกเบี้ยที่อาจเกิดขึ้น ผู้กู้ควรคำนวณดอกเบี้ยและเตรียมเอกสารให้ครบถ้วน นอกจากนี้ แต่ละธนาคารมีเงื่อนไขที่แตกต่างกัน จึงควรสอบถามเงื่อนไขให้ละเอียดก่อนทำการกู้
+    </p>
+    <h3 id="h_types">สินเชื่อบ้านแบ่งประเภทหลักๆ ได้ 5 ประเภทด้วยกัน</h3>
+    <ul id="ul_types">
+      <li>สินเชื่อบ้าน ทาวน์เฮ้าส์ ห้องชุด อาคารพาณิชย์ พร้อมที่ดิน</li>
+      <li>สินเชื่อเพื่อการปลูกสร้างที่อยู่อาศัยบนที่ดินของตนเอง</li>
+      <li>สินเชื่อเพื่อการต่อเติม ปรับปรุง และตกแต่งที่อยู่อาศัย</li>
+      <li>รับโอนลูกค้าสินเชื่อที่อยู่อาศัยจากธนาคารหรือสถาบันการเงินอื่น (Refinance)</li>
+      <li>การกู้เพื่อซื้อที่ดินเปล่าไว้สำหรับการขยายที่อยู่อาศัยเดิมออกไปเพื่อความจำเป็นในการอยู่อาศัย</li>
+    </ul>
+    <p id="p_compare">
+      สินเชื่อบ้านแต่ละประเภท จะมีวงเงินกู้สูงสุด ระยะเวลาผ่อนชำระสูงสุด และอัตราดอกเบี้ย ที่ไม่เท่ากัน โครงการสินเชื่อแต่ละโครงการจะมีลักษณะที่โดดเด่นแตกต่างกัน เช่น เงื่อนไข โปรโมชั่น วิธีคิดอัตราดอกเบี้ย การลดหย่อนค่าธรรมเนียมบางประการ เป็นต้น ซึ่งคุณสามารถนำแต่ละโครงการมาเปรียบเทียบความคุ้มค่าได้เพราะฉะนั้น จำเป็นอย่างยิ่งที่ผู้สนใจกู้จะต้องศึกษาเงื่อนไขให้ครบถ้วนก่อนตัดสินใจกู้
+    </p>
+    <h2 id="h_criteria">หลักเกณฑ์การพิจารณาสินเชื่อของธนาคาร</h2>
+    <p id="p_criteria">
+      ธนาคารพิจารณาสินเชื่อบ้านจากคุณสมบัติผู้ขอสินเชื่อ ความสามารถในการผ่อนชำระ และหลักประกันที่เหมาะสม โดยรายละเอียดประกอบด้วย:
+    </p>
+    <div class="figure"><img id="img23" src="23.jpg"><div class="cap" id="cap23"></div></div>
+    <h2 id="h_tips">ข้อควรรู้ก่อนขอสินเชื่อบ้าน</h2>
+    <div class="figure"><img id="img24" src="24.jpg"><div class="cap" id="cap24"></div></div>
+  </article>
+
+  <footer id="foot">MindMyMoney • เอกสารให้ความรู้สำหรับผู้ขอสินเชื่อบ้าน</footer>
+  <script>
+    // รูปภาพแต่ละภาษา
+    const IMG = {
+      th: { img21: "21.jpg", img23: "23.jpg", img24: "24.jpg" },
+      en: { img21: "40car.jpg", img23: "44car.jpg", img24: "46car.jpg" }
+    };
+    // คำแปล
+    const T = {
+      th: {
+        brand: "ความรู้สินเชื่อบ้าน",
+        back: "← กลับหน้าแรก",
+        kicker: "MindMyMoney • Home Loan Guide",
+        title: "คู่มือทำความเข้าใจสินเชื่อบ้านแบบครบถ้วน",
+        intro: "กู้บ้าน<br>บ้านเป็นอสังหาริมทรัพย์ประเภทหนึ่ง ซึ่งหมายถึงทรัพย์สินที่ไม่สามารถเคลื่อนย้ายได้ หรือเคลื่อนย้ายได้ยาก โดยทั่วไปจะหมายถึงที่ดินและสิ่งปลูกสร้างที่ติดอยู่กับที่ดินอย่างถาวร เช่น บ้าน อาคารพาณิชย์ หรือคอนโดมิเนียม",
+        h_what: "สินเชื่อบ้านคืออะไร?",
+        p_what: "สินเชื่อเพื่อที่อยู่อาศัย หรือ สินเชื่อบ้าน คือ เงินกู้ที่ทางสถาบันการเงินปล่อยให้สำหรับการซื้อ/สร้างที่อยู่อาศัย ในระยะยาว ซึ่งยาวนานตั้งแต่ 10 – 30 ปี หรือสูงสุดถึง 40 ปี เพื่อนำมาสร้างหรือซื้อบ้านที่เราต้องการ ซึ่งหมายรวมถึง อาคารพาณิชย์คอนโด ทาวโฮม และทาวเฮาส์ด้วย โดยจำนวนเงินที่ผู้ขอกู้จะได้ตามที่ธนาคารประเมินให้จะเรียกว่า “วงเงิน” และเมื่อถึงคราวที่ต้องชำระเงินคืน ก็จะมี “เงินต้น” หรือจำนวนเงินจริงๆ ที่ผู้กู้ยืมไป กับ “ดอกเบี้ย” หรือเงินส่วนที่ธนาคารคิดเพิ่มเติมที่ผู้กู้ต้องชำระเป็น “งวดๆ” ซึ่งโดยมากรอบงวด คือ ทุกๆ 1 เดือน ตลอด ระยะเวลากู้ โดยผู้กู้จะต้องนำที่อยู่อาศัยเป็นสิ่งค้ำประกันการจำนอง และหากคุณมีสินเชื่อบ้านอยู่แล้วแต่อยากเปลี่ยนไปกู้กับสถาบันการเงินใหม่ที่มีข้อเสนอที่ดีกว่า ก็สามารถทำการไถ่ถอนสินเชื่อเดิมที่มีอยู่และมาเข้ากับสถาบันการเงินใหม่ได้ เรียกวิธีการนี้ว่า “รีไฟแนนซ์บ้าน”",
+        cap21: "",
+        p_interest: "เงินกู้จากธนาคารหรือสถาบันการเงินสำหรับผู้ที่ต้องการซื้อที่อยู่อาศัย เช่น บ้านเดี่ยว ทาวน์โฮม คอนโดมิเนียม โดยมีการแบ่งประเภทดอกเบี้ยบ้านออกเป็น 4 ประเภทหลัก ได้แก่ อัตราดอกเบี้ยคงที่ อัตราดอกเบี้ยลอยตัว อัตราดอกเบี้ยปรับคงที่ใหม่ทุกรอบ และอัตราดอกเบี้ยแบบผสม เพื่อให้เข้าใจค่าใช้จ่ายดอกเบี้ยที่อาจเกิดขึ้น ผู้กู้ควรคำนวณดอกเบี้ยและเตรียมเอกสารให้ครบถ้วน นอกจากนี้ แต่ละธนาคารมีเงื่อนไขที่แตกต่างกัน จึงควรสอบถามเงื่อนไขให้ละเอียดก่อนทำการกู้",
+        h_types: "สินเชื่อบ้านแบ่งประเภทหลักๆ ได้ 5 ประเภทด้วยกัน",
+        ul_types: [
+          "สินเชื่อบ้าน ทาวน์เฮ้าส์ ห้องชุด อาคารพาณิชย์ พร้อมที่ดิน",
+          "สินเชื่อเพื่อการปลูกสร้างที่อยู่อาศัยบนที่ดินของตนเอง",
+          "สินเชื่อเพื่อการต่อเติม ปรับปรุง และตกแต่งที่อยู่อาศัย",
+          "รับโอนลูกค้าสินเชื่อที่อยู่อาศัยจากธนาคารหรือสถาบันการเงินอื่น (Refinance)",
+          "การกู้เพื่อซื้อที่ดินเปล่าไว้สำหรับการขยายที่อยู่อาศัยเดิมออกไปเพื่อความจำเป็นในการอยู่อาศัย"
+        ],
+        p_compare: "สินเชื่อบ้านแต่ละประเภท จะมีวงเงินกู้สูงสุด ระยะเวลาผ่อนชำระสูงสุด และอัตราดอกเบี้ย ที่ไม่เท่ากัน โครงการสินเชื่อแต่ละโครงการจะมีลักษณะที่โดดเด่นแตกต่างกัน เช่น เงื่อนไข โปรโมชั่น วิธีคิดอัตราดอกเบี้ย การลดหย่อนค่าธรรมเนียมบางประการ เป็นต้น ซึ่งคุณสามารถนำแต่ละโครงการมาเปรียบเทียบความคุ้มค่าได้เพราะฉะนั้น จำเป็นอย่างยิ่งที่ผู้สนใจกู้จะต้องศึกษาเงื่อนไขให้ครบถ้วนก่อนตัดสินใจกู้",
+        h_criteria: "หลักเกณฑ์การพิจารณาสินเชื่อของธนาคาร",
+        p_criteria: "ธนาคารพิจารณาสินเชื่อบ้านจากคุณสมบัติผู้ขอสินเชื่อ ความสามารถในการผ่อนชำระ และหลักประกันที่เหมาะสม โดยรายละเอียดประกอบด้วย:",
+        cap23: "",
+        h_tips: "ข้อควรรู้ก่อนขอสินเชื่อบ้าน",
+        cap24: "",
+        foot: "MindMyMoney • เอกสารให้ความรู้สำหรับผู้ขอสินเชื่อบ้าน"
+      },
+      en: {
+        brand: "Home Loan Knowledge",
+        back: "← Back to Home",
+        kicker: "MindMyMoney • Home Loan Guide",
+        title: "A Complete Guide to Understanding Home Loans",
+        intro: "Home loans are a type of real estate loan for immovable property, such as land and buildings. This includes houses, commercial buildings, and condominiums.",
+        h_what: "What is a Home Loan?",
+        p_what: "A home loan is a long-term loan (10–30 years, up to 40 years) from a financial institution for buying or building a residence, including commercial buildings, condos, townhomes, and townhouses. The approved amount is called the 'loan limit.' Repayment consists of principal and interest, usually monthly. The property is used as collateral. You can refinance to a new lender for better terms.",
+        cap21: "",
+        p_interest: "Home loans for buying a house, townhome, or condo have four main interest types: fixed, floating, periodically reset, and mixed. Understand interest costs and prepare documents. Each bank has different conditions—compare carefully before applying.",
+        h_types: "Main Types of Home Loans",
+        ul_types: [
+          "Home, townhome, condo, commercial building loans with land",
+          "Loans for building a home on your own land",
+          "Loans for renovation, improvement, or decoration",
+          "Refinance from another bank or financial institution",
+          "Loans for buying land to expand your residence"
+        ],
+        p_compare: "Each loan type has different maximum limits, terms, and interest rates. Compare projects for conditions, promotions, interest calculation, and fee waivers. Study all terms before deciding.",
+        h_criteria: "Bank Loan Criteria",
+        p_criteria: "Banks consider borrower qualifications, repayment ability, and suitable collateral:",
+        cap23: "",
+        h_tips: "Tips Before Applying for a Home Loan",
+        cap24: "",
+        foot: "MindMyMoney • Educational material for home-loan applicants"
+      }
+    };
+    function applyLang() {
+      const lang = document.getElementById('lang').value || 'th';
+      const t = T[lang];
+      document.getElementById('brand').innerText = t.brand;
+      document.getElementById('backBtn').innerText = t.back;
+      document.getElementById('kicker').innerText = t.kicker;
+      document.getElementById('title').innerText = t.title;
+      document.getElementById('intro').innerHTML = t.intro;
+      document.getElementById('h_what').innerText = t.h_what;
+      document.getElementById('p_what').innerText = t.p_what;
+      document.getElementById('cap21').innerText = t.cap21;
+      document.getElementById('img21').src = IMG[lang].img21;
+      document.getElementById('p_interest').innerText = t.p_interest;
+      document.getElementById('h_types').innerText = t.h_types;
+      // List types
+      let ul = document.getElementById('ul_types');
+      ul.innerHTML = t.ul_types.map(x=>`<li>${x}</li>`).join('');
+      document.getElementById('p_compare').innerText = t.p_compare;
+      document.getElementById('h_criteria').innerText = t.h_criteria;
+      document.getElementById('p_criteria').innerText = t.p_criteria;
+      document.getElementById('cap23').innerText = t.cap23;
+      document.getElementById('img23').src = IMG[lang].img23;
+      document.getElementById('h_tips').innerText = t.h_tips;
+      document.getElementById('cap24').innerText = t.cap24;
+      document.getElementById('img24').src = IMG[lang].img24;
+      document.getElementById('foot').innerText = t.foot;
+      document.documentElement.lang = lang;
+      localStorage.setItem('lang', lang);
+    }
+    // เริ่มต้นด้วยค่าที่เคยเลือก
+    (function init(){
+      const saved = localStorage.getItem('lang') || 'th';
+      document.getElementById('lang').value = saved;
+      applyLang();
+    })();
+  </script>
+</body>
+</html>

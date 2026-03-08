@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>ดอกเบี้ยและอัตราดอกเบี้ย | MindMyMoney</title>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root{
+      --brand:#10b981;
+      --ink:#0f172a;
+      --muted:#475569;
+      --paper:#ffffff;
+      --bg:#f7fafb;
+      --accent:#3b82f6;
+    }
+    html,body{margin:0}
+    body{font-family:'Prompt',sans-serif;background:var(--bg);color:var(--ink);line-height:1.8}
+    .navbar{position:sticky;top:0;z-index:10;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.06);display:flex;align-items:center;gap:12px;padding:12px 16px}
+    .brand{margin:0;color:var(--brand);font-weight:700;font-size:1.05rem}
+    .nav-right{margin-left:auto;display:flex;gap:10px;align-items:center}
+    .lang{padding:6px 10px;border:1px solid #cbd5e1;border-radius:9999px}
+    .btn{background:var(--accent);color:#fff;border:none;border-radius:9999px;padding:8px 14px;cursor:pointer}
+    .article{max-width:980px;margin:22px auto;background:var(--paper);border:1px solid #e2e8f0;border-radius:20px;padding:28px 22px;box-shadow:0 2px 12px rgba(0,0,0,.04)}
+    .kicker{color:var(--brand);font-weight:600;letter-spacing:.02em}
+    h1{font-size:1.6rem;margin:.25rem 0 1rem}
+    h2{font-size:1.25rem;margin:2rem 0 .5rem;color:#0f766e}
+    h3{font-size:1.05rem;margin:1rem 0 .25rem}
+    p{margin:.5rem 0;color:var(--ink)}
+    .muted{color:var(--muted)}
+    .figure{margin:20px 0}
+    .figure img{width:100%;height:auto;border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,.05)}
+    .figure .cap{font-size:.95rem;color:#64748b;margin-top:6px}
+    ul,ol{margin:.25rem 0 .5rem 1.2rem}
+    .tip{background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:12px 14px;border-radius:12px}
+    footer{max-width:980px;margin:14px auto 26px;text-align:center;color:#64748b;font-size:.9rem}
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <div class="brand" id="brand">ดอกเบี้ยและอัตราดอกเบี้ย</div>
+    <div class="nav-right">
+      <select id="lang" class="lang" onchange="applyLang()">
+        <option value="th">ไทย</option>
+        <option value="en">English</option>
+      </select>
+      <button class="btn" id="backBtn" onclick="location.href='index.html'">← กลับหน้าแรก</button>
+    </div>
+  </div>
+  <article class="article">
+    <div class="kicker" id="kicker">MindMyMoney • Interest Rate Guide</div>
+    <h1 id="title">ดอกเบี้ย และ อัตราดอกเบี้ย</h1>
+    <p id="intro" class="muted">ดอกเบี้ย คือ ค่าตอบแทนที่ผู้ให้กู้เรียกเก็บจากผู้กู้เงิน เป็นค่าที่คิดจากเงินต้นที่ให้กู้ โดยจะคิดตามอัตราดอกเบี้ยที่ตกลงกันไว้และตามระยะเวลาที่ให้กู้ อัตราดอกเบี้ย คือ ร้อยละของจำนวนเงินต้นที่ผู้ให้กู้เรียกเก็บจากผู้กู้ หรือผู้ฝากเงินได้รับเป็นค่าตอบแทน โดยมักแสดงเป็นเปอร์เซ็นต์ต่อปี</p>
+    <div class="figure"><img id="img1" src="15.jpg" alt="ประเภทอัตราดอกเบี้ย"><div class="cap" id="cap1">โดยทั่วไปอัตราดอกเบี้ย จะแบ่งออกเป็น 2 ประเภทคือ</div></div>
+    <h2 id="h1">1. อัตราดอกเบี้ยเงินฝาก</h2>
+    <p id="p1">เป็นผลตอบแทนที่สถาบันการเงินจ่ายให้กับผู้ฝากเงิน ซึ่งอัตราดอกเบี้ยเงินฝากมีหลายอัตรา ขึ้นอยู่กับระยะเวลาการฝากเงินและเงื่อนไขการถอนเงิน</p>
+    <div class="tip" id="tip1">“ออมก่อน รวยก่อน” ความร่ำรวยดังกล่าวส่วนหนึ่งเป็นผลมาจากอานุภาพของดอกเบี้ยทบต้น (Compound Interest Rate) ซึ่งพูดให้เข้าใจง่ายก็คือดอกเบี้ยของดอกเบี้ยนั่นเอง</div>
+    <div class="figure"><img id="img2" src="17.jpg" alt="ประเภทเงินฝาก"><div class="cap" id="cap2">ประเภทเงินฝาก: ออมทรัพย์ • กระแสรายวัน • ประจำ • ขั้นบันได</div></div>
+    <ul>
+      <li><b>เงินฝากออมทรัพย์</b> โดยทั่วไปบัญชีเงินฝากออมทรัพย์จะคิดดอกเบี้ยให้ผู้ฝากทุกวัน แต่จะจ่ายดอกเบี้ยให้ผู้ฝากปีละ 2 ครั้ง คือ ในเดือนมิถุนายนและธันวาคม ซึ่งดอกเบี้ยที่ได้รับในแต่ละงวดก็จะมารวมเป็นเงินต้นสำหรับคิดดอกเบี้ยในแต่ละวันต่อไปด้วย<br>ตามประกาศอธิบดีกรมสรรพากรเกี่ยวกับภาษีเงินได้ (ฉบับที่ 55)...<br>1. หากได้รับดอกเบี้ยจากบัญชีออมทรัพย์รวมทุกบัญชีจากธนาคารแห่งเดียวกันเกิน 20,000 บาทในปีภาษีนั้น ธนาคารมีหน้าที่หักภาษีเงินได้ ณ ที่จ่าย 15%<br>2. หากมีการฝากออมทรัพย์หลายธนาคารและมีดอกเบี้ยรับรวมกันทุกแห่งเกินกว่า 20,000 บาทในปีภาษีนั้น ผู้ฝากมีหน้าที่แจ้งแก่ธนาคารผู้จ่ายดอกเบี้ย</li>
+      <li><b>เงินฝากกระแสรายวัน</b> หรือบัญชีกระแสรายวัน (Current Account) คือ บัญชีธนาคารประเภทหนึ่งที่ไม่มีการให้ดอกเบี้ยเงินฝากหรือหากมีดอกเบี้ยก็ได้รับในอัตราที่ต่ำมาก...</li>
+      <li><b>เงินฝากประจำ</b> โดยทั่วไป ดอกเบี้ยเงินฝากประจำจะสูงกว่า เงินฝากออมทรัพย์ แต่มีข้อควรระวังคือ หากคุณจำเป็นต้อง ถอนเงินก่อนครบกำหนด คุณอาจจะไม่ได้รับดอกเบี้ยในอัตราที่ธนาคารประกาศไว้ตั้งแต่แรก...</li>
+      <li><b>เงินฝากแบบขั้นบรรได</b> อัตราดอกเบี้ยเงินฝากแบบขั้นบันได เป็นอัตราดอกเบี้ยที่เปลี่ยนแปลงไปในแต่ละช่วงเวลา ซึ่งมักจะเพิ่มขึ้นเรื่อย ๆ เป็นระยะ ตามแต่สถาบันการเงินนั้น ๆ กำหนด...</li>
+    </ul>
+    <div class="figure"><img id="img3" src="18.jpg" alt="ข้อควรรู้เงินฝาก"><div class="cap" id="cap3">ข้อควรรู้สำหรับดอกเบี้ยแบบขั้นบันไดและเงินฝาก</div></div>
+    <h2 id="h2">2. อัตราดอกเบี้ยเงินกู้</h2>
+    <p id="p2">เป็นผลตอบแทนที่ผู้ขอกู้จ่ายให้กับผู้ปล่อยกู้ ซึ่งอัตราดอกเบี้ยเงินกู้มีหลายอัตรา ขึ้นอยู่กับประเภทของเงินกู้</p>
+    <div class="figure"><img id="img4" src="19.jpg" alt="ประเภทอัตราดอกเบี้ยเงินกู้"><div class="cap" id="cap4">ประเภทดอกเบี้ยเงินกู้ที่พบได้บ่อย ๆ มีอยู่ 4 แบบ</div></div>
+    <ol>
+      <li>เงินกู้อัตราดอกเบี้ยคงที่ (Fixed Rate Loan)</li>
+      <li>เงินกู้อัตราดอกเบี้ยลอยตัว (Floating Rate Loan)</li>
+      <li>เงินกู้อัตราดอกเบี้ยแบบผสม (Mixed Rate Loan)</li>
+      <li>อัตราดอกเบี้ยปรับคงที่ใหม่ทุกรอบเวลา (Rollover Mortgage)</li>
+    </ol>
+    <div class="figure"><img id="img5" src="20.jpg" alt="MLR MOR MRR"><div class="cap" id="cap5">MLR, MOR, MRR คืออะไร?</div></div>
+    <ul>
+      <li><b>MLR</b> (Minimum Loan Rate): อัตราดอกเบี้ยที่ธนาคารเรียกเก็บจากลูกค้ารายใหญ่เกรดดี</li>
+      <li><b>MOR</b> (Minimum Overdraft Rate): อัตราดอกเบี้ยที่ธนาคารเรียกเก็บจากลูกค้ารายใหญ่ชั้นดีที่ขอกู้วงเงินเกินบัญชี</li>
+      <li><b>MRR</b> (Minimum Retail Rate): อัตราดอกเบี้ยที่ธนาคารเรียกเก็บจากลูกค้ารายย่อยชั้นดี เช่นสินเชื่อบ้านและที่อยู่อาศัย</li>
+    </ul>
+    <div class="figure"><img id="img6" src="16in.jpg" alt="อัตราดอกเบี้ยที่แท้จริง"><div class="cap" id="cap6">รู้หรือไม่? อัตราดอกเบี้ยที่แท้จริง (Effective Interest Rate) คืออะไร</div></div>
+    <ul>
+      <li>อัตราดอกเบี้ยที่ประกาศ (Nominal Interest Rate): คืออัตราดอกเบี้ยที่ธนาคารใช้โฆษณา หรือระบุในสัญญาเบื้องต้น</li>
+      <li>อัตราดอกเบี้ยที่แท้จริง (Effective Interest Rate - EIR): คืออัตราดอกเบี้ยที่สะท้อนถึงต้นทุนที่แท้จริงของการกู้ยืม เมื่อรวมปัจจัยต่างๆ เช่น การคิดดอกเบี้ยทบต้น, ค่าธรรมเนียม</li>
+    </ul>
+    <footer id="foot">MindMyMoney • เอกสารให้ความรู้เรื่องดอกเบี้ยและอัตราดอกเบี้ย</footer>
+  </article>
+
+  <script>
+    // รูปภาพภาษาไทย/อังกฤษ
+    const IMG = {
+      th: ["15.jpg","17.jpg","18.jpg","19.jpg","20.jpg","16in.jpg"],
+      en: ["28.jpg","32.jpg","34.jpg","36.jpg","38.jpg","30.jpg"]
+    };
+    // ข้อความภาษาไทย/อังกฤษ
+    const T = {
+      th: {
+        kicker: "MindMyMoney • Interest Rate Guide",
+        title: "ดอกเบี้ย และ อัตราดอกเบี้ย",
+        intro: "ดอกเบี้ย คือ ค่าตอบแทนที่ผู้ให้กู้เรียกเก็บจากผู้กู้เงิน เป็นค่าที่คิดจากเงินต้นที่ให้กู้ โดยจะคิดตามอัตราดอกเบี้ยที่ตกลงกันไว้และตามระยะเวลาที่ให้กู้ อัตราดอกเบี้ย คือ ร้อยละของจำนวนเงินต้นที่ผู้ให้กู้เรียกเก็บจากผู้กู้ หรือผู้ฝากเงินได้รับเป็นค่าตอบแทน โดยมักแสดงเป็นเปอร์เซ็นต์ต่อปี",
+        cap1: "โดยทั่วไปอัตราดอกเบี้ย จะแบ่งออกเป็น 2 ประเภทคือ",
+        h1: "1. อัตราดอกเบี้ยเงินฝาก",
+        p1: "เป็นผลตอบแทนที่สถาบันการเงินจ่ายให้กับผู้ฝากเงิน ซึ่งอัตราดอกเบี้ยเงินฝากมีหลายอัตรา ขึ้นอยู่กับระยะเวลาการฝากเงินและเงื่อนไขการถอนเงิน",
+        tip1: "“ออมก่อน รวยก่อน” ความร่ำรวยดังกล่าวส่วนหนึ่งเป็นผลมาจากอานุภาพของดอกเบี้ยทบต้น (Compound Interest Rate) ซึ่งพูดให้เข้าใจง่ายก็คือดอกเบี้ยของดอกเบี้ยนั่นเอง",
+        cap2: "ประเภทเงินฝาก: ออมทรัพย์ • กระแสรายวัน • ประจำ • ขั้นบันได",
+        cap3: "ข้อควรรู้สำหรับดอกเบี้ยแบบขั้นบันไดและเงินฝาก",
+        h2: "2. อัตราดอกเบี้ยเงินกู้",
+        p2: "เป็นผลตอบแทนที่ผู้ขอกู้จ่ายให้กับผู้ปล่อยกู้ ซึ่งอัตราดอกเบี้ยเงินกู้มีหลายอัตรา ขึ้นอยู่กับประเภทของเงินกู้",
+        cap4: "ประเภทดอกเบี้ยเงินกู้ที่พบได้บ่อย ๆ มีอยู่ 4 แบบ",
+        cap5: "MLR, MOR, MRR คืออะไร?",
+        cap6: "รู้หรือไม่? อัตราดอกเบี้ยที่แท้จริง (Effective Interest Rate) คืออะไร",
+        foot: "MindMyMoney • เอกสารให้ความรู้เรื่องดอกเบี้ยและอัตราดอกเบี้ย"
+      },
+      en: {
+        kicker: "MindMyMoney • Interest Rate Guide",
+        title: "Interest Rate & Types of Interest",
+        intro: "Interest is the cost paid by a borrower to a lender, calculated from the principal over an agreed period. The interest rate is the percentage of the principal charged or paid, usually shown as annual percent.",
+        cap1: "Interest rates are generally divided into 2 types",
+        h1: "1. Deposit Interest Rate",
+        p1: "The return paid by financial institutions to depositors. Deposit rates vary by deposit term and withdrawal conditions.",
+        tip1: "“Save early, get rich early.” This wealth comes in part from the power of compound interest—interest on interest!",
+        cap2: "Deposit types: Savings • Current • Fixed • Step-up",
+        cap3: "Things to know about step-up and deposit interest",
+        h2: "2. Loan Interest Rate",
+        p2: "The cost paid by borrowers to lenders. Loan rates vary by loan type.",
+        cap4: "4 common types of loan interest rates",
+        cap5: "What are MLR, MOR, MRR?",
+        cap6: "Did you know? Effective Interest Rate (EIR) explained",
+        foot: "MindMyMoney • Educational document on interest rates"
+      }
+    };
+    function applyLang() {
+      const lang = document.getElementById('lang').value || 'th';
+      const t = T[lang];
+      document.getElementById('kicker').innerText = t.kicker;
+      document.getElementById('title').innerText = t.title;
+      document.getElementById('intro').innerText = t.intro;
+      document.getElementById('cap1').innerText = t.cap1;
+      document.getElementById('h1').innerText = t.h1;
+      document.getElementById('p1').innerText = t.p1;
+      document.getElementById('tip1').innerText = t.tip1;
+      document.getElementById('cap2').innerText = t.cap2;
+      document.getElementById('cap3').innerText = t.cap3;
+      document.getElementById('h2').innerText = t.h2;
+      document.getElementById('p2').innerText = t.p2;
+      document.getElementById('cap4').innerText = t.cap4;
+      document.getElementById('cap5').innerText = t.cap5;
+      document.getElementById('cap6').innerText = t.cap6;
+      document.getElementById('foot').innerText = t.foot;
+      // รูปภาพ
+      for(let i=1;i<=6;i++){
+        document.getElementById('img'+i).src = IMG[lang][i-1];
+      }
+      document.documentElement.lang = lang;
+      localStorage.setItem('lang', lang);
+    }
+    // เริ่มต้นด้วยค่าที่เคยเลือก
+    (function init(){
+      const saved = localStorage.getItem('lang') || 'th';
+      document.getElementById('lang').value = saved;
+      applyLang();
+    })();
+  </script>
+</body>
+</html>

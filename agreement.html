@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>สัญญาการกู้เงิน | MindMyMoney</title>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root{
+      --brand:#10b981;
+      --ink:#0f172a;
+      --muted:#475569;
+      --paper:#ffffff;
+      --bg:#f7fafb;
+      --accent:#3b82f6;
+    }
+    html,body{margin:0}
+    body{font-family:'Prompt',sans-serif;background:var(--bg);color:var(--ink);line-height:1.8}
+    .navbar{position:sticky;top:0;z-index:10;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.06);display:flex;align-items:center;gap:12px;padding:12px 16px}
+    .brand{margin:0;color:var(--brand);font-weight:700;font-size:1.05rem}
+    .nav-right{margin-left:auto;display:flex;gap:10px;align-items:center}
+    .lang{padding:6px 10px;border:1px solid #cbd5e1;border-radius:9999px}
+    .btn{background:var(--accent);color:#fff;border:none;border-radius:9999px;padding:8px 14px;cursor:pointer}
+    .article{max-width:980px;margin:22px auto;background:var(--paper);border:1px solid #e2e8f0;border-radius:20px;padding:28px 22px;box-shadow:0 2px 12px rgba(0,0,0,.04)}
+    .kicker{color:var(--brand);font-weight:600;letter-spacing:.02em}
+    h1{font-size:1.6rem;margin:.25rem 0 1rem}
+    h2{font-size:1.25rem;margin:2rem 0 .5rem;color:#0f766e}
+    h3{font-size:1.05rem;margin:1rem 0 .25rem}
+    p{margin:.5rem 0;color:var(--ink)}
+    .muted{color:var(--muted)}
+    .figure{margin:20px 0}
+    .figure img{width:100%;height:auto;border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,.05)}
+    .figure .cap{font-size:.95rem;color:#64748b;margin-top:6px}
+    ul,ol{margin:.25rem 0 .5rem 1.2rem}
+    .tip{background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:12px 14px;border-radius:12px}
+    footer{max-width:980px;margin:14px auto 26px;text-align:center;color:#64748b;font-size:.9rem}
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <div class="brand" id="brand">สัญญาการกู้เงิน</div>
+    <div class="nav-right">
+      <select id="lang" class="lang" onchange="applyLang()">
+        <option value="th">ไทย</option>
+        <option value="en">English</option>
+      </select>
+      <button class="btn" id="backBtn" onclick="location.href='index.html'">← กลับหน้าแรก</button>
+    </div>
+  </div>
+  <article class="article">
+    <div class="kicker" id="kicker">MindMyMoney • Loan Agreement Guide</div>
+    <h1 id="title">สัญญาการกู้เงิน</h1>
+    <p id="intro" class="muted">
+      การกู้ยืมเงิน เป็นสัญญาชนิดหนึ่ง มีคู่กรณีสองฝ่าย คือ ฝ่ายหนึ่งเรียกว่า “ผู้ให้กู้ยืม” และอีกฝ่ายเรียกว่า “ผู้กู้ยืม” ในประมวลกฎหมายแพ่งและพาณิชย์ มาตรา 653 “การกู้ยืมเงินกว่าสองพันบาทขึ้นไปนั้น ถ้ามิได้มีหลักฐานแห่งการกู้ยืมเป็นหนังสืออย่างใดอย่างหนึ่ง ลงลายมือชื่อผู้ยืมเป็นสำคัญจะฟ้องร้องให้บังคับคดีหาได้ไม่
+    </p>
+    <p id="p1">ในการกู้ยืมเงินมีหลักฐานเป็นหนังสือนั้น ท่านว่าจะนำสืบการใช้เงิน ได้ต่อเมื่อมีหลักฐานเป็นหนังสือ อย่างใดอย่างหนึ่ง ลงลายมือชื่อผู้ให้ยืม มาแสดงหรือเอกสารอันเป็นหลักฐานแห่งการกู้ยืมนั้น ได้เวนคืนแล้ว หรือ ได้แทงเพิกถอน ลงในเอกสารนั้นแล้ว”</p>
+    <p id="p2">สัญญากู้ยืมเงินเป็นสัญญายืมใช้สิ้นเปลือง หมายความว่า สัญญาที่ผู้ให้ยืมได้โอนกรรมสิทธิ์ในทรัพย์สินนั้นเป็นปริมาณมีกำหนดให้แก่ผู้ยืม และผู้ยืมตกลงว่าจะคืนทรัพย์สินเป็นประเภท ชนิดและปริมาณเช่นเดียวกันให้แทนทรัพย์สินซึ่งให้ยืมนั้น และสัญญายืมนี้จะสมบูรณ์ต่อเมื่อส่งมอบทรัพย์สินที่ยืม เป็นไปตามประมวลกฎหมายแพ่งและพาณิชย์ มาตรา 650 วรรคหนึ่ง "อันว่ายืมใช้สิ้นเปลืองนั้น คือสัญญาซึ่งผู้ให้ยืมโอนกรรมสิทธิ์ในทรัพย์สินชนิดใช้ไปสิ้นไปนั้นเป็นปริมาณมีกำหนดให้ไปแก่ผู้ยืม และผู้ยืมตกลงว่าจะคืนทรัพย์สินเป็นประเภท ชนิด และปริมาณเช่นเดียวกันให้แทนทรัพย์สินซึ่งให้ยืมนั้น"</p>
+    <p id="p3">ดังนั้น การกู้ยืมเงินหรือสัญญากู้ยืมเงิน จึงเป็นสัญญายืมใช้สิ้นเปลือง ที่ “ผู้กู้ยืม” ไปขอกู้ยืมเงินจากบุคคลหนึ่ง ซึ่งเรียกว่า “ผู้ให้กู้ยืม” โดยผู้กู้ยืมทำสัญญาหรือข้อตกลงว่าจะชดใช้เงินคืนให้ภายในกำหนดเวลาใดเวลาหนึ่ง ซึ่งจะกำหนดอัตราดอกเบี้ยด้วยหรือไม่ก็ได้ แต่ตามกฎหมายไม่เกินร้อยละ 15 ต่อปี และสัญญากู้ยืมเงินจะสมบูรณ์ก็ต่อเมื่อได้มีการส่งมอบเงินที่กู้ยืมกันแล้ว เป็นไปตามประมวลกฎหมายแพ่งและพาณิชย์ มาตรา 650 วรรคสอง "สัญญานี้ย่อมบริบูรณ์ต่อเมื่อส่งมอบทรัพย์สินที่ยืม"</p>
+    <h2 id="h_evidence">หลักฐานการกู้ยืมเงิน มี 2 กรณี</h2>
+    <ol id="ol_evidence">
+      <li>กรณีจำนวนเงินกู้ยืมไม่เกิน 2,000 บาท กฎหมายไม่ได้กำหนดให้ต้องทำสัญญากู้ยืมเงินต่อกัน แต่ถ้าผิดสัญญาก็สามารถฟ้องร้องตามกฎหมายได้</li>
+      <li>กรณีจำนวนเงินที่กู้ยืมเงิน เกิน 2,000 บาทขึ้นไป กฎหมายกำหนดให้การกู้ยืมเงินจะต้องมีหลักฐานแห่งการกู้ยืมเงิน มิเช่นนั้นจะฟ้องร้องให้บังคับคดีต่อกันมิได้ หลักฐานการกู้ยืมเงินจะอยู่ในรูปแบบใดก็ได้แต่ต้องเป็นลายลักษณ์อักษร มีข้อความชัดแจ้งว่ามีการกู้ยืมเงินกันเกิดขึ้น เป็นจำนวนเท่าใด และตกลงจะใช้คืนเมื่อใด สิ่งสำคัญจะขาดเสียไม่ได้ คือ ลายมือชื่อของผู้กู้ยืมเป็นสำคัญ กรณีลงลายพิมพ์นิ้วมือชื่อจะต้องมีลายนิ้วมือ 2 คน เป็นพยานรับรอง ประมวลกฎหมายแพ่งและพาณิชย์ มาตรา 653</li>
+    </ol>
+    <h2 id="h_components">องค์ประกอบสำคัญของสัญญากู้ยืมเงิน</h2>
+    <div class="figure">
+      <img id="img1" src="25.jpg" alt="องค์ประกอบสำคัญของสัญญากู้ยืมเงิน">
+      <div class="cap" id="cap1">องค์ประกอบสำคัญของสัญญากู้ยืมเงิน</div>
+    </div>
+    <ul id="ul_components">
+      <li>ข้อความที่แสดงถึงการกู้ยืมเงินระหว่างกัน</li>
+      <li>วันที่ทำสัญญา</li>
+      <li>ชื่อผู้ให้กู้</li>
+      <li>ชื่อผู้กู้</li>
+      <li>โดยระบุจำนวนเงินที่กู้ยืม</li>
+      <li>การลงลายมือชื่อยินยอมจากผู้กู้</li>
+      <li>การลงลายมือชื่อยินยอมจากผู้ให้กู้</li>
+      <li>วันที่ชำระคืนหนี้</li>
+      <li>อัตราดอกเบี้ย</li>
+    </ul>
+    <h2 id="h_terms">เงื่อนไขการชำระหนี้</h2>
+    <ul id="ul_terms">
+      <li>ผู้กู้ตกลงชำระหนี้เดือนละเท่าไหร่?</li>
+      <li>ส่งมอบเงินคืนด้วยวิธีไหน?</li>
+      <li>ครบกำหนดคืนเงินทั้งหมด ภายในวันที่เท่าไหร่?</li>
+    </ul>
+    <h2 id="h_default">เงื่อนไขการผิดนัดชำระหนี้</h2>
+    <p id="p_default">ควรระบุว่า เงื่อนไขการคิดดอกเบี้ยทบต้น กรณีที่ผู้กู้ผิดนัดชำระหนี้ค้างนานเกิน 1 ปี ในสัญญากู้ยืมเงิน ‘การคิดดอกเบี้ยทบต้น คือ คิดดอกเบี้ยในอัตราดอกเบี้ยที่ค้างชำระอีกทีหนึ่ง ทำให้ดอกเบี้ยเพิ่มจำนวนขึ้นอย่างรวดเร็ว ป้องกันการค้างชำระหนี้จากผู้กู้’</p>
+    <h2 id="h_docs">เอกสารประกอบการทำสัญญา</h2>
+    <div class="figure">
+      <img id="img2" src="26.jpg" alt="เอกสารประกอบการทำสัญญา">
+      <div class="cap" id="cap2">เอกสารประกอบการทำสัญญา</div>
+    </div>
+    <ul id="ul_docs">
+      <li>สำเนาบัตรประจำตัวประชาชน หรือ สำเนาบัตรข้าราชการ/รัฐวิสาหกิจ อย่างใดอย่างหนึ่ง</li>
+      <li>สำเนาทะเบียนบ้าน หรือ สำเนาทะเบียนสมรส หรือ ทะเบียนหย่า หรือ ใบมรณบัตร อย่างใดอย่างหนึ่ง</li>
+      <li>สำเนาหลักฐานการเปลี่ยนชื่อ-นามสกุล</li>
+      <li>หากเป็นนิติบุคคล ให้ใช้สำเนาทะเบียนการค้า หรือ หนังสือรับรองการจดทะเบียนนิติบุคคล</li>
+    </ul>
+    <h2 id="h_interest">อัตราดอกเบี้ย</h2>
+    <ol id="ol_interest">
+      <li>ดอกเบี้ยที่กำหนดโดยกฎหมาย ในกรณีสถาบันการเงินหรือธนาคาร กฎหมายให้อำนาจเรียกดอกเบี้ยได้สูงกว่าร้อยละ 15 ต่อปีได้ แต่ต้องเป็นไปตามประกาศข้อกำหนดของธนาคารซึ่งมีกฎหมายรองรับ (พระราชบัญญัติดอกเบี้ยเงินให้กู้ยืมของสถาบันการเงิน)</li>
+      <li>ดอกเบี้ยเกินอัตราที่กฎหมายกำหนด ประมวลกฎหมายแพ่งและพาณิชย์ มาตรา 654 “ท่านห้ามมิให้คิดดอกเบี้ยเกินร้อยละสิบห้าต่อปี ถ้าในสัญญากำหนดดอกเบี้ยเกินกว่านั้น ก็ให้ลดลงมาเป็นร้อยละสิบห้าต่อปี” สรุปได้ว่า
+        <ul>
+          <li>ดอกเบี้ยเกินอัตราที่กฎหมายกำหนด ถือว่าเป็นโมฆะทั้งหมด แต่เงินต้นสมบูรณ์ ก็คือไม่เป็นโมฆะ</li>
+          <li>ผู้กู้ให้กู้คิดดอกเบี้ยล่วงหน้าแล้วนำไปรวมกับเงินต้นในสัญญากู้</li>
+          <li>ผู้กู้ชำระดอกเบี้ยเกินอัตราที่กฎหมายกำหนดไปแล้วจะเรียกคืนไม่ได้</li>
+          <li>ผู้ให้กู้ยังมีสิทธิในการเรียกดอกเบี้ยจากเหตุผิดนัดได้ด้วย</li>
+        </ul>
+      </li>
+      <li>ดอกเบี้ยกรณีผู้ให้กู้เป็นสถาบันการเงิน
+        <ul>
+          <li>สัญญาระบุให้ผู้ให้กู้ปรับอัตราดอกเบี้ยได้</li>
+          <li>เมื่อเลิกสัญญาแล้ว ผู้ให้กู้ไม่มีสิทธิปรับเพิ่มอัตราดอกเบี้ย</li>
+          <li>การปรับเพิ่มอัตราดอกเบี้ยเป็นเบี้ยปรับจากการผิดนัด หรือไม่ ผู้กู้จะต้องพิจารณาให้ดี สอบถามให้เข้าใจ</li>
+        </ul>
+      </li>
+      <li>ดอกเบี้ยทบต้น ตามมาตรา 655 วรรคหนึ่ง “ท่านห้ามมิให้คิดดอกเบี้ยในดอกเบี้ยที่ค้างชำระ แต่ทว่าเมื่อดอกเบี้ยค้างชำระไม่น้อยกว่าปีหนึ่ง คู่สัญญากู้ยืมจะตกลงกันให้เอาดอกเบี้ยนั้นทบเข้ากับต้นเงินแล้วให้คิดดอกเบี้ยในจำนวนเงินที่ทบเข้ากันนั้นก็ได้ แต่การตกลงเช่นนั้นต้องทำเป็นหนังสือ”</li>
+    </ol>
+    <p id="p_law">กฎหมายอีกฉบับหนึ่งที่ต้องสนใจคือ พระราชบัญญัติห้ามเรียกดอกเบี้ยเกินอัตรา พ.ศ. 2560 ยกเลิก พระราชบัญญัติห้ามเรียกดอกเบี้ยเกินอัตรา พ.ศ. 2475 มีผลบังคับใช้ตั้งแต่วันที่ 15 มกราคม 2560 เป็นต้นไป สาระสำคัญคือ กำหนดให้ห้ามเรียกดอกเบี้ยเกินอัตราที่กฎหมายกำหนดไว้ โดยปัจจุบันกฎหมายกำหนดห้ามคิดอัตราดอกเบี้ยเกินร้อยละ 15 ต่อปี (ร้อยละ 1.25 ต่อเดือน) ถ้าเรียกเกินมีผลให้ดอกเบี้ยเป็นโมฆะ และผู้ให้กู้อาจถูกดำเนินคดีอาญาได้ แต่ในกรณีในสัญญาไม่ได้กำหนดอัตราดอกเบี้ยว่าจะคิดเท่าใด เมื่อมีการฟ้องร้องกันเกิดขึ้น ผู้ให้กู้จะคิดดอกเบี้ยได้ไม่เกินร้อยละ 7.5 ต่อปี</p>
+  </article>
+  <footer id="foot">MindMyMoney • เอกสารให้ความรู้สำหรับผู้ทำสัญญากู้เงิน</footer>
+  <script>
+    // รูปภาพประกอบภาษาไทย/อังกฤษ
+    const IMG = {
+      th: { comp:"25.jpg", docs:"26.jpg" },
+      en: { comp:"48.jpg", docs:"50.jpg" }
+    };
+    // ข้อความภาษาไทย/อังกฤษ
+    const T = {
+      th: {
+        brand:"สัญญาการกู้เงิน",
+        back:"← กลับหน้าแรก",
+        kicker:"MindMyMoney • คู่มือสัญญากู้เงิน",
+        title:"สัญญาการกู้เงิน",
+        intro:"การกู้ยืมเงิน เป็นสัญญาชนิดหนึ่ง มีคู่กรณีสองฝ่าย คือ ฝ่ายหนึ่งเรียกว่า “ผู้ให้กู้ยืม” และอีกฝ่ายเรียกว่า “ผู้กู้ยืม” ในประมวลกฎหมายแพ่งและพาณิชย์ มาตรา 653 “การกู้ยืมเงินกว่าสองพันบาทขึ้นไปนั้น ถ้ามิได้มีหลักฐานแห่งการกู้ยืมเป็นหนังสืออย่างใดอย่างหนึ่ง ลงลายมือชื่อผู้ยืมเป็นสำคัญจะฟ้องร้องให้บังคับคดีหาได้ไม่",
+        h_evidence:"หลักฐานการกู้ยืมเงิน มี 2 กรณี",
+        h_components:"องค์ประกอบสำคัญของสัญญากู้ยืมเงิน",
+        h_terms:"เงื่อนไขการชำระหนี้",
+        h_default:"เงื่อนไขการผิดนัดชำระหนี้",
+        h_docs:"เอกสารประกอบการทำสัญญา",
+        h_interest:"อัตราดอกเบี้ย",
+        p1:"ในการกู้ยืมเงินมีหลักฐานเป็นหนังสือนั้น ท่านว่าจะนำสืบการใช้เงิน ได้ต่อเมื่อมีหลักฐานเป็นหนังสือ อย่างใดอย่างหนึ่ง ลงลายมือชื่อผู้ให้ยืม มาแสดงหรือเอกสารอันเป็นหลักฐานแห่งการกู้ยืมนั้น ได้เวนคืนแล้ว หรือ ได้แทงเพิกถอน ลงในเอกสารนั้นแล้ว”",
+        p2:"สัญญากู้ยืมเงินเป็นสัญญายืมใช้สิ้นเปลือง หมายความว่า สัญญาที่ผู้ให้ยืมได้โอนกรรมสิทธิ์ในทรัพย์สินนั้นเป็นปริมาณมีกำหนดให้แก่ผู้ยืม และผู้ยืมตกลงว่าจะคืนทรัพย์สินเป็นประเภท ชนิดและปริมาณเช่นเดียวกันให้แทนทรัพย์สินซึ่งให้ยืมนั้น และสัญญายืมนี้จะสมบูรณ์ต่อเมื่อส่งมอบทรัพย์สินที่ยืม เป็นไปตามประมวลกฎหมายแพ่งและพาณิชย์ มาตรา 650 วรรคหนึ่ง \"อันว่ายืมใช้สิ้นเปลืองนั้น คือสัญญาซึ่งผู้ให้ยืมโอนกรรมสิทธิ์ในทรัพย์สินชนิดใช้ไปสิ้นไปนั้นเป็นปริมาณมีกำหนดให้ไปแก่ผู้ยืม และผู้ยืมตกลงว่าจะคืนทรัพย์สินเป็นประเภท ชนิด และปริมาณเช่นเดียวกันให้แทนทรัพย์สินซึ่งให้ยืมนั้น\"",
+        p3:"ดังนั้น การกู้ยืมเงินหรือสัญญากู้ยืมเงิน จึงเป็นสัญญายืมใช้สิ้นเปลือง ที่ “ผู้กู้ยืม” ไปขอกู้ยืมเงินจากบุคคลหนึ่ง ซึ่งเรียกว่า “ผู้ให้กู้ยืม” โดยผู้กู้ยืมทำสัญญาหรือข้อตกลงว่าจะชดใช้เงินคืนให้ภายในกำหนดเวลาใดเวลาหนึ่ง ซึ่งจะกำหนดอัตราดอกเบี้ยด้วยหรือไม่ก็ได้ แต่ตามกฎหมายไม่เกินร้อยละ 15 ต่อปี และสัญญากู้ยืมเงินจะสมบูรณ์ก็ต่อเมื่อได้มีการส่งมอบเงินที่กู้ยืมกันแล้ว เป็นไปตามประมวลกฎหมายแพ่งและพาณิชย์ มาตรา 650 วรรคสอง \"สัญญานี้ย่อมบริบูรณ์ต่อเมื่อส่งมอบทรัพย์สินที่ยืม\"",
+        cap1:"องค์ประกอบสำคัญของสัญญากู้ยืมเงิน",
+        cap2:"เอกสารประกอบการทำสัญญา",
+        ul_components:[
+          "ข้อความที่แสดงถึงการกู้ยืมเงินระหว่างกัน",
+          "วันที่ทำสัญญา",
+          "ชื่อผู้ให้กู้",
+          "ชื่อผู้กู้",
+          "โดยระบุจำนวนเงินที่กู้ยืม",
+          "การลงลายมือชื่อยินยอมจากผู้กู้",
+          "การลงลายมือชื่อยินยอมจากผู้ให้กู้",
+          "วันที่ชำระคืนหนี้",
+          "อัตราดอกเบี้ย"
+        ],
+        ul_terms:[
+          "ผู้กู้ตกลงชำระหนี้เดือนละเท่าไหร่?",
+          "ส่งมอบเงินคืนด้วยวิธีไหน?",
+          "ครบกำหนดคืนเงินทั้งหมด ภายในวันที่เท่าไหร่?"
+        ],
+        p_default:"ควรระบุว่า เงื่อนไขการคิดดอกเบี้ยทบต้น กรณีที่ผู้กู้ผิดนัดชำระหนี้ค้างนานเกิน 1 ปี ในสัญญากู้ยืมเงิน ‘การคิดดอกเบี้ยทบต้น คือ คิดดอกเบี้ยในอัตราดอกเบี้ยที่ค้างชำระอีกทีหนึ่ง ทำให้ดอกเบี้ยเพิ่มจำนวนขึ้นอย่างรวดเร็ว ป้องกันการค้างชำระหนี้จากผู้กู้’",
+        ul_docs:[
+          "สำเนาบัตรประจำตัวประชาชน หรือ สำเนาบัตรข้าราชการ/รัฐวิสาหกิจ อย่างใดอย่างหนึ่ง",
+          "สำเนาทะเบียนบ้าน หรือ สำเนาทะเบียนสมรส หรือ ทะเบียนหย่า หรือ ใบมรณบัตร อย่างใดอย่างหนึ่ง",
+          "สำเนาหลักฐานการเปลี่ยนชื่อ-นามสกุล",
+          "หากเป็นนิติบุคคล ให้ใช้สำเนาทะเบียนการค้า หรือ หนังสือรับรองการจดทะเบียนนิติบุคคล"
+        ],
+        ol_evidence:[
+          "กรณีจำนวนเงินกู้ยืมไม่เกิน 2,000 บาท กฎหมายไม่ได้กำหนดให้ต้องทำสัญญากู้ยืมเงินต่อกัน แต่ถ้าผิดสัญญาก็สามารถฟ้องร้องตามกฎหมายได้",
+          "กรณีจำนวนเงินที่กู้ยืมเงิน เกิน 2,000 บาทขึ้นไป กฎหมายกำหนดให้การกู้ยืมเงินจะต้องมีหลักฐานแห่งการกู้ยืมเงิน มิเช่นนั้นจะฟ้องร้องให้บังคับคดีต่อกันมิได้ หลักฐานการกู้ยืมเงินจะอยู่ในรูปแบบใดก็ได้แต่ต้องเป็นลายลักษณ์อักษร มีข้อความชัดแจ้งว่ามีการกู้ยืมเงินกันเกิดขึ้น เป็นจำนวนเท่าใด และตกลงจะใช้คืนเมื่อใด สิ่งสำคัญจะขาดเสียไม่ได้ คือ ลายมือชื่อของผู้กู้ยืมเป็นสำคัญ กรณีลงลายพิมพ์นิ้วมือชื่อจะต้องมีลายนิ้วมือ 2 คน เป็นพยานรับรอง ประมวลกฎหมายแพ่งและพาณิชย์ มาตรา 653"
+        ],
+        ol_interest:[
+          "ดอกเบี้ยที่กำหนดโดยกฎหมาย ในกรณีสถาบันการเงินหรือธนาคาร กฎหมายให้อำนาจเรียกดอกเบี้ยได้สูงกว่าร้อยละ 15 ต่อปีได้ แต่ต้องเป็นไปตามประกาศข้อกำหนดของธนาคารซึ่งมีกฎหมายรองรับ (พระราชบัญญัติดอกเบี้ยเงินให้กู้ยืมของสถาบันการเงิน)",
+          "ดอกเบี้ยเกินอัตราที่กฎหมายกำหนด ประมวลกฎหมายแพ่งและพาณิชย์ มาตรา 654 “ท่านห้ามมิให้คิดดอกเบี้ยเกินร้อยละสิบห้าต่อปี ถ้าในสัญญากำหนดดอกเบี้ยเกินกว่านั้น ก็ให้ลดลงมาเป็นร้อยละสิบห้าต่อปี” สรุปได้ว่า",
+          [
+            "ดอกเบี้ยเกินอัตราที่กฎหมายกำหนด ถือว่าเป็นโมฆะทั้งหมด แต่เงินต้นสมบูรณ์ ก็คือไม่เป็นโมฆะ",
+            "ผู้กู้ให้กู้คิดดอกเบี้ยล่วงหน้าแล้วนำไปรวมกับเงินต้นในสัญญากู้",
+            "ผู้กู้ชำระดอกเบี้ยเกินอัตราที่กฎหมายกำหนดไปแล้วจะเรียกคืนไม่ได้",
+            "ผู้ให้กู้ยังมีสิทธิในการเรียกดอกเบี้ยจากเหตุผิดนัดได้ด้วย"
+          ],
+          "ดอกเบี้ยกรณีผู้ให้กู้เป็นสถาบันการเงิน",
+          [
+            "สัญญาระบุให้ผู้ให้กู้ปรับอัตราดอกเบี้ยได้",
+            "เมื่อเลิกสัญญาแล้ว ผู้ให้กู้ไม่มีสิทธิปรับเพิ่มอัตราดอกเบี้ย",
+            "การปรับเพิ่มอัตราดอกเบี้ยเป็นเบี้ยปรับจากการผิดนัด หรือไม่ ผู้กู้จะต้องพิจารณาให้ดี สอบถามให้เข้าใจ"
+          ],
+          "ดอกเบี้ยทบต้น ตามมาตรา 655 วรรคหนึ่ง “ท่านห้ามมิให้คิดดอกเบี้ยในดอกเบี้ยที่ค้างชำระ แต่ทว่าเมื่อดอกเบี้ยค้างชำระไม่น้อยกว่าปีหนึ่ง คู่สัญญากู้ยืมจะตกลงกันให้เอาดอกเบี้ยนั้นทบเข้ากับต้นเงินแล้วให้คิดดอกเบี้ยในจำนวนเงินที่ทบเข้ากันนั้นก็ได้ แต่การตกลงเช่นนั้นต้องทำเป็นหนังสือ”"
+        ],
+        p_law:"กฎหมายอีกฉบับหนึ่งที่ต้องสนใจคือ พระราชบัญญัติห้ามเรียกดอกเบี้ยเกินอัตรา พ.ศ. 2560 ยกเลิก พระราชบัญญัติห้ามเรียกดอกเบี้ยเกินอัตรา พ.ศ. 2475 มีผลบังคับใช้ตั้งแต่วันที่ 15 มกราคม 2560 เป็นต้นไป สาระสำคัญคือ กำหนดให้ห้ามเรียกดอกเบี้ยเกินอัตราที่กฎหมายกำหนดไว้ โดยปัจจุบันกฎหมายกำหนดห้ามคิดอัตราดอกเบี้ยเกินร้อยละ 15 ต่อปี (ร้อยละ 1.25 ต่อเดือน) ถ้าเรียกเกินมีผลให้ดอกเบี้ยเป็นโมฆะ และผู้ให้กู้อาจถูกดำเนินคดีอาญาได้ แต่ในกรณีในสัญญาไม่ได้กำหนดอัตราดอกเบี้ยว่าจะคิดเท่าใด เมื่อมีการฟ้องร้องกันเกิดขึ้น ผู้ให้กู้จะคิดดอกเบี้ยได้ไม่เกินร้อยละ 7.5 ต่อปี"
+      },
+      en: {
+        brand:"Loan Agreement",
+        back:"← Back to Home",
+        kicker:"MindMyMoney • Loan Agreement Guide",
+        title:"Loan Agreement",
+        intro:"A loan agreement is a contract between two parties: the lender and the borrower. According to Thai Civil and Commercial Code Section 653, for loans over 2,000 THB, written evidence signed by the borrower is required for legal enforcement.",
+        h_evidence:"Evidence for Loan Agreement: 2 Cases",
+        h_components:"Key Components of a Loan Agreement",
+        h_terms:"Repayment Terms",
+        h_default:"Default Terms",
+        h_docs:"Supporting Documents for Loan Agreement",
+        h_interest:"Interest Rate",
+        p1:"If there is written evidence, repayment can be proven only if the lender's signature is present or the document is returned or revoked.",
+        p2:"A loan agreement is a consumable loan contract, meaning the lender transfers ownership of a specified quantity of property to the borrower, who agrees to return the same type, kind, and quantity. The contract is valid only upon delivery, as per Section 650.",
+        p3:"Thus, a loan agreement is a consumable loan where the borrower agrees to repay within a specified period, with or without interest (not exceeding 15% per year by law). The contract is valid only after the money is delivered.",
+        cap1:"Key Components of a Loan Agreement",
+        cap2:"Supporting Documents for Loan Agreement",
+        ul_components:[
+          "Statement showing the loan agreement between parties",
+          "Date of agreement",
+          "Lender's name",
+          "Borrower's name",
+          "Specified loan amount",
+          "Borrower's consent signature",
+          "Lender's consent signature",
+          "Repayment date",
+          "Interest rate"
+        ],
+        ul_terms:[
+          "How much will the borrower pay monthly?",
+          "How will the repayment be delivered?",
+          "What is the final repayment due date?"
+        ],
+        p_default:"Specify the compound interest condition in case the borrower defaults for more than 1 year. 'Compound interest means charging interest on overdue interest, causing the amount to grow rapidly and preventing prolonged default.'",
+        ul_docs:[
+          "Copy of national ID card or government/state enterprise card",
+          "Copy of house registration, marriage certificate, divorce certificate, or death certificate",
+          "Copy of name/surname change certificate",
+          "For juristic persons: copy of commercial registration or company registration certificate"
+        ],
+        ol_evidence:[
+          "If the loan amount does not exceed 2,000 THB, no written contract is required, but legal action can be taken if breached.",
+          "If the loan amount exceeds 2,000 THB, written evidence is required for enforcement. The evidence can be any written document clearly stating the loan, amount, and repayment terms, with the borrower's signature. If using fingerprint, two witnesses are required. (Section 653)"
+        ],
+        ol_interest:[
+          "Interest rate set by law: For banks/financial institutions, the law allows charging more than 15% per year if specified by bank regulations (Financial Institution Interest Act)",
+          "Interest exceeding the legal rate (Section 654): 'No interest over 15% per year. If the contract specifies more, it must be reduced to 15%.' Summary:",
+          [
+            "Interest exceeding the legal rate is void, but the principal remains valid.",
+            "Prepaid interest added to the principal in the contract.",
+            "Overpaid interest cannot be reclaimed.",
+            "Lender can still claim interest for default."
+          ],
+          "Interest for financial institution lenders:",
+          [
+            "Contract allows lender to adjust interest rate.",
+            "After contract ends, lender cannot increase interest rate.",
+            "Borrower should clarify if interest increase is a penalty for default."
+          ],
+          "Compound interest (Section 655): 'No interest on overdue interest, but if overdue for at least one year, parties may agree in writing to add it to the principal and charge interest on the new amount.'"
+        ],
+        p_law:"Another law to note: The Interest Rate Limitation Act B.E. 2560 (2017) repealed the previous act and has been effective since January 15, 2017. It prohibits charging interest above the legal rate, currently capped at 15% per year (1.25% per month). Excess interest is void and may result in criminal prosecution. If the contract does not specify the rate, the lender can claim up to 7.5% per year in court."
+      }
+    };
+    function setList(id, arr){
+      const el = document.getElementById(id);
+      if(!el) return;
+      if(Array.isArray(arr[0])){
+        // For nested lists (ol_interest)
+        el.innerHTML = arr.map(item=>{
+          if(Array.isArray(item)){
+            return '<ul>' + item.map(sub=>`<li>${sub}</li>`).join('') + '</ul>';
+          }else{
+            return `<li>${item}</li>`;
+          }
+        }).join('');
+      }else{
+        el.innerHTML = arr.map(x=>`<li>${x}</li>`).join('');
+      }
+    }
+    function applyLang(){
+      const lang = document.getElementById('lang').value || 'th';
+      const t = T[lang];
+      document.getElementById('brand').innerText = t.brand;
+      document.getElementById('backBtn').innerText = t.back;
+      document.getElementById('kicker').innerText = t.kicker;
+      document.getElementById('title').innerText = t.title;
+      document.getElementById('intro').innerText = t.intro;
+      document.getElementById('p1').innerText = t.p1;
+      document.getElementById('p2').innerText = t.p2;
+      document.getElementById('p3').innerText = t.p3;
+      document.getElementById('cap1').innerText = t.cap1;
+      document.getElementById('cap2').innerText = t.cap2;
+      // เปลี่ยนหัวเรื่อง h2 ทุกจุด
+      document.getElementById('h_evidence').innerText = t.h_evidence;
+      document.getElementById('h_components').innerText = t.h_components;
+      document.getElementById('h_terms').innerText = t.h_terms;
+      document.getElementById('h_default').innerText = t.h_default;
+      document.getElementById('h_docs').innerText = t.h_docs;
+      document.getElementById('h_interest').innerText = t.h_interest;
+      setList('ul_components', t.ul_components);
+      setList('ul_terms', t.ul_terms);
+      setList('ul_docs', t.ul_docs);
+      setList('ol_evidence', t.ol_evidence);
+      setList('ol_interest', t.ol_interest);
+      document.getElementById('p_default').innerText = t.p_default;
+      document.getElementById('p_law').innerText = t.p_law;
+      document.getElementById('img1').src = IMG[lang].comp;
+      document.getElementById('img2').src = IMG[lang].docs;
+      document.getElementById('foot').innerText = t.foot;
+      document.documentElement.lang = lang;
+      localStorage.setItem('lang', lang);
+    }
+    (function init(){
+      const saved = localStorage.getItem('lang') || 'th';
+      document.getElementById('lang').value = saved;
+      applyLang();
+    })();
+  </script>
+</body>
+</html>

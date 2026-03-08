@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Car Payment Plan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: 'Prompt', sans-serif; background: linear-gradient(to bottom right, #d2f1f9, #e6fcef); margin: 0; padding: 0; }
+    .top-bar { display: flex; justify-content: flex-end; align-items: center; padding: 16px 24px; gap: 12px; }
+    .back-btn { background-color: #f3f4f6; border: none; padding: 6px 12px; font-size: 14px; color: #374151; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 6px; }
+    select { padding: 6px 10px; border-radius: 8px; font-size: 14px; }
+    .container { max-width: 700px; margin: 0 auto 40px; padding: 24px; background: white; border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.05); }
+    h2 { text-align: center; color: #0f9d58; margin-bottom: 20px; }
+    .form-group { margin-bottom: 15px; }
+    .form-group label { display: block; margin-bottom: 6px; font-weight: bold; }
+    .form-group input, .form-group select { width: 100%; padding: 10px; font-size: 16px; border: 1px solid #ccc; border-radius: 8px; }
+    .btn { background-color: #10b981; color: white; padding: 12px 20px; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; display: block; width: 100%; margin-top: 10px; }
+    .btn.save { background-color: #0ea5e9; }
+    .result { margin-top: 20px; text-align: center; font-weight: bold; color: #0f5132; }
+    .chart-container {
+      max-width: 600px;
+      min-width: 350px;
+      margin: 30px auto;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 4px 24px rgba(16,185,129,0.12), 0 1.5px 8px rgba(59,130,246,0.08);
+      padding: 24px 0 16px 0;
+      border: 2px solid #10b981;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    canvas {
+      max-width: 500px !important;
+      max-height: 350px !important;
+      min-height: 300px !important;
+      margin: 0 auto;
+      display: block;
+    }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <button id="btn-back" class="back-btn">
+      <span id="back-label">Back</span>
+    </button>
+    <select id="lang" onchange="changeLang()">
+      <option value="en" selected>EN</option>
+      <option value="th">TH</option>
+    </select>
+  </div>
+
+  <div class="container">
+    <h2 id="title">Car Payment Plan</h2>
+    <form id="car-plan-form">
+      <div class="form-group">
+        <label for="income" id="income-label">Monthly Income (THB)</label>
+        <input type="text" id="income" value="0" required oninput="formatNumber(this)">
+      </div>
+      <div class="form-group">
+        <label for="expenses" id="expense-label">Monthly Expenses (THB)</label>
+        <input type="text" id="expenses" value="0" required oninput="formatNumber(this)">
+      </div>
+      <div class="form-group">
+        <label for="savings" id="savings-label">Savings (THB)</label>
+        <input type="text" id="savings" value="0" required oninput="formatNumber(this)">
+      </div>
+      <div class="form-group">
+        <label for="carPrice" id="price-label">Car Price (THB)</label>
+        <input type="text" id="carPrice" value="0" required oninput="formatNumber(this)">
+      </div>
+
+      <!-- Down Payment (%) -->
+      <div class="form-group">
+        <label for="downPct" id="down-label">Down Payment (%)</label>
+        <input type="number" id="downPct" value="20" step="0.1" min="0" max="100" required>
+      </div>
+
+      <!-- Interest type -->
+      <div class="form-group">
+        <label for="interestType" id="interest-type-label">Interest Type</label>
+        <select id="interestType" onchange="toggleInterestInputs()">
+          <option value="yearly" selected>Per Year (%)</option>
+          <option value="monthly">Per Month (%)</option>
+        </select>
+      </div>
+
+      <!-- Yearly interest input -->
+      <div class="form-group" id="yearlyBox">
+        <label for="interestYearly" id="interest-label-yearly">Interest Rate per Year (%)</label>
+        <input type="number" id="interestYearly" step="0.01" value="0">
+      </div>
+
+      <!-- Monthly interest input -->
+      <div class="form-group hidden" id="monthlyBox">
+        <label for="interestMonthly" id="interest-label-monthly">Interest Rate per Month (%)</label>
+        <input type="number" id="interestMonthly" step="0.01" value="0">
+      </div>
+
+      <!-- Term: switches label and meaning based on interest type -->
+      <div class="form-group">
+        <label for="years" id="term-label">Loan Term (Years)</label>
+        <input type="number" id="years" value="0" required>
+      </div>
+
+      <button type="submit" class="btn" id="calc-btn">Calculate</button>
+      <button type="button" class="btn save" id="save-btn">Save Calculation</button>
+    </form>
+
+    <div class="result" id="result"></div>
+    <div class="chart-container">
+      <canvas id="carChart"></canvas>
+    </div>
+  </div>
+
+  <!-- ===== MMMHistory (Guest-aware v2) ===== -->
+  <script>
+    // ===== Language Data (JS object, not nested in any function) =====
+    const langData = {
+      en: {
+        title: "Car Payment Plan",
+        incomeLabel: "Monthly Income (THB)",
+        expenseLabel: "Monthly Expenses (THB)",
+        savingsLabel: "Savings (THB)",
+        priceLabel: "Car Price (THB)",
+        downLabel: "Down Payment (%)",
+        interestType: "Interest Type",
+        interestYearly: "Per Year (%)",
+        interestMonthly: "Per Month (%)",
+        interestLabelYearly: "Interest Rate per Year (%)",
+        interestLabelMonthly: "Interest Rate per Month (%)",
+        termLabelYears: "Loan Term (Years)",
+        termLabelMonths: "Loan Term (Months)",
+        calcBtn: "Calculate",
+        saveBtn: "Save Calculation",
+        savedMsg: "Saved!",
+        backLabel: "Back",
+        resultCan: "✅ You can afford this car payment.",
+        resultCannot: "❌ Not recommended to finance this car.",
+        chartTitle: "Loan Breakdown",
+        labels: { principal: "Principal", interest: "Interest" },
+        totalPaidLabel: "Total Paid (Principal + Interest)",
+        downPaymentText: "Down Payment",
+        monthlyPaymentText: "Monthly Payment",
+        termsText: "Terms",
+        yearsWord: "years",
+        monthsWord: "months",
+        currency: "THB",
+        projSaving: "Projected Savings After Term",
+        advice: [
+          "Try to increase your down payment to reduce the loan amount.",
+          "Reduce your monthly expenses to improve affordability.",
+          "Choose a longer loan term for lower monthly payments (but more interest).",
+          "Consider a cheaper car or postpone the purchase until you save more."
+        ]
+      },
+      th: {
+        title: "แผนการผ่อนรถ",
+        incomeLabel: "รายได้ต่อเดือน (บาท)",
+        expenseLabel: "รายจ่ายต่อเดือนเฉลี่ย (บาท)",
+        savingsLabel: "เงินเก็บ (บาท)",
+        priceLabel: "ราคารถ (บาท)",
+        downLabel: "เงินดาวน์ (%)",
+        interestType: "ประเภทดอกเบี้ย",
+        interestYearly: "ต่อปี (%)",
+        interestMonthly: "ต่อเดือน (%)",
+        interestLabelYearly: "อัตราดอกเบี้ยต่อปี (%)",
+        interestLabelMonthly: "อัตราดอกเบี้ยต่อเดือน (%)",
+        termLabelYears: "จำนวนปีที่ผ่อน",
+        termLabelMonths: "จำนวนเดือนที่ผ่อน",
+        calcBtn: "คำนวณ",
+        saveBtn: "บันทึกการคำนวณ",
+        savedMsg: "บันทึกแล้ว!",
+        backLabel: "ย้อนกลับ",
+        resultCan: "✅ สามารถผ่อนรถคันนี้ได้",
+        resultCannot: "❌ ไม่แนะนำให้ผ่อนรถคันนี้",
+        chartTitle: "สัดส่วนเงินกู้",
+        labels: { principal: "เงินต้น", interest: "ดอกเบี้ย" },
+        totalPaidLabel: "รวมชำระ (เงินต้น + ดอกเบี้ย)",
+        downPaymentText: "เงินดาวน์",
+        monthlyPaymentText: "ยอดผ่อนต่อเดือน",
+        termsText: "ระยะเวลาผ่อน",
+        yearsWord: "ปี",
+        monthsWord: "เดือน",
+        currency: "บาท",
+        projSaving: "เงินเก็บคาดการณ์เมื่อครบสัญญา",
+        advice: [
+          "ลองเพิ่มเงินดาวน์เพื่อลดจำนวนเงินกู้",
+          "ลดรายจ่ายต่อเดือนเพื่อเพิ่มความสามารถในการผ่อน",
+          "เลือกผ่อนนานขึ้นเพื่อให้ยอดผ่อนต่อเดือนลดลง (แต่ดอกเบี้ยรวมจะมากขึ้น)",
+          "พิจารณารถที่ราคาถูกลง หรือรอเก็บเงินเพิ่มก่อนซื้อ"
+        ]
+      }
+    };
+
+    // ===== MMMHistory (Guest-aware v2) =====
+    (function(){
+      if (window.MMMHistory && window.MMMHistory.__v === '3') return;
+
+      const KEY_BASE = "mmm_history_v1";
+      const isUser = ()=> (localStorage.getItem('mmm_session') === 'user');
+
+      function accountId(){
+        return (
+          localStorage.getItem('mmm_user_id') ||
+          localStorage.getItem('mmm_user_email') ||
+          localStorage.getItem('mmm_user') ||
+          'guest'
+        );
+      }
+      function key(){ return `${KEY_BASE}::${accountId()}`; }
+
+      function uid(){ return Date.now().toString(36) + Math.random().toString(36).slice(2,8); }
+      function getAll(){ try { return JSON.parse(localStorage.getItem(key())) || []; } catch(e){ return []; } }
+      function setAll(list){ localStorage.setItem(key(), JSON.stringify(list)); }
+
+      function save(entry){
+        if (!isUser()) {
+          const lang = localStorage.getItem('lang') || 'en';
+          alert(lang === 'th'
+            ? 'โหมดผู้เยี่ยมชม: โปรดเข้าสู่ระบบเพื่อบันทึกประวัติ'
+            : 'Guest mode: Please log in to save your history.');
+          return null;
+        }
+        const list = getAll();
+        const id = uid();
+        list.unshift({ ...entry, id, ts: Date.now() });
+        setAll(list);
+        return id;
+      }
+
+      window.MMMHistory = { save, getAll, setAll, __v: '3' };
+    })();
+
+    // ===== Language Switch & UI Sync =====
+    let textContent = langData['en'];
+    function changeLang() {
+      const lang = document.getElementById('lang').value;
+      textContent = langData[lang] || langData['en'];
+      document.getElementById("title").innerText = textContent.title;
+      document.getElementById("income-label").innerText = textContent.incomeLabel;
+      document.getElementById("expense-label").innerText = textContent.expenseLabel;
+      document.getElementById("savings-label").innerText = textContent.savingsLabel;
+      document.getElementById("price-label").innerText = textContent.priceLabel;
+      document.getElementById("down-label").innerText = textContent.downLabel;
+      document.getElementById("interest-type-label").innerText = textContent.interestType;
+      document.querySelector("#interestType option[value='yearly']").innerText = textContent.interestYearly;
+      document.querySelector("#interestType option[value='monthly']").innerText = textContent.interestMonthly;
+      document.getElementById("interest-label-yearly").innerText = textContent.interestLabelYearly;
+      document.getElementById("interest-label-monthly").innerText = textContent.interestLabelMonthly;
+      const curType = document.getElementById("interestType").value;
+      document.getElementById("term-label").innerText = (curType === 'yearly') ? textContent.termLabelYears : textContent.termLabelMonths;
+      document.getElementById("calc-btn").innerText = textContent.calcBtn;
+      document.getElementById("save-btn").innerText = textContent.saveBtn;
+      document.getElementById("back-label").innerText = textContent.backLabel;
+      localStorage.setItem('lang', lang);
+    }
+
+    function toggleInterestInputs() {
+      const type = document.getElementById("interestType").value;
+      const yearlyBox = document.getElementById("yearlyBox");
+      const monthlyBox = document.getElementById("monthlyBox");
+      if (type === 'yearly') {
+        yearlyBox.classList.remove('hidden');
+        monthlyBox.classList.add('hidden');
+        document.getElementById("term-label").innerText = textContent.termLabelYears;
+      } else {
+        monthlyBox.classList.remove('hidden');
+        yearlyBox.classList.add('hidden');
+        document.getElementById("term-label").innerText = textContent.termLabelMonths;
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const savedLang = localStorage.getItem('lang') || localStorage.getItem('language') || 'en';
+      document.getElementById('lang').value = savedLang;
+      changeLang();
+      toggleInterestInputs();
+    });
+
+    const form = document.getElementById("car-plan-form");
+    const resultDiv = document.getElementById("result");
+    const ctx = document.getElementById("carChart").getContext("2d");
+    let chart = null;
+    let lastInputs = null;
+    let lastResults = null;
+
+    function formatNumber(input) {
+      const value = (input.value || "").toString().replace(/,/g, '');
+      if (value === "" || isNaN(value)) return;
+      const parts = value.split('.');
+      const intPart = parts[0];
+      const decPart = parts[1] !== undefined ? '.' + parts[1] : '';
+      input.value = Number(intPart).toLocaleString() + decPart;
+    }
+
+    // Calculation
+    function runCalculation(render = true) {
+      const income      = Number((document.getElementById("income").value||'0').replace(/,/g, ''));
+      const expenses    = Number((document.getElementById("expenses").value||'0').replace(/,/g, ''));
+      let savings     = Number((document.getElementById("savings").value||'0').replace(/,/g, ''));
+      const netIncome = income - expenses;
+      const price       = Number((document.getElementById("carPrice").value||'0').replace(/,/g, ''));
+      const downPct     = Number(document.getElementById("downPct").value||'0');
+      // Compute required down payment and apply savings correctly
+      const requiredDown = price * downPct / 100; // total down payment required
+      // Use savings to cover (part of) the down payment first
+      const usedSavingsForDown = Math.min(savings, requiredDown);
+      savings -= usedSavingsForDown;
+      // Remaining loan after paying the required down
+      let loan = Math.max(price - requiredDown, 0);
+      // If there are still savings left, use them to reduce the loan principal
+      if (savings > 0) {
+        let usedForLoan = Math.min(savings, loan);
+        loan -= usedForLoan;
+        savings -= usedForLoan;
+      }
+      const type        = document.getElementById("interestType").value;
+      const years       = Number(document.getElementById("years").value||'0');
+      const rYear       = Number(document.getElementById("interestYearly").value||'0');
+      const rMonth      = Number(document.getElementById("interestMonthly").value||'0');
+      const n           = (type === 'yearly') ? years * 12 : years;
+      const i           = (type === 'yearly') ? (rYear/100/12) : (rMonth/100);
+      let mPayment;
+      if(i===0){ mPayment = (n>0? loan / n : 0); }
+      else{ mPayment = (loan*i) / (1 - Math.pow(1+i, -n)); }
+      const totalPayment = mPayment * n;
+      const interestAmount = totalPayment - loan;
+      // Affordability: recommend financing if monthly payment ≤ 15% of income OR original savings are enough to cover all payments
+      const totalRequired = mPayment * n;
+      // Use net income for affordability check
+      const pass = (mPayment <= 0.15 * netIncome) || (Number((document.getElementById("savings").value||'0').replace(/,/g, '')) + (netIncome * n) >= totalRequired);
+      // Advice (localized actionable suggestions)
+      let adviceHtml = "";
+      if (pass) {
+        // When loan is affordable, only show the highlighted success banner above.
+        adviceHtml = ``;
+      } else {
+        // Actionable suggestions for car payment (localized)
+        let suggestions = [
+          (textContent === langData.th)
+            ? 'ลดรายจ่ายต่อเดือนหรือค่าใช้จ่ายอื่น ๆ'
+            : 'Reduce monthly or other expenses',
+          (textContent === langData.th)
+            ? 'เพิ่มเงินดาวน์เพื่อให้ยอดกู้ลดลง'
+            : 'Increase your down payment to reduce the loan amount',
+          (textContent === langData.th)
+            ? 'เลือกผ่อนนานขึ้นเพื่อให้ยอดผ่อนต่อเดือนลดลง (แต่ดอกเบี้ยรวมจะมากขึ้น)'
+            : 'Choose a longer loan term for lower monthly payments (but more interest)',
+          (textContent === langData.th)
+            ? 'พิจารณารถที่ราคาถูกลง หรือรอเก็บเงินเพิ่มก่อนซื้อ'
+            : 'Consider a cheaper car or postpone the purchase until you save more',
+        ];
+        adviceHtml = `<ul style='margin:12px 0 0 18px; color:#e11d48; font-size:1em;'>` +
+          suggestions.map(s=>`<li>${s}</li>`).join('') +
+          "</ul>";
+      }
+      if(render){
+        // Highlight advice/result message above chart
+        let highlightMsg = '';
+        if (pass) {
+          highlightMsg = `<div style='background:#d1fae5; color:#065f46; border-radius:10px; padding:12px; font-size:1.2em; font-weight:bold; margin-bottom:12px;'>${textContent.resultCan}</div>`;
+        } else {
+          highlightMsg = `<div style='background:#fee2e2; color:#b91c1c; border-radius:10px; padding:12px; font-size:1.2em; font-weight:bold; margin-bottom:12px;'>${textContent.resultCannot}</div>`;
+        }
+        // Detailed breakdown summary
+        resultDiv.innerHTML =
+          highlightMsg +
+          `<div style='font-size:1.1em; margin-bottom:10px;'><b>${textContent.chartTitle}</b></div>`+
+          `<div>💸 <b>${textContent.labels.principal}:</b> ${loan.toLocaleString()} ${textContent.currency}</div>`+
+          `<div>📈 <b>${textContent.labels.interest}:</b> ${interestAmount.toLocaleString(undefined,{maximumFractionDigits:2})} ${textContent.currency}</div>`+
+          `<div>💳 <b>${textContent.totalPaidLabel}:</b> ${(loan+interestAmount).toLocaleString(undefined,{maximumFractionDigits:2})} ${textContent.currency}</div>`+
+          `<div>💰 <b>${textContent.downPaymentText}:</b> ${requiredDown.toLocaleString(undefined,{maximumFractionDigits:2})} ${textContent.currency} (${downPct.toLocaleString()}%)</div>`+
+          `<div>🧾 <b>${textContent.monthlyPaymentText}:</b> ${mPayment.toLocaleString(undefined,{maximumFractionDigits:2})} ${textContent.currency}</div>`+
+          `<div>📅 <b>${textContent.termsText}:</b> ${years.toLocaleString()} ${textContent.yearsWord} (${n} ${textContent.monthsWord})</div>`+
+          `<div style='margin:10px 0 0 0;'>${adviceHtml}</div>`+
+          // Formula and note
+          `<div style='margin-top:18px; background:#f3f4f6; border-radius:10px; padding:14px; font-size:1em; color:#374151;'>
+            <b>${textContent === langData.th ? 'สูตรคำนวณค่างวดผ่อนรถ' : 'Car Loan Payment Formula'}:</b><br>
+            <span style='font-family:monospace;'>M = P × r / (1 - (1 + r)<sup>-n</sup>)</span><br>
+            <span style='font-size:0.95em;'>${textContent === langData.th ? 'M = ค่างวดต่อเดือน, P = เงินกู้, r = อัตราดอกเบี้ยต่อเดือน, n = จำนวนเดือนที่ผ่อน' : 'M = monthly payment, P = loan amount, r = monthly interest rate, n = number of payments (months)'}</span>
+            <hr style='margin:12px 0;'>
+            <b>${textContent === langData.th ? 'หมายเหตุ' : 'Note'}:</b> ${textContent === langData.th ? 'สูตรนี้ใช้สำหรับคำนวณค่างวดผ่อนรถแบบเงินต้นคงที่ ไม่รวมค่าใช้จ่ายอื่น ๆ' : 'This formula calculates fixed principal car loan payments and does not include other expenses.'}
+          </div>`;
+      }
+      lastInputs = {
+        income, expenses, savings, price, downPct, down: requiredDown, loan, type, years, rYear, rMonth, n, mPayment
+      };
+      lastResults = {
+        totalPayment,
+        totalInterest: interestAmount,
+        monthlyPayment: mPayment,
+        totalPaid: loan + interestAmount,
+        projectedSavings: savings + ((netIncome-mPayment)*n),
+        pass,
+        advice: textContent.advice
+      };
+      // Chart (principal, interest, down payment, monthly payment)
+      if(render && ctx){
+        if(chart) chart.destroy();
+        chart = new Chart(ctx, {
+          type: 'doughnut',
+            data: {
+            labels: [
+              textContent.labels.principal,
+              textContent.labels.interest,
+              textContent.downPaymentText,
+              textContent.monthlyPaymentText
+            ],
+            datasets: [{
+              data: [loan, interestAmount, requiredDown, mPayment * n], // Total monthly payments over term
+              backgroundColor: ['#10b981', '#f59e42', '#60a5fa', '#f472b6'],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            plugins: {
+              legend: { position: 'bottom' },
+              title: { display: true, text: textContent.chartTitle }
+            }
+          }
+        });
+      }
+      return {inputs: lastInputs, results: lastResults};
+    }
+
+    // Calculate
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      runCalculation(true);
+    });
+
+    // Save to history
+    document.getElementById("save-btn").addEventListener("click", function(){
+      if (!lastResults) runCalculation(true);
+      const lang = document.getElementById("lang").value;
+      // Compose rate text
+      let rateText = "";
+      if (lastInputs.type === 'yearly') {
+        rateText = `${lastInputs.rYear}%/yr`;
+      } else {
+        rateText = `${lastInputs.rMonth}%/mo`;
+      }
+      // Compose term text
+      let termTextShort = "";
+      if (lastInputs.type === 'yearly') {
+        termTextShort = `${lastInputs.years}y`;
+      } else {
+        termTextShort = `${lastInputs.n}m`;
+      }
+      const title = (lang === "th")
+        ? `ผ่อนรถ • ดาวน์ ${lastInputs.downPct}% • ${termTextShort} @ ${rateText}`
+        : `Car • Down ${lastInputs.downPct}% • ${termTextShort} @ ${rateText}`;
+
+      const id = MMMHistory.save({
+        type: "car",
+        title,
+        inputs: lastInputs,
+        results: lastResults,
+        meta: { page: "plan-car.html", version: "1.3" }
+      });
+      if (id) alert(langData[lang].savedMsg);
+    });
+
+    // Back button
+    (function(){
+      const DASHBOARD = 'dashboard.php';
+      document.getElementById('btn-back').addEventListener('click', ()=>{
+        if (document.referrer) {
+          history.back();
+          setTimeout(()=>{ if (!document.referrer || document.referrer === location.href) location.href = DASHBOARD; }, 200);
+        } else {
+          location.href = DASHBOARD;
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

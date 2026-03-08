@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Debt Restructuring | MindMyMoney</title>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Prompt', sans-serif;
+      margin: 0;
+      background: #f7fafb;
+      color: #1f2937;
+      line-height: 1.8;
+    }
+    .navbar {
+      background: #fff;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .brand {
+      color: #10b981;
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+    .content {
+      max-width: 980px;
+      margin: 22px auto;
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 28px 22px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    }
+    h1 {
+      font-size: 1.6rem;
+      margin: 0 0 1rem;
+      color: #0f766e;
+    }
+    h2 {
+      font-size: 1.25rem;
+      margin: 1.5rem 0 0.5rem;
+      color: #0f766e;
+    }
+    p, li {
+      margin: 0.5rem 0;
+    }
+    ul {
+      margin: 0.5rem 0 1rem 1.2rem;
+    }
+    .figure {
+      margin: 20px 0;
+      text-align: center;
+    }
+    .figure img {
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+      border-radius: 14px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+    .figure .caption {
+      font-size: 0.95rem;
+      color: #64748b;
+      margin-top: 6px;
+    }
+    .btn-back {
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      text-decoration: none;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <div class="brand">MindMyMoney</div>
+    <div style="margin-left:auto; display:flex; align-items:center; gap:10px;">
+      <select id="lang" onchange="applyLang()" style="padding:6px 10px; border-radius:20px;">
+        <option value="th">Thai</option>
+        <option value="en">English</option>
+      </select>
+      <a href="index.html" class="btn-back">← Back to Homepage</a>
+    </div>
+  </div>
+  <div class="content">
+    <h1>Debt Restructuring</h1>
+    <h2>Distinguish Between Good Debt and Bad Debt</h2>
+    <div class="figure">
+      <img src="9.jpg" alt="Distinguish Between Good Debt and Bad Debt">
+      <div class="caption">Distinguish Between Good Debt and Bad Debt</div>
+    </div>
+    <p>The term "debt" is not inherently bad or something to avoid. Sometimes, creating certain types of debt can help generate income and wealth...</p>
+    <p>Good debt refers to debt incurred to purchase assets that generate cash flow exceeding the repayment costs...</p>
+    <p>In contrast, bad debt often creates problems for the debtor as it leads to expenses...</p>
+    <h2>Analyze Debt and Prioritize Repayment</h2>
+    <div class="figure">
+      <img src="20de.jpg" alt="Analyze Debt and Prioritize Repayment">
+      <div class="caption">Analyze Debt and Prioritize Repayment</div>
+    </div>
+    <p>Start by gathering all existing debts. You might compile them into an Excel table and save it on your computer...</p>
+    <p>Such data collection will enable better repayment planning, such as prioritizing debt repayment...</p>
+    <h2>Change Behavior to Avoid Falling into Debt Again</h2>
+    <p>Becoming a champion is hard, but maintaining that status is even harder...</p>
+    <p>Everyone can learn lessons from their success in managing debt repayment according to their plan...</p>
+  </div>
+  <script>
+const IMG = {
+  th: ["9.jpg", "11.jpg"],
+  en: ["18de.jpg", "20de.jpg"]
+};
+
+const T = {
+  th: {
+    title: "การปรับโครงสร้างหนี้ | MindMyMoney",
+    h1: "การปรับโครงสร้างหนี้",
+    h2_1: "แบ่งแยกหนี้รวยกับหนี้จนให้ได้",
+    h2_2: "วิเคราะห์หนี้ และจัดลำดับการชำระหนี้",
+    h2_3: "ปรับเปลี่ยนพฤติกรรม อย่าให้กลับมาเป็นหนี้อีก",
+    caption1: "แบ่งแยกหนี้รวยกับหนี้จน",
+    caption2: "วิเคราะห์หนี้ และจัดลำดับการชำระหนี้",
+    p1: "คำว่า หนี้ ไม่ได้เป็นสิ่งที่ไม่ดีหรือต้องหลีกเลี่ยง เพราะบางครั้งการสร้างหนี้บางประเภทก็สามารถช่วยสร้างรายได้และความมั่งคั่งให้ด้วยเช่นกัน...",
+    p2: "หนี้รวย คือ หนี้ที่เกิดจากการนำไปซื้อทรัพย์สินที่ก่อให้เกิดกระแสเงินสดเข้ามาได้มากกว่าค่าใช้จ่ายที่ต้องผ่อนชำระ...",
+    p3: "ตรงกันข้ามกับหนี้จน ที่มักสร้างปัญหาให้ผู้ก่อหนี้เพราะเป็นหนี้ที่ก่อให้เกิดรายจ่าย...",
+    p4: "เริ่มต้นด้วยการรวบรวมหนี้ที่มีทั้งหมด อาจรวบรวมเป็นตาราง Excel แล้วบันทึกไว้ในคอมพิวเตอร์...",
+    p5: "การรวบรวมข้อมูลดังกล่าว จะทำให้สามารถวางแผนชำระหนี้ได้ดียิ่งขึ้น เช่น การจัดลำดับการชำระหนี้...",
+    p6: "การเป็นแชมป์นั้นยากแล้ว แต่การรักษาแชมป์นั้นยากยิ่งกว่า...",
+    p7: "ทุกคนสามารถถอดบทเรียนสิ่งที่ทำให้ตัวเองประสบความสำเร็จในการจัดการชำระหนี้ให้ได้ตามแผน..."
+  },
+  en: {
+    title: "Debt Restructuring | MindMyMoney",
+    h1: "Debt Restructuring",
+    h2_1: "Distinguish Between Good Debt and Bad Debt",
+    h2_2: "Analyze Debt and Prioritize Repayment",
+    h2_3: "Change Behavior to Avoid Falling into Debt Again",
+    caption1: "Distinguish Between Good Debt and Bad Debt",
+    caption2: "Analyze Debt and Prioritize Repayment",
+    p1: "The term 'debt' is not inherently bad or something to avoid. Sometimes, creating certain types of debt can help generate income and wealth...",
+    p2: "Good debt refers to debt incurred to purchase assets that generate cash flow exceeding the repayment costs...",
+    p3: "In contrast, bad debt often creates problems for the debtor as it leads to expenses...",
+    p4: "Start by gathering all existing debts. You might compile them into an Excel table and save it on your computer...",
+    p5: "Such data collection will enable better repayment planning, such as prioritizing debt repayment...",
+    p6: "Becoming a champion is hard, but maintaining that status is even harder...",
+    p7: "Everyone can learn lessons from their success in managing debt repayment according to their plan..."
+  }
+};
+
+function applyLang() {
+  const lang = document.getElementById('lang').value || 'th';
+  const t = T[lang];
+
+  document.title = t.title;
+  document.querySelector('h1').innerText = t.h1;
+  const h2s = document.querySelectorAll('h2');
+  h2s[0].innerText = t.h2_1;
+  h2s[1].innerText = t.h2_2;
+  h2s[2].innerText = t.h2_3;
+
+  const captions = document.querySelectorAll('.figure .caption');
+  captions[0].innerText = t.caption1;
+  captions[1].innerText = t.caption2;
+
+  const paragraphs = document.querySelectorAll('p');
+  paragraphs[0].innerText = t.p1;
+  paragraphs[1].innerText = t.p2;
+  paragraphs[2].innerText = t.p3;
+  paragraphs[3].innerText = t.p4;
+  paragraphs[4].innerText = t.p5;
+  paragraphs[5].innerText = t.p6;
+  paragraphs[6].innerText = t.p7;
+
+  const images = document.querySelectorAll('.figure img');
+  images[0].src = IMG[lang][0];
+  images[1].src = IMG[lang][1];
+
+  document.documentElement.lang = lang;
+  localStorage.setItem('lang', lang);
+}
+
+(function init() {
+  const saved = localStorage.getItem('lang') || 'th';
+  document.getElementById('lang').value = saved;
+  applyLang();
+})();
+</script>
+</body>
+</html>

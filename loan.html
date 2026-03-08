@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>ความรู้การกู้เงิน | MindMyMoney</title>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root{
+      --brand:#10b981;
+      --ink:#0f172a;
+      --muted:#475569;
+      --paper:#ffffff;
+      --bg:#f7fafb;
+      --accent:#3b82f6;
+    }
+    html,body{margin:0}
+    body{font-family:'Prompt',sans-serif;background:var(--bg);color:var(--ink);line-height:1.8}
+    .navbar{position:sticky;top:0;z-index:10;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.06);display:flex;align-items:center;gap:12px;padding:12px 16px}
+    .brand{margin:0;color:var(--brand);font-weight:700;font-size:1.05rem}
+    .nav-right{margin-left:auto;display:flex;gap:10px;align-items:center}
+    .lang{padding:6px 10px;border:1px solid #cbd5e1;border-radius:9999px}
+    .btn{background:var(--accent);color:#fff;border:none;border-radius:9999px;padding:8px 14px;cursor:pointer}
+    .article{max-width:980px;margin:22px auto;background:var(--paper);border:1px solid #e2e8f0;border-radius:20px;padding:28px 22px;box-shadow:0 2px 12px rgba(0,0,0,.04)}
+    .kicker{color:var(--brand);font-weight:600;letter-spacing:.02em}
+    h1{font-size:1.6rem;margin:.25rem 0 1rem}
+    h2{font-size:1.25rem;margin:2rem 0 .5rem;color:#0f766e}
+    h3{font-size:1.05rem;margin:1rem 0 .25rem}
+    p{margin:.5rem 0;color:var(--ink)}
+    .muted{color:var(--muted)}
+    .figure{margin:20px 0}
+    .canva-placeholder{width:100%;height:180px;background:#e0e7ef;border-radius:14px;display:flex;align-items:center;justify-content:center;color:#64748b;font-size:1.1rem;margin:18px 0;}
+    ul,ol{margin:.25rem 0 .5rem 1.2rem}
+    .tip{background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:12px 14px;border-radius:12px}
+    footer{max-width:980px;margin:14px auto 26px;text-align:center;color:#64748b;font-size:.9rem}
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="brand" id="brand">ความรู้การกู้เงิน</div>
+    <div class="nav-right">
+      <select id="lang" class="lang" onchange="applyLang()">
+        <option value="th" selected>ไทย</option>
+        <option value="en">English</option>
+      </select>
+      <button class="btn" id="backBtn" onclick="location.href='index.html'">← กลับหน้าแรก</button>
+    </div>
+  </div>
+
+  <!-- Article -->
+  <article class="article">
+    <div class="kicker" id="kicker">MindMyMoney • คู่มือการกู้เงิน</div>
+    <h1 id="articleTitle">คู่มือการกู้เงินธนาคาร</h1>
+    <p class="muted" id="introText">การกู้เงินธนาคารเป็นทางเลือกที่หลายคนใช้เมื่อต้องการเงินทุนเพื่อวัตถุประสงค์ต่างๆ ไม่ว่าจะเป็นการซื้อบ้าน ซื้อรถยนต์ หรือเพื่อการลงทุน ในบทความนี้เราจะพาไปทุกคนไปทำความเข้าใจถึงขั้นตอนการกู้เงินจากธนาคาร ว่าการกู้เงินธนาคารใช้อะไรบ้าง ? วิธีกู้เงินธนาคาร หลักประกันเงินกู้มีอะไรบ้าง? รวมถึงข้อควรรู้ก่อนตัดสินใจกู้ เพราะจะช่วยให้คุณเตรียมตัวได้อย่างถูกต้อง และเพิ่มโอกาสในการได้รับอนุมัติเงินกู้มากขึ้น</p>
+
+    <h2 id="section1Title">การกู้เงินมีกี่ประเภท?</h2>
+    <div class="figure"><img id="img40" src="40.jpg" alt="ประเภทการกู้เงิน" style="width:100%;border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,.05)"><div class="cap" id="fig1Cap">ประเภทการกู้เงิน</div></div>
+    <p id="section1Text1">การกู้เงินจากธนาคารหรือสถาบันการเงินนั้นมีจุดหลายประเภท ซึ่งถูกออกแบบมาให้เหมาะสมกับความต้องการและวัตถุประสงค์ของผู้กู้แต่ละคน โดยประเภทการกู้เงินที่พบบ่อยหลักๆ มีดังนี้</p>
+    <h3 id="subsection1_1">1. การกู้เงินส่วนบุคคล</h3>
+    <p id="subsection1_1Text">การกู้เงินนี้ประเภทนี้เหมาะสำหรับผู้ที่ต้องการใช้เงินเพื่อนำไปใช้จ่ายส่วนตัว เช่น ค่าใช้จ่ายฉุกเฉิน ค่ารักษาพยาบาล ค่าซ่อมแซมที่อยู่อาศัย ฯลฯ วงเงินกู้มักขึ้นอยู่กับรายได้และประวัติการเงินของผู้กู้ ซึ่งอัตราดอกเบี้ยของสินเชื่อประเภทนี้มักจะสูงกว่าสินเชื่อที่มีหลักประกัน</p>
+    <h3 id="subsection1_2">2. การกู้เงินเพื่อซื้อบ้าน</h3>
+    <p id="subsection1_2Text">สำหรับผู้ที่ต้องการซื้อบ้านหรือคอนโด ธนาคารจะให้กู้เงินโดยใช้บ้านหรือคอนโดเป็นหลักประกัน วงเงินกู้มักครอบคลุมราคาซื้อบ้านบางส่วนหรือทั้งหมด ขึ้นอยู่กับการพิจารณาของธนาคาร และมีระยะเวลาผ่อนชำระที่ยาวนาน อาจถึง 20-30 ปี ซึ่งการกู้เงินประเภทนี้มักมีดอกเบี้ยต่ำกว่าสินเชื่อบางประเภท เช่น สินเชื่อส่วนบุคคล สินเชื่อเพื่อธุรกิจ ฯลฯ เนื่องจากมีหลักประกันที่มั่นคง</p>
+    <h3 id="subsection1_3">3. การกู้เงินเพื่อซื้อรถยนต์</h3>
+    <p id="subsection1_3Text">ใครอยากซื้อรถใหม่ ไม่ว่าจะเป็นรถมือหนึ่งหรือมือสอง ธนาคารจะใช้รถยนต์ที่ซื้อเป็นหลักประกันในการกู้เงินประเภทนี้ โดยวงเงินกู้จะขึ้นอยู่กับราคาของรถยนต์และระยะเวลาผ่อนชำระ โดยส่วนใหญ่มักอยู่ในช่วง 3-7 ปี</p>
+    <h3 id="subsection1_4">4. การกู้เงินเพื่อธุรกิจ</h3>
+    <p id="subsection1_4Text">สำหรับผู้ประกอบการที่ต้องการเงินทุนเพื่อขยายธุรกิจหรือเริ่มต้นกิจการใหม่ การกู้เงินประเภทนี้อาจต้องใช้หลักประกัน เช่น ที่ดินหรือทรัพย์สินของธุรกิจ เพื่อค้ำประกันการกู้</p>
+    <h3 id="subsection1_5">5. การกู้เงินเพื่อการศึกษา</h3>
+    <p id="subsection1_5Text">สำหรับผู้ที่ต้องการเงินทุนในการศึกษาทั้งในและต่างประเทศ ก็มีวงเงินจากธนาคารให้กู้เช่นกัน ซึ่งการกู้เงินเพื่อนการศึกษามักมีอัตราดอกเบี้ยต่ำไม่เกิน 1% ต่อปี และระยะเวลาผ่อนชำระที่ยืดหยุ่น บางครั้งอาจเริ่มชำระคืนหลังจากจบการศึกษาแล้วตามพระราชบัญญัติกองทุนเงินให้กู้ยืมเพื่อการศึกษา (ฉบับที่ 2) พ.ศ. 2566</p>
+    <h3 id="subsection1_6">6. การกู้เงินเพื่อการลงทุน</h3>
+    <p id="subsection1_6Text">สำหรับนักลงทุนที่ต้องการกู้เงินเพื่อนำไปลงทุนในสินทรัพย์ต่างๆ เช่น หุ้น พันธบัตร หรือกองทุนรวม โดยวงเงินกู้จะขึ้นอยู่กับหลักประกันหรือสินทรัพย์ที่ผู้กู้ถือครอง</p>
+
+    <h2 id="section2Title">เอกสารที่ใช้ในการขอสินเชื่อ</h2>
+    <div class="figure"><img id="img41" src="41.jpg" alt="เอกสารประจำตัว" style="width:100%;border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,.05)"><div class="cap" id="fig2Cap">เอกสารประจำตัว</div></div>
+    <h3 id="subsection2_1">1. เอกสารประจำตัว</h3>
+    <ul>
+      <li id="doc1_1">สำเนาบัตรประจำตัวประชาชน หรือสำเนาบัตรข้าราชการ/รัฐวิสาหกิจ</li>
+      <li id="doc1_2">สำเนาทะเบียนบ้าน</li>
+      <li id="doc1_3">สำเนาทะเบียนสมรส ทะเบียนหย่า หรือใบมรณบัตร</li>
+      <li id="doc1_4">สำเนาหลักฐานการเปลี่ยนชื่อ สกุล (ถ้ามี)</li>
+      <li id="doc1_5">กรณีนิติบุคคล อาจใช้สำเนาทะเบียนการค้า หนังสือรับรองการจดทะเบียนนิติบุคคล</li>
+    </ul>
+    
+    <div class="figure"><img id="img42" src="42loan.jpg" alt="เอกสารเกี่ยวกับรายได้" style="width:100%;border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,.05)"><div class="cap" id="fig3Cap">เอกสารเกี่ยวกับรายได้</div></div>
+    <h3 id="subsection2_2">2. เอกสารเกี่ยวกับรายได้</h3>
+    <ul>
+      <li id="doc2_1">ผู้มีรายได้ประจำ: ใบรับรองเงินเดือน หรือหลักฐานการรับ/จ่ายเงินเดือนจากนายจ้าง, สมุดบัญชีเงินฝากธนาคาร</li>
+      <li id="doc2_2">ผู้มีอาชีพอิสระ: สำเนาสัญญาว่าจ้างและหลักฐานการจ่ายเงินค่าจ้าง, ใบอนุญาตประกอบวิชาชีพ, บัญชีเงินฝาก พร้อมใบแจ้งยอดบัญชี หรือสเตทเมนต์ย้อนหลังอย่างน้อย 6 เดือน, หลักฐานรายได้หรือทรัพย์สินอื่นๆ เช่น ใบหุ้น พันธบัตรรัฐบาล</li>
+      <li id="doc2_3">นิติบุคคล: สำเนางบการเงินปีล่าสุดและย้อนหลังไม่น้อยกว่า 3 ปี, สำเนาแสดงรายการภาษีเงินได้ประจำปี, สำเนาเอกสารสิทธิในทรัพย์สินที่เสนอเป็นหลักประกัน, แผนที่แสดงที่ตั้งสถานประกอบการ</li>
+    </ul>
+    <div class="figure"><img id="img43" src="43.jpg" alt="เอกสารอื่นๆ" style="width:100%;border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,.05)"><div class="cap" id="fig4Cap">เอกสารอื่นๆ</div></div>
+    <h3 id="subsection2_3">3. เอกสารอื่นๆ</h3>
+    <ul>
+      <li id="doc3_1">สำเนาสัญญาจะซื้อจะขาย หรือสัญญามัดจำ</li>
+      <li id="doc3_2">สำเนาโฉนดที่ดิน หรือสำเนาหนังสือแสดงกรรมสิทธิ์</li>
+      <li id="doc3_3">สัญญากู้เงิน และสัญญาจำนองจากสถาบันการเงินเดิม</li>
+      <li id="doc3_4">กรณีมีผู้กู้ร่วม ต้องมีหลักฐานประจำตัวและหลักฐานรายได้ของผู้กู้ร่วม</li>
+      <li id="doc3_5">ขอสินเชื่อเพื่อธุรกิจ: แผนธุรกิจ เช่น แผนธุรกิจของ SMEs หรือแผนโครงการ</li>
+      <li id="doc3_6">แบบฟอร์มอื่น ๆ เช่น คำยินยอมเปิดเผยข้อมูล, คำขออนุญาตให้เจ้าหน้าที่ติดต่อ, ใบคำขอประเภทอื่น</li>
+    </ul>
+
+    <h2 id="section3Title">หลักประกันเงินกู้ มีอะไรบ้าง?</h2>
+    <div class="figure"><img id="img44" src="44loan.jpg" alt="หลักประกันเงินกู้" style="width:100%;border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,.05)"><div class="cap" id="fig5Cap">หลักประกันเงินกู้</div></div>
+    <p id="section3Text1">การกู้เงินบางประเภท โดยเฉพาะสินเชื่อที่มีวงเงินสูง เช่น สินเชื่อบ้านหรือสินเชื่อรถยนต์ ธนาคารมักจะต้องการ ‘หลักประกัน’ เพื่อให้มั่นใจว่าผู้กู้มีความสามารถในการชำระหนี้คืน หากผู้กู้ไม่สามารถชำระหนี้ได้ ธนาคารจะใช้หลักประกันนั้นเพื่อชดเชยความเสียหายจากการผิดชำระหนี้ ซึ่งหลักประกันที่ใช้กันทั่วไปมีดังนี้</p>
+    <ul>
+      <li id="collateral1">ที่ดินหรืออสังหาริมทรัพย์</li>
+      <li id="collateral2">รถยนต์</li>
+      <li id="collateral3">เงินฝากหรือพันธบัตร</li>
+      <li id="collateral4">สินทรัพย์ที่มีค่า เช่น เครื่องจักรหรืออุปกรณ์สำหรับธุรกิจ</li>
+      <li id="collateral5">บุคคลค้ำประกัน</li>
+    </ul>
+    <h3 id="subsection3_1">สิ่งที่ควรทำเมื่อเป็นผู้ค้ำประกัน</h3>
+    <ul>
+      <li id="guarantor1">อ่านเงื่อนไขในการค้ำประกันให้ละเอียด</li>
+      <li id="guarantor2">ทำความเข้าใจเกี่ยวกับขอบเขตความรับผิดชอบในฐานะผู้ค้ำประกัน</li>
+      <li id="guarantor3">ตรวจสอบความถูกต้องของวงเงินและประเภทของสินเชื่อที่ค้ำประกันที่ระบุในสัญญา</li>
+      <li id="guarantor4">หากสงสัยอะไรรีบถามก่อนลงชื่อในสัญญา</li>
+    </ul>
+    <p id="section3Text2">การมีหลักประกันที่มั่นคงจะช่วยให้ธนาคารมีความมั่นใจในความเสี่ยงที่ต่ำลง จึงมักจะทำให้ผู้กู้ได้รับเงื่อนไขที่ดีกว่า เช่น อัตราดอกเบี้ยที่ต่ำลงและวงเงินกู้ที่สูงขึ้น</p>
+
+    <h2 id="section4Title">เกณฑ์ที่สถาบันการเงินใช้พิจารณาสินเชื่อ</h2>
+    <div class="figure"><img src="45.jpg" alt="เกณฑ์พิจารณาสินเชื่อ" style="width:100%;border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,.05)"><div class="cap" id="fig6Cap">เกณฑ์พิจารณาสินเชื่อ</div></div>
+    <p id="section4Text1">ในการพิจารณาอนุมัติสินเชื่อจะขึ้นอยู่กับนโยบายและหลักเกณฑ์ของผู้ให้สินเชื่อแต่ละราย โดยทั่วไปแล้วมีปัจจัยหลัก ๆ ที่ใช้ประกอบการพิจารณา คือ</p>
+    <ul>
+      <li id="criteria1">นโยบายสินเชื่อของผู้ให้สินเชื่อ</li>
+      <li id="criteria2">วัตถุประสงค์ในการขอสินเชื่อ</li>
+      <li id="criteria3">คุณลักษณะและความสามารถในการชำระหนี้ของผู้ขอสินเชื่อ (5Cs: Character, Capacity, Capital, Collateral, Conditions)</li>
+    </ul>
+    <p id="section4Text2">ถ้าผู้ขอสินเชื่อมีอาชีพและรายได้มั่นคง ไม่เคยมีหนี้สินล้นพ้นตัว มีความสามารถในการชำระหนี้ การขอสินเชื่อก็คงไม่ติดปัญหาอะไร แต่หากไม่มีหน้าที่การงานที่มั่นคง ไม่มีเอกสารใบรับรองเงินเดือน โอกาสการได้เงินกู้ยังคงมีอยู่ เพราะอาจใช้หลักฐานทางการเงินอื่น ๆ ทดแทนได้ เช่น ใบแจ้งยอดบัญชี หรือสเตทเมนต์ของบัญชีเงินฝาก</p>
+
+    <h2 id="section5Title">สิทธิของผู้ขอสินเชื่อกรณีไม่ได้รับอนุมัติ</h2>
+    <p id="section5Text1">หากผู้ขอสินเชื่อถูกปฏิเสธสินเชื่อจากสถาบันการเงิน ผู้ขอสินเชื่อสามารถขอทราบเหตุผลของการไม่อนุมัติสินเชื่อจากสถาบันการเงินเป็นลายลักษณ์อักษรได้ เพื่อปรับปรุงศักยภาพและสามารถขอสินเชื่อใหม่ในอนาคต รวมถึงขอรับคืนเอกสารสำคัญที่เคยยื่นไว้ เช่น งบการเงิน แผนธุรกิจ รายละเอียดหลักประกัน</p>
+
+    <h2 id="section6Title">ขั้นตอนและวิธีการกู้เงินธนาคาร</h2>
+    <div class="figure" style="margin:20px 0;">
+      <img id="img46" src="46loan.jpg" alt="สิทธิของผู้ขอสินเชื่อ" style="width:100%;max-width:100%;border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,.05);">
+      <div class="cap" id="fig7Cap">สิทธิของผู้ขอสินเชื่อ</div>
+    </div>
+    <ol style="max-width:600px;margin:18px auto 0 auto;">
+      <li id="step1">สำรวจความต้องการ: ประเมินว่าต้องการกู้ในเงินจำนวนเท่าไหร่ รวมถึงประเภทสินเชื่อที่เหมาะสมกับจุดประสงค์</li>
+      <li id="step2">เตรียมเอกสาร: รวบรวมเอกสารที่ธนาคารกำหนด</li>
+      <li id="step3">ยื่นคำขอกู้: นำเอกสารไปยื่นที่ธนาคารที่ต้องการใช้บริการ</li>
+      <li id="step4">การพิจารณาเครดิต: ธนาคารจะตรวจสอบประวัติการเงินและเครดิตของผู้กู้</li>
+      <li id="step5">อนุมัติและเซ็นสัญญา: หากผ่านการพิจารณา ผู้กู้จะต้องเซ็นสัญญากู้ยืมเงิน</li>
+      <li id="step6">รับเงินกู้: หลังจากเซ็นสัญญาเรียบร้อย ธนาคารจะโอนเงินให้ผู้กู้</li>
+    </ol>
+    <p id="section6Text1">การกู้เงินธนาคารเป็นทางเลือกที่ช่วยให้คุณบรรลุเป้าหมายทางการเงิน ไม่ว่าจะเป็นการซื้อบ้าน รถยนต์ หรือการลงทุน แต่ก่อนตัดสินใจควรเตรียมตัวให้พร้อมทั้งด้านเอกสาร ความสามารถในการชำระหนี้ และการเลือกประเภทสินเชื่อที่เหมาะสม ทั้งนี้ ผู้กู้ควรเข้าใจขั้นตอนและเงื่อนไข พร้อมศึกษารายละเอียดอย่างรอบคอบ เพื่อช่วยให้กระบวนการกู้ยืมเป็นไปได้อย่างราบรื่นและส่งผลดีต่อผู้กู้นั่นเอง</p>
+  </article>
+  <footer id="footerText">MindMyMoney • เอกสารให้ความรู้สำหรับผู้ขอสินเชื่อ</footer>
+</body>
+<script>
+  // ข้อมูลภาษา
+  const langData = {
+    th: {
+      brand: "ความรู้การกู้เงิน",
+      kicker: "MindMyMoney • คู่มือการกู้เงิน",
+      articleTitle: "คู่มือการกู้เงินธนาคาร",
+      introText: "การกู้เงินธนาคารเป็นทางเลือกที่หลายคนใช้เมื่อต้องการเงินทุนเพื่อวัตถุประสงค์ต่างๆ ไม่ว่าจะเป็นการซื้อบ้าน ซื้อรถยนต์ หรือเพื่อการลงทุน ในบทความนี้เราจะพาไปทุกคนไปทำความเข้าใจถึงขั้นตอนการกู้เงินจากธนาคาร ว่าการกู้เงินธนาคารใช้อะไรบ้าง ? วิธีกู้เงินธนาคาร หลักประกันเงินกู้มีอะไรบ้าง? รวมถึงข้อควรรู้ก่อนตัดสินใจกู้ เพราะจะช่วยให้คุณเตรียมตัวได้อย่างถูกต้อง และเพิ่มโอกาสในการได้รับอนุมัติเงินกู้มากขึ้น",
+      section1Title: "การกู้เงินมีกี่ประเภท?",
+      fig1Cap: "ประเภทการกู้เงิน",
+      section1Text1: "การกู้เงินจากธนาคารหรือสถาบันการเงินนั้นมีจุดหลายประเภท ซึ่งถูกออกแบบมาให้เหมาะสมกับความต้องการและวัตถุประสงค์ของผู้กู้แต่ละคน โดยประเภทการกู้เงินที่พบบ่อยหลักๆ มีดังนี้",
+      subsection1_1: "1. การกู้เงินส่วนบุคคล",
+      subsection1_1Text: "การกู้เงินนี้ประเภทนี้เหมาะสำหรับผู้ที่ต้องการใช้เงินเพื่อนำไปใช้จ่ายส่วนตัว เช่น ค่าใช้จ่ายฉุกเฉิน ค่ารักษาพยาบาล ค่าซ่อมแซมที่อยู่อาศัย ฯลฯ วงเงินกู้มักขึ้นอยู่กับรายได้และประวัติการเงินของผู้กู้ ซึ่งอัตราดอกเบี้ยของสินเชื่อประเภทนี้มักจะสูงกว่าสินเชื่อที่มีหลักประกัน",
+      subsection1_2: "2. การกู้เงินเพื่อซื้อบ้าน",
+      subsection1_2Text: "สำหรับผู้ที่ต้องการซื้อบ้านหรือคอนโด ธนาคารจะให้กู้เงินโดยใช้บ้านหรือคอนโดเป็นหลักประกัน วงเงินกู้มักครอบคลุมราคาซื้อบ้านบางส่วนหรือทั้งหมด ขึ้นอยู่กับการพิจารณาของธนาคาร และมีระยะเวลาผ่อนชำระที่ยาวนาน อาจถึง 20-30 ปี ซึ่งการกู้เงินประเภทนี้มักมีดอกเบี้ยต่ำกว่าสินเชื่อบางประเภท เช่น สินเชื่อส่วนบุคคล สินเชื่อเพื่อธุรกิจ ฯลฯ เนื่องจากมีหลักประกันที่มั่นคง",
+      subsection1_3: "3. การกู้เงินเพื่อซื้อรถยนต์",
+      subsection1_3Text: "ใครอยากซื้อรถใหม่ ไม่ว่าจะเป็นรถมือหนึ่งหรือมือสอง ธนาคารจะใช้รถยนต์ที่ซื้อเป็นหลักประกันในการกู้เงินประเภทนี้ โดยวงเงินกู้จะขึ้นอยู่กับราคาของรถยนต์และระยะเวลาผ่อนชำระ โดยส่วนใหญ่มักอยู่ในช่วง 3-7 ปี",
+      subsection1_4: "4. การกู้เงินเพื่อธุรกิจ",
+      subsection1_4Text: "สำหรับผู้ประกอบการที่ต้องการเงินทุนเพื่อขยายธุรกิจหรือเริ่มต้นกิจการใหม่ การกู้เงินประเภทนี้อาจต้องใช้หลักประกัน เช่น ที่ดินหรือทรัพย์สินของธุรกิจ เพื่อค้ำประกันการกู้",
+      subsection1_5: "5. การกู้เงินเพื่อการศึกษา",
+      subsection1_5Text: "สำหรับผู้ที่ต้องการเงินทุนในการศึกษาทั้งในและต่างประเทศ ก็มีวงเงินจากธนาคารให้กู้เช่นกัน ซึ่งการกู้เงินเพื่อนการศึกษามักมีอัตราดอกเบี้ยต่ำไม่เกิน 1% ต่อปี และระยะเวลาผ่อนชำระที่ยืดหยุ่น บางครั้งอาจเริ่มชำระคืนหลังจากจบการศึกษาแล้วตามพระราชบัญญัติกองทุนเงินให้กู้ยืมเพื่อการศึกษา (ฉบับที่ 2) พ.ศ. 2566",
+      subsection1_6: "6. การกู้เงินเพื่อการลงทุน",
+      subsection1_6Text: "สำหรับนักลงทุนที่ต้องการกู้เงินเพื่อนำไปลงทุนในสินทรัพย์ต่างๆ เช่น หุ้น พันธบัตร หรือกองทุนรวม โดยวงเงินกู้จะขึ้นอยู่กับหลักประกันหรือสินทรัพย์ที่ผู้กู้ถือครอง",
+      section2Title: "เอกสารที่ใช้ในการขอสินเชื่อ",
+      fig2Cap: "เอกสารประจำตัว",
+      subsection2_1: "1. เอกสารประจำตัว",
+      doc1_1: "สำเนาบัตรประจำตัวประชาชน หรือสำเนาบัตรข้าราชการ/รัฐวิสาหกิจ",
+      doc1_2: "สำเนาทะเบียนบ้าน",
+      doc1_3: "สำเนาทะเบียนสมรส ทะเบียนหย่า หรือใบมรณบัตร",
+      doc1_4: "สำเนาหลักฐานการเปลี่ยนชื่อ สกุล (ถ้ามี)",
+      doc1_5: "กรณีนิติบุคคล อาจใช้สำเนาทะเบียนการค้า หนังสือรับรองการจดทะเบียนนิติบุคคล",
+      fig3Cap: "เอกสารเกี่ยวกับรายได้",
+      subsection2_2: "2. เอกสารเกี่ยวกับรายได้",
+      doc2_1: "ผู้มีรายได้ประจำ: ใบรับรองเงินเดือน หรือหลักฐานการรับ/จ่ายเงินเดือนจากนายจ้าง, สมุดบัญชีเงินฝากธนาคาร",
+      doc2_2: "ผู้มีอาชีพอิสระ: สำเนาสัญญาว่าจ้างและหลักฐานการจ่ายเงินค่าจ้าง, ใบอนุญาตประกอบวิชาชีพ, บัญชีเงินฝาก พร้อมใบแจ้งยอดบัญชี หรือสเตทเมนต์ย้อนหลังอย่างน้อย 6 เดือน, หลักฐานรายได้หรือทรัพย์สินอื่นๆ เช่น ใบหุ้น พันธบัตรรัฐบาล",
+      doc2_3: "นิติบุคคล: สำเนางบการเงินปีล่าสุดและย้อนหลังไม่น้อยกว่า 3 ปี, สำเนาแสดงรายการภาษีเงินได้ประจำปี, สำเนาเอกสารสิทธิในทรัพย์สินที่เสนอเป็นหลักประกัน, แผนที่แสดงที่ตั้งสถานประกอบการ",
+      fig4Cap: "เอกสารอื่นๆ",
+      subsection2_3: "3. เอกสารอื่นๆ",
+      doc3_1: "สำเนาสัญญาจะซื้อจะขาย หรือสัญญามัดจำ",
+      doc3_2: "สำเนาโฉนดที่ดิน หรือสำเนาหนังสือแสดงกรรมสิทธิ์",
+      doc3_3: "สัญญากู้เงิน และสัญญาจำนองจากสถาบันการเงินเดิม",
+      doc3_4: "กรณีมีผู้กู้ร่วม ต้องมีหลักฐานประจำตัวและหลักฐานรายได้ของผู้กู้ร่วม",
+      doc3_5: "ขอสินเชื่อเพื่อธุรกิจ: แผนธุรกิจ เช่น แผนธุรกิจของ SMEs หรือแผนโครงการ",
+      doc3_6: "แบบฟอร์มอื่น ๆ เช่น คำยินยอมเปิดเผยข้อมูล, คำขออนุญาตให้เจ้าหน้าที่ติดต่อ, ใบคำขอประเภทอื่น",
+      section3Title: "หลักประกันเงินกู้ มีอะไรบ้าง?",
+      fig5Cap: "หลักประกันเงินกู้",
+      section3Text1: "การกู้เงินบางประเภท โดยเฉพาะสินเชื่อที่มีวงเงินสูง เช่น สินเชื่อบ้านหรือสินเชื่อรถยนต์ ธนาคารมักจะต้องการ ‘หลักประกัน’ เพื่อให้มั่นใจว่าผู้กู้มีความสามารถในการชำระหนี้คืน หากผู้กู้ไม่สามารถชำระหนี้ได้ ธนาคารจะใช้หลักประกันนั้นเพื่อชดเชยความเสียหายจากการผิดชำระหนี้ ซึ่งหลักประกันที่ใช้กันทั่วไปมีดังนี้",
+      collateral1: "ที่ดินหรืออสังหาริมทรัพย์",
+      collateral2: "รถยนต์",
+      collateral3: "เงินฝากหรือพันธบัตร",
+      collateral4: "สินทรัพย์ที่มีค่า เช่น เครื่องจักรหรืออุปกรณ์สำหรับธุรกิจ",
+      collateral5: "บุคคลค้ำประกัน",
+      subsection3_1: "สิ่งที่ควรทำเมื่อเป็นผู้ค้ำประกัน",
+      guarantor1: "อ่านเงื่อนไขในการค้ำประกันให้ละเอียด",
+      guarantor2: "ทำความเข้าใจเกี่ยวกับขอบเขตความรับผิดชอบในฐานะผู้ค้ำประกัน",
+      guarantor3: "ตรวจสอบความถูกต้องของวงเงินและประเภทของสินเชื่อที่ค้ำประกันที่ระบุในสัญญา",
+      guarantor4: "หากสงสัยอะไรรีบถามก่อนลงชื่อในสัญญา",
+      section3Text2: "การมีหลักประกันที่มั่นคงจะช่วยให้ธนาคารมีความมั่นใจในความเสี่ยงที่ต่ำลง จึงมักจะทำให้ผู้กู้ได้รับเงื่อนไขที่ดีกว่า เช่น อัตราดอกเบี้ยที่ต่ำลงและวงเงินกู้ที่สูงขึ้น",
+      section4Title: "เกณฑ์ที่สถาบันการเงินใช้พิจารณาสินเชื่อ",
+      fig6Cap: "เกณฑ์พิจารณาสินเชื่อ",
+      section4Text1: "ในการพิจารณาอนุมัติสินเชื่อจะขึ้นอยู่กับนโยบายและหลักเกณฑ์ของผู้ให้สินเชื่อแต่ละราย โดยทั่วไปแล้วมีปัจจัยหลัก ๆ ที่ใช้ประกอบการพิจารณา คือ",
+      criteria1: "นโยบายสินเชื่อของผู้ให้สินเชื่อ",
+      criteria2: "วัตถุประสงค์ในการขอสินเชื่อ",
+      criteria3: "คุณลักษณะและความสามารถในการชำระหนี้ของผู้ขอสินเชื่อ (5Cs: Character, Capacity, Capital, Collateral, Conditions)",
+      section4Text2: "ถ้าผู้ขอสินเชื่อมีอาชีพและรายได้มั่นคง ไม่เคยมีหนี้สินล้นพ้นตัว มีความสามารถในการชำระหนี้ การขอสินเชื่อก็คงไม่ติดปัญหาอะไร แต่หากไม่มีหน้าที่การงานที่มั่นคง ไม่มีเอกสารใบรับรองเงินเดือน โอกาสการได้เงินกู้ยังคงมีอยู่ เพราะอาจใช้หลักฐานทางการเงินอื่น ๆ ทดแทนได้ เช่น ใบแจ้งยอดบัญชี หรือสเตทเมนต์ของบัญชีเงินฝาก",
+      section5Title: "สิทธิของผู้ขอสินเชื่อกรณีไม่ได้รับอนุมัติ",
+      section5Text1: "หากผู้ขอสินเชื่อถูกปฏิเสธสินเชื่อจากสถาบันการเงิน ผู้ขอสินเชื่อสามารถขอทราบเหตุผลของการไม่อนุมัติสินเชื่อจากสถาบันการเงินเป็นลายลักษณ์อักษรได้ เพื่อปรับปรุงศักยภาพและสามารถขอสินเชื่อใหม่ในอนาคต รวมถึงขอรับคืนเอกสารสำคัญที่เคยยื่นไว้ เช่น งบการเงิน แผนธุรกิจ รายละเอียดหลักประกัน",
+      section6Title: "ขั้นตอนและวิธีการกู้เงินธนาคาร",
+      fig7Cap: "สิทธิของผู้ขอสินเชื่อ",
+      step1: "สำรวจความต้องการ: ประเมินว่าต้องการกู้ในเงินจำนวนเท่าไหร่ รวมถึงประเภทสินเชื่อที่เหมาะสมกับจุดประสงค์",
+      step2: "เตรียมเอกสาร: รวบรวมเอกสารที่ธนาคารกำหนด",
+      step3: "ยื่นคำขอกู้: นำเอกสารไปยื่นที่ธนาคารที่ต้องการใช้บริการ",
+      step4: "การพิจารณาเครดิต: ธนาคารจะตรวจสอบประวัติการเงินและเครดิตของผู้กู้",
+      step5: "อนุมัติและเซ็นสัญญา: หากผ่านการพิจารณา ผู้กู้จะต้องเซ็นสัญญากู้ยืมเงิน",
+      step6: "รับเงินกู้: หลังจากเซ็นสัญญาเรียบร้อย ธนาคารจะโอนเงินให้ผู้กู้",
+      section6Text1: "การกู้เงินธนาคารเป็นทางเลือกที่ช่วยให้คุณบรรลุเป้าหมายทางการเงิน ไม่ว่าจะเป็นการซื้อบ้าน รถยนต์ หรือการลงทุน แต่ก่อนตัดสินใจควรเตรียมตัวให้พร้อมทั้งด้านเอกสาร ความสามารถในการชำระหนี้ และการเลือกประเภทสินเชื่อที่เหมาะสม ทั้งนี้ ผู้กู้ควรเข้าใจขั้นตอนและเงื่อนไข พร้อมศึกษารายละเอียดอย่างรอบคอบ เพื่อช่วยให้กระบวนการกู้ยืมเป็นไปได้อย่างราบรื่นและส่งผลดีต่อผู้กู้นั่นเอง",
+      footerText:"MindMyMoney • เอกสารให้ความรู้สำหรับผู้ขอสินเชื่อ"
+},
+en: {
+brand: "Loan Knowledge",
+kicker: "MindMyMoney • Loan Guide",
+articleTitle: "Bank Loan Guide",
+introText: "Taking out a bank loan is an option many people use when they need funds for various purposes, such as buying a house, purchasing a car, or investing. In this article, we will guide you through the process of obtaining a bank loan, including what is required for a bank loan, how to apply for one, what types of loan collateral are available, and key considerations before deciding to borrow. This will help you prepare adequately and increase your chances of loan approval.",
+section1Title: "What Types of Loans Are There?",
+fig1Cap: "Types of Loans",
+section1Text1: "Loans from banks or financial institutions come in various types, designed to suit the needs and purposes of different borrowers. The most common types of loans include the following:",
+subsection1_1: "1. Personal Loan",
+subsection1_1Text: "This type of loan is suitable for individuals needing funds for personal expenses, such as emergencies, medical costs, or home repairs. The loan amount typically depends on the borrower's income and financial history, with interest rates often higher than secured loans.",
+subsection1_2: "2. Home Loan",
+subsection1_2Text: "For those looking to buy a house or condominium, banks offer loans using the property as collateral. The loan amount may cover part or all of the property price, depending on the bank's assessment, with repayment terms extending up to 20-30 years. This type of loan often has lower interest rates than unsecured loans like personal loans or business loans due to the stable collateral.",
+subsection1_3: "3. Auto Loan",
+subsection1_3Text: "For those wanting to buy a new or used car, banks use the purchased vehicle as collateral for the loan. The loan amount depends on the car's price and repayment term, typically ranging from 3-7 years.",
+subsection1_4: "4. Business Loan",
+subsection1_4Text: "For entrepreneurs needing capital to expand or start a new business, this loan may require collateral such as land or business assets to secure the borrowing.",
+subsection1_5: "5. Education Loan",
+subsection1_5Text: "For individuals seeking funds for education, both domestically and abroad, banks offer loans with interest rates typically not exceeding 1% per year and flexible repayment terms. Repayment may begin after graduation, as outlined in the Student Loan Fund Act (No. 2) B.E. 2566.",
+subsection1_6: "6. Investment Loan",
+subsection1_6Text: "For investors needing funds to invest in assets like stocks, bonds, or mutual funds, the loan amount depends on the collateral or assets the borrower holds.",
+section2Title: "Documents Required for a Loan Application",
+fig2Cap: "Identification Documents",
+subsection2_1: "1. Identification Documents",
+doc1_1: "Copy of National ID Card or Government Official/State Enterprise ID",
+doc1_2: "Copy of Household Registration",
+doc1_3: "Copy of Marriage Certificate, Divorce Certificate, or Death Certificate",
+doc1_4: "Copy of Name/Last Name Change Document (if applicable)",
+doc1_5: "For legal entities: Copy of Business Registration, Certificate of Incorporation",
+fig3Cap: "Income-Related Documents",
+subsection2_2: "2. Income-Related Documents",
+doc2_1: "Salaried individuals: Salary certificate or proof of salary payment from employer, bank account passbook",
+doc2_2: "Self-employed individuals: Copy of employment contract and proof of payment, professional license, bank account passbook with statements for at least 6 months, proof of other income or assets such as stock certificates or government bonds",
+doc2_3: "Legal entities: Copy of the latest financial statements and at least 3 years prior, copy of annual income tax return, copy of property title deed offered as collateral, map showing the business location",
+fig4Cap: "Other Documents",
+subsection2_3: "3. Other Documents",
+doc3_1: "Copy of Purchase Agreement or Deposit Contract",
+doc3_2: "Copy of Land Title Deed or Property Ownership Document",
+doc3_3: "Loan Agreement and Mortgage Contract from the previous financial institution",
+doc3_4: "For co-borrowers: Identification and income proof of the co-borrower",
+doc3_5: "For business loans: Business plan, such as SME business plan or project plan",
+doc3_6: "Other forms, such as consent to disclose information, authorization for officer contact, other application forms",
+section3Title: "What Types of Loan Collateral Are Available?",
+fig5Cap: "Loan Collateral",
+section3Text1: "Some loan types, especially those with high amounts like home or auto loans, often require 'collateral' to assure the bank of the borrower's repayment ability. If the borrower defaults, the bank can use the collateral to recover losses. Common types of collateral include:",
+collateral1: "Land or Real Estate",
+collateral2: "Vehicle",
+collateral3: "Deposits or Bonds",
+collateral4: "Valuable Assets, such as machinery or business equipment",
+collateral5: "Guarantor",
+subsection3_1: "Things to Do When Acting as a Guarantor",
+guarantor1: "Read the guarantee terms carefully",
+guarantor2: "Understand the scope of responsibility as a guarantor",
+guarantor3: "Verify the accuracy of the loan amount and type specified in the contract",
+guarantor4: "Ask questions if unsure before signing the contract",
+section3Text2: "Having solid collateral can increase the bank's confidence in lower risk, often leading to better loan terms, such as lower interest rates and higher loan amounts.",
+section4Title: "Criteria Used by Financial Institutions to Evaluate Loans",
+fig6Cap: "Loan Evaluation Criteria",
+section4Text1: "Loan approval depends on the policies and criteria of each lender. Generally, the main factors considered include:",
+criteria1: "Lender's loan policy",
+criteria2: "Purpose of the loan",
+criteria3: "Characteristics and repayment capacity of the borrower (5Cs: Character, Capacity, Capital, Collateral, Conditions)",
+section4Text2: "If the loan applicant has a stable job and income, no history of overwhelming debt, and the ability to repay, the loan application is unlikely to face issues. However, if there is no stable employment or salary certificate, loan approval is still possible by using alternative financial proof, such as bank statements or deposit account records.",
+section5Title: "Rights of Loan Applicants in Case of Rejection",
+section5Text1: "If a loan application is denied by a financial institution, the applicant has the right to request a written explanation for the rejection. This allows for improvements to be made for future applications and the return of submitted important documents, such as financial statements, business plans, or collateral details.",
+section6Title: "Steps and Methods for Applying for a Bank Loan",
+fig7Cap: "Rights of Loan Applicants",
+step1: "Assess Needs: Evaluate how much money is needed and the type of loan suitable for the purpose",
+step2: "Prepare Documents: Gather the documents specified by the bank",
+step3: "Submit Application: Present the documents to the chosen bank",
+step4: "Credit Evaluation: The bank will review the borrower's financial and credit history",
+step5: "Approval and Contract Signing: If approved, the borrower must sign the loan agreement",
+step6: "Receive Loan Funds: After signing, the bank will transfer the funds to the borrower",
+section6Text1: "Applying for a bank loan is an option that can help you achieve financial goals, whether buying a house, car, or investing. However, preparation is key, including documents, repayment ability, and selecting the appropriate loan type. Borrowers should understand the process and conditions, studying details carefully to ensure a smooth borrowing experience with positive outcomes.",
+footerText: "MindMyMoney • Educational Material for Loan Applicants"
+}
+};
+function applyLang() {
+const lang = document.getElementById('lang').value;
+const data = langData[lang] || langData['th']; // ใช้ภาษาไทยเป็นค่าเริ่มต้นหากไม่มีภาษาที่เลือก
+// เปลี่ยนข้อความตาม ID
+document.getElementById('brand').textContent = data.brand;
+document.getElementById('kicker').textContent = data.kicker;
+document.getElementById('articleTitle').textContent = data.articleTitle;
+document.getElementById('introText').textContent = data.introText;
+document.getElementById('section1Title').textContent = data.section1Title;
+document.getElementById('fig1Cap').textContent = data.fig1Cap;
+document.getElementById('section1Text1').textContent = data.section1Text1;
+document.getElementById('subsection1_1').textContent = data.subsection1_1;
+document.getElementById('subsection1_1Text').textContent = data.subsection1_1Text;
+document.getElementById('subsection1_2').textContent = data.subsection1_2;
+document.getElementById('subsection1_2Text').textContent = data.subsection1_2Text;
+document.getElementById('subsection1_3').textContent = data.subsection1_3;
+document.getElementById('subsection1_3Text').textContent = data.subsection1_3Text;
+document.getElementById('subsection1_4').textContent = data.subsection1_4;
+document.getElementById('subsection1_4Text').textContent = data.subsection1_4Text;
+document.getElementById('subsection1_5').textContent = data.subsection1_5;
+document.getElementById('subsection1_5Text').textContent = data.subsection1_5Text;
+document.getElementById('subsection1_6').textContent = data.subsection1_6;
+document.getElementById('subsection1_6Text').textContent = data.subsection1_6Text;
+document.getElementById('section2Title').textContent = data.section2Title;
+document.getElementById('fig2Cap').textContent = data.fig2Cap;
+document.getElementById('subsection2_1').textContent = data.subsection2_1;
+document.getElementById('doc1_1').textContent = data.doc1_1;
+document.getElementById('doc1_2').textContent = data.doc1_2;
+document.getElementById('doc1_3').textContent = data.doc1_3;
+document.getElementById('doc1_4').textContent = data.doc1_4;
+document.getElementById('doc1_5').textContent = data.doc1_5;
+document.getElementById('fig3Cap').textContent = data.fig3Cap;
+document.getElementById('subsection2_2').textContent = data.subsection2_2;
+document.getElementById('doc2_1').textContent = data.doc2_1;
+document.getElementById('doc2_2').textContent = data.doc2_2;
+document.getElementById('doc2_3').textContent = data.doc2_3;
+document.getElementById('fig4Cap').textContent = data.fig4Cap;
+document.getElementById('subsection2_3').textContent = data.subsection2_3;
+document.getElementById('doc3_1').textContent = data.doc3_1;
+document.getElementById('doc3_2').textContent = data.doc3_2;
+document.getElementById('doc3_3').textContent = data.doc3_3;
+document.getElementById('doc3_4').textContent = data.doc3_4;
+document.getElementById('doc3_5').textContent = data.doc3_5;
+document.getElementById('doc3_6').textContent = data.doc3_6;
+document.getElementById('section3Title').textContent = data.section3Title;
+document.getElementById('fig5Cap').textContent = data.fig5Cap;
+document.getElementById('section3Text1').textContent = data.section3Text1;
+document.getElementById('collateral1').textContent = data.collateral1;
+document.getElementById('collateral2').textContent = data.collateral2;
+document.getElementById('collateral3').textContent = data.collateral3;
+document.getElementById('collateral4').textContent = data.collateral4;
+document.getElementById('collateral5').textContent = data.collateral5;
+document.getElementById('subsection3_1').textContent = data.subsection3_1;
+document.getElementById('guarantor1').textContent = data.guarantor1;
+document.getElementById('guarantor2').textContent = data.guarantor2;
+document.getElementById('guarantor3').textContent = data.guarantor3;
+document.getElementById('guarantor4').textContent = data.guarantor4;
+document.getElementById('section3Text2').textContent = data.section3Text2;
+document.getElementById('section4Title').textContent = data.section4Title;
+document.getElementById('fig6Cap').textContent = data.fig6Cap;
+document.getElementById('section4Text1').textContent = data.section4Text1;
+document.getElementById('criteria1').textContent = data.criteria1;
+document.getElementById('criteria2').textContent = data.criteria2;
+document.getElementById('criteria3').textContent = data.criteria3;
+document.getElementById('section4Text2').textContent = data.section4Text2;
+document.getElementById('section5Title').textContent = data.section5Title;
+document.getElementById('section5Text1').textContent = data.section5Text1;
+document.getElementById('section6Title').textContent = data.section6Title;
+document.getElementById('fig7Cap').textContent = data.fig7Cap;
+document.getElementById('step1').textContent = data.step1;
+document.getElementById('step2').textContent = data.step2;
+document.getElementById('step3').textContent = data.step3;
+document.getElementById('step4').textContent = data.step4;
+document.getElementById('step5').textContent = data.step5;
+document.getElementById('step6').textContent = data.step6;
+document.getElementById('section6Text1').textContent = data.section6Text1;
+document.getElementById('footerText').textContent = data.footerText;
+// เปลี่ยนปุ่ม "กลับหน้าแรก" ตามภาษา
+document.getElementById('backBtn').textContent = lang === 'th' ? '← กลับหน้าแรก' : '← Back to Homepage';
+// เปลี่ยนภาพตามภาษา
+var imgMap = {
+th: ['40.jpg', '41.jpg', '42.jpg', '43.jpg', '44.jpg', '46.jpg'],
+en: ['76.jpg', '78.jpg', '80.jpg', '82.jpg', '85.jpg', '87.jpg']
+};
+var imgIds = ['img40', 'img41', 'img42', 'img43', 'img44', 'img46'];
+for (var i = 0; i < imgIds.length; i++) {
+var el = document.getElementById(imgIds[i]);
+if (el) el.src = imgMap[lang][i];
+}
+}
+// เรียกใช้ฟังก์ชันเมื่อหน้าโหลด
+window.addEventListener('DOMContentLoaded', applyLang);
+</script>
+
+```

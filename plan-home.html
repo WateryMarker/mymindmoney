@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Home Payment Plan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body{font-family:'Prompt',sans-serif;background:linear-gradient(to bottom right,#d2f1f9,#e6fcef);margin:0}
+    .top-bar{display:flex;justify-content:flex-end;align-items:center;padding:16px 24px;gap:12px}
+    .back-btn{background:#f3f4f6;border:none;padding:6px 12px;font-size:14px;color:#374151;border-radius:8px;cursor:pointer;display:flex;align-items:center;gap:6px}
+    select{padding:6px 10px;border-radius:8px;font-size:14px}
+    .container{max-width:860px;margin:0 auto 40px;background:#fff;padding:24px;border-radius:12px;box-shadow:0 0 10px rgba(0,0,0,.05)}
+    h2{text-align:center;color:#0f9d58;margin:4px 0 18px}
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .form-group{display:flex;flex-direction:column}
+    .form-group label{font-weight:700;margin-bottom:6px}
+    .form-group input,.form-group select{padding:10px;font-size:16px;border:1px solid #ccc;border-radius:8px}
+    .full{grid-column:1 / -1}
+    .btn{background:#10b981;color:#fff;padding:12px 20px;border:none;border-radius:8px;font-size:16px;cursor:pointer;width:100%;margin-top:8px}
+    .btn.save{background:#0ea5e9}
+    .result{margin-top:20px;text-align:center;color:#0f5132}
+    .result .badge{display:inline-block;margin:8px 6px;padding:6px 10px;border-radius:9999px;background:#eefbf5;border:1px solid #b7f0d0;font-size:13px}
+    .chart-container{
+      max-width:700px;
+      min-width:350px;
+      margin:36px auto 24px auto;
+      background:#fff;
+      border-radius:18px;
+      box-shadow:0 4px 24px rgba(16,185,129,0.12), 0 1.5px 8px rgba(59,130,246,0.08);
+      padding:32px 0 24px 0;
+      border:2px solid #10b981;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+    canvas{
+      max-width:700px !important;
+      min-width:500px !important;
+      max-height:700px !important;
+      min-height:500px !important;
+      margin:0 auto;
+    }
+    .muted{color:#6b7280;font-size:13px}
+    .hidden{display:none}
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <button onclick="window.location.href='dashboard.php'" class="back-btn"><span id="back-label">Back</span></button>
+    <select id="lang" onchange="changeLang()">
+      <option value="en" selected>EN</option>
+      <option value="th">TH</option>
+    </select>
+  </div>
+
+  <div class="container">
+    <h2 id="title">Home Payment Plan</h2>
+
+    <form id="home-plan-form" class="grid">
+      <!-- Income & expenses -->
+      <div class="form-group">
+        <label id="income-label" for="income">Monthly Income (THB)</label>
+        <input id="income" type="text" value="0" required oninput="formatNumber(this)"/>
+      </div>
+      <div class="form-group">
+        <label id="expense-label" for="expenses">Other Monthly Expenses (THB)</label>
+        <input id="expenses" type="text" value="0" required oninput="formatNumber(this)"/>
+      </div>
+      <div class="form-group">
+        <label id="savings-label" for="savings">Savings (THB)</label>
+        <input id="savings" type="text" value="0" required oninput="formatNumber(this)"/>
+      </div>
+
+      <!-- Price & down payment -->
+      <div class="form-group">
+        <label id="price-label" for="homePrice">Home Price (THB)</label>
+        <input id="homePrice" type="text" value="0" required oninput="formatNumber(this)"/>
+      </div>
+      <div class="form-group">
+        <label id="down-label" for="downPayment">Down Payment (THB)</label>
+        <input id="downPayment" type="text" value="0" required oninput="formatNumber(this)"/>
+      </div>
+
+      <!-- Interest -->
+      <div class="form-group">
+        <label id="interest-type-label" for="interestType">Interest Type</label>
+        <select id="interestType" onchange="toggleInterestInputs()">
+          <option value="yearly" selected>Per Year (%)</option>
+          <option value="monthly">Per Month (%)</option>
+        </select>
+      </div>
+      <div id="yearlyBox" class="form-group">
+        <label id="interest-label-yearly" for="interestYearly">Interest Rate per Year (%)</label>
+        <input id="interestYearly" type="number" step="0.01" value="0"/>
+      </div>
+      <div id="monthlyBox" class="form-group hidden">
+        <label id="interest-label-monthly" for="interestMonthly">Interest Rate per Month (%)</label>
+        <input id="interestMonthly" type="number" step="0.01" value="0"/>
+      </div>
+
+      <!-- Term & carrying costs -->
+      <div class="form-group">
+        <label id="term-label" for="years">Loan Term (Years)</label>
+        <input id="years" type="number" value="30" required/>
+      </div>
+      <div class="form-group">
+        <label id="tax-label" for="propTax">Property Tax per Year (%)</label>
+        <input id="propTax" type="number" step="0.01" value="0.00"/>
+      </div>
+      <div class="form-group">
+        <label id="ins-label" for="insYear">Home Insurance per Year (THB)</label>
+        <input id="insYear" type="text" value="0" oninput="formatNumber(this)"/>
+      </div>
+      <div class="form-group">
+        <label id="hoa-label" for="hoa">HOA/Condo Fee per Month (THB)</label>
+        <input id="hoa" type="text" value="0" oninput="formatNumber(this)"/>
+      </div>
+
+      <div class="form-group full">
+        <button id="calc-btn" type="submit" class="btn">Calculate</button>
+        <button id="save-btn" type="button" class="btn save">Save Calculation</button>
+        <div class="muted" id="hint">Recommendation uses 28/36 rule (PITI ≤ 28% of income, PITI+other ≤ 36%).</div>
+      </div>
+    </form>
+
+    <div class="chart-container"><canvas id="homeChart"></canvas></div>
+    <div id="result" class="result"></div>
+  </div>
+
+  <!-- ===== MMMHistory (Account-scoped, Guest-aware v3) ===== -->
+  <script>
+    (function(){
+      if (window.MMMHistory && window.MMMHistory.__v === '3') return;
+
+      const KEY_BASE = "mmm_history_v1";
+      const isUser = ()=> (localStorage.getItem('mmm_session') === 'user');
+
+      function accountId(){
+        return (
+          localStorage.getItem('mmm_user_id') ||
+          localStorage.getItem('mmm_user_email') ||
+          localStorage.getItem('mmm_user') ||
+          'guest'
+        );
+      }
+      function key(){ return `${KEY_BASE}::${accountId()}`; }
+
+      function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,8); }
+      function getAll(){ try{ return JSON.parse(localStorage.getItem(key()))||[]; }catch(e){ return []; } }
+      function setAll(list){ localStorage.setItem(key(), JSON.stringify(list)); }
+
+      function save(entry){
+        if (!isUser()){
+          alert((localStorage.getItem('language')==='th')
+            ? 'โหมดผู้เยี่ยมชม: โปรดเข้าสู่ระบบเพื่อบันทึกประวัติ'
+            : 'Guest mode: Please log in to save your history.'
+          );
+          return null;
+        }
+        const item = { id: uid(), createdAt: new Date().toISOString(), ...entry };
+        const list = getAll(); list.unshift(item); setAll(list); return item.id;
+      }
+      function remove(id){
+        if (!isUser()){
+          alert((localStorage.getItem('language')==='th')
+            ? 'โหมดผู้เยี่ยมชม: ไม่สามารถลบรายการได้'
+            : 'Guest mode: Delete is disabled.'
+          );
+          return;
+        }
+        setAll(getAll().filter(x=>x.id!==id));
+      }
+      function clear(){
+        if (!isUser()){
+          alert((localStorage.getItem('language')==='th')
+            ? 'โหมดผู้เยี่ยมชม: ไม่สามารถลบทั้งหมดได้'
+            : 'Guest mode: Clear all is disabled.'
+          );
+          return;
+        }
+        localStorage.removeItem(key());
+      }
+      function get(id){ return getAll().find(x=>x.id===id); }
+
+      window.MMMHistory = { __v:'3', save, getAll, get, remove, clear, isUser, __key: key };
+    })();
+  </script>
+
+  <script>
+    const langData = {
+      en:{
+        title:"Home Payment Plan",
+        incomeLabel:"Monthly Income (THB)",
+        expenseLabel:"Other Monthly Expenses (THB)",
+        savingsLabel:"Savings (THB)",
+        priceLabel:"Home Price (THB)",
+        downLabel:"Down Payment (THB)",
+        interestType:"Interest Type",
+        interestYearly:"Per Year (%)",
+        interestMonthly:"Per Month (%)",
+        interestLabelYearly:"Interest Rate per Year (%)",
+        interestLabelMonthly:"Interest Rate per Month (%)",
+        termLabel:"Loan Term (Years)",
+        taxLabel:"Property Tax per Year (%)",
+        insLabel:"Home Insurance per Year (THB)",
+        hoaLabel:"HOA/Condo Fee per Month (THB)",
+        calcBtn:"Calculate",
+        saveBtn:"Save Calculation",
+        savedMsg:"Saved!",
+        backLabel:"Back",
+        chartTitle:"Loan Breakdown",
+        hint:"Recommendation uses 28/36 rule (PITI ≤ 28% of income, PITI + other ≤ 36%).",
+        pass28:"✅ Housing cost ≤ 28% of income",
+        pass36:"✅ Housing + other ≤ 36% of income",
+        fail28:"❌ Housing cost > 28% of income",
+        fail36:"❌ Housing + other > 36% of income",
+        recYes:"✅ You can afford this mortgage.",
+        recNo:"❌ Not recommended to take this mortgage.",
+        currency:"THB",
+        labels:{principal:"Principal",interest:"Interest", monthlyPayment:"Monthly Mortgage (P&I)"},
+        pitiLabel: "Monthly Housing Cost (PITI)",
+        totalPayableLabel: "Total Payable (P&I)",
+        totalPaidLabel: "Total Paid (P&I)"
+      },
+      th:{
+        title:"แผนการผ่อนบ้าน",
+        incomeLabel:"รายได้ต่อเดือนเฉลี่ย (บาท)",
+        expenseLabel:"ค่าใช้จ่ายอื่นต่อเดือนเฉลี่ย (บาท)",
+        savingsLabel:"เงินเก็บ (บาท)",
+        priceLabel:"ราคาบ้าน (บาท)",
+        downLabel:"เงินดาวน์ (บาท)",
+        interestType:"ประเภทดอกเบี้ย",
+        interestYearly:"ต่อปี (%)",
+        interestMonthly:"ต่อเดือน (%)",
+        interestLabelYearly:"อัตราดอกเบี้ยตามประกาศต่อปี (%)",
+        interestLabelMonthly:"อัตราดอกเบี้ยต่อเดือน (%)",
+        termLabel:"อายุสัญญา (ปี)",
+        taxLabel:"ภาษีที่ดิน/สิ่งปลูกสร้างต่อปี (%)",
+        insLabel:"ประกันบ้านต่อปี (บาท)",
+        hoaLabel:"ค่าส่วนกลาง/นิติบุคคลต่อเดือน (บาท)",
+        calcBtn:"คำนวณ",
+        saveBtn:"บันทึกการคำนวณ",
+        savedMsg:"บันทึกแล้ว!",
+        backLabel:"ย้อนกลับ",
+        chartTitle:"สัดส่วนเงินกู้",
+        hint:"ใช้เกณฑ์ 28/36 (PITI ≤ 28% ของรายได้ และ PITI+ค่าใช้จ่ายอื่น ≤ 36%)",
+        pass28:"✅ ค่าที่อยู่อาศัย ≤ 28% ของรายได้",
+        pass36:"✅ ค่าที่อยู่อาศัย + ค่าใช้จ่ายอื่น ≤ 36% ของรายได้",
+        fail28:"❌ ค่าที่อยู่อาศัย > 28% ของรายได้",
+        fail36:"❌ ค่าที่อยู่อาศัย + ค่าใช้จ่ายอื่น > 36% ของรายได้",
+        recYes:"✅ มีความสามารถผ่อนบ้านตามเกณฑ์",
+        recNo:"❌ ยังไม่แนะนำให้ทำสัญญากู้บ้าน",
+        currency:"บาท",
+        labels:{principal:"เงินต้น",interest:"ดอกเบี้ย", monthlyPayment:"ค่างวดต่อเดือน (P&I)"},
+        pitiLabel: "ค่าที่อยู่อาศัยต่อเดือน (PITI)",
+        totalPayableLabel: "รวมที่ต้องชำระ (P&I)",
+        totalPaidLabel: "รวมชำระ (P&I)"
+      }
+    };
+    let t = langData.en;
+
+    function changeLang(){
+      const lang=document.getElementById("lang").value;
+      t = langData[lang];
+      document.getElementById("title").innerText=t.title;
+      document.getElementById("income-label").innerText=t.incomeLabel;
+      document.getElementById("expense-label").innerText=t.expenseLabel;
+      document.getElementById("savings-label").innerText=t.savingsLabel;
+      document.getElementById("price-label").innerText=t.priceLabel;
+      document.getElementById("down-label").innerText=t.downLabel;
+      document.getElementById("interest-type-label").innerText=t.interestType;
+      document.querySelector("#interestType option[value='yearly']").innerText=t.interestYearly;
+      document.querySelector("#interestType option[value='monthly']").innerText=t.interestMonthly;
+      document.getElementById("interest-label-yearly").innerText=t.interestLabelYearly;
+      document.getElementById("interest-label-monthly").innerText=t.interestLabelMonthly;
+      document.getElementById("term-label").innerText=t.termLabel;
+      document.getElementById("tax-label").innerText=t.taxLabel;
+      document.getElementById("ins-label").innerText=t.insLabel;
+      document.getElementById("hoa-label").innerText=t.hoaLabel;
+      document.getElementById("calc-btn").innerText=t.calcBtn;
+      document.getElementById("save-btn").innerText=t.saveBtn;
+      document.getElementById("back-label").innerText=t.backLabel;
+      document.getElementById("hint").innerText=t.hint;
+    }
+
+    function toggleInterestInputs(){
+      const type=document.getElementById("interestType").value;
+      document.getElementById("yearlyBox").classList.toggle('hidden', type!=='yearly');
+      document.getElementById("monthlyBox").classList.toggle('hidden', type!=='monthly');
+    }
+
+    document.addEventListener("DOMContentLoaded",()=>{changeLang();toggleInterestInputs();});
+
+    function formatNumber(input){
+      const v=input.value.replace(/,/g,'');
+      if(!isNaN(v) && v!==""){ input.value=Number(v).toLocaleString('en-US'); }
+    }
+
+    const form=document.getElementById("home-plan-form");
+    const resultDiv=document.getElementById("result");
+    const ctx=document.getElementById("homeChart").getContext("2d");
+    let chart;
+    let lastInputs=null, lastResults=null;
+
+    // คำนวณ (แยกฟังก์ชัน)
+    function runCalculation(render=true){
+
+      const income   = Number(document.getElementById("income").value.replace(/,/g,''));
+      const expenses = Number(document.getElementById("expenses").value.replace(/,/g,''));
+      const savings  = Number(document.getElementById("savings").value.replace(/,/g,''));
+      const price    = Number(document.getElementById("homePrice").value.replace(/,/g,''));
+      const down     = Number(document.getElementById("downPayment").value.replace(/,/g,''));
+      const years    = Number(document.getElementById("years").value);
+      const taxPct   = Number(document.getElementById("propTax").value)/100; // yearly %
+      const insYear  = Number(document.getElementById("insYear").value.replace(/,/g,'')); // THB/yr
+      const hoaMonth = Number(document.getElementById("hoa").value.replace(/,/g,'')); // THB/mo
+      const type     = document.getElementById("interestType").value;
+      const rYear    = Number(document.getElementById("interestYearly").value||0);
+      const rMonth   = Number(document.getElementById("interestMonthly").value||0);
+
+      const loan = Math.max(price - down, 0);
+      const n = years * 12;
+      const i = (type === 'yearly') ? (rYear/100/12) : (rMonth/100);
+      let mPayment;
+      if(i===0){ mPayment = (n>0? loan / n : 0); }
+      else{ mPayment = (loan*i) / (1 - Math.pow(1+i, -n)); }
+      const totalPayment = mPayment * n;
+      const interestAmount = totalPayment - loan;
+      const taxMonth = (price * taxPct)/12;
+      const insMonth = insYear/12;
+      const piti = mPayment + taxMonth + insMonth + hoaMonth;
+      const pass28 = (piti <= 0.28*income);
+      const pass36 = (piti + expenses <= 0.36*income);
+      const canAfford = (pass28 && pass36) || (savings >= 6*piti);
+
+      const totalTax = taxMonth * n;
+      const totalIns = insMonth * n;
+      const totalHOA = hoaMonth * n;
+      const totalDown = down;
+      const cur = t.currency;
+
+      if(render){
+        // Prominent advice box with actionable suggestions if not recommended
+        let adviceMsg = '';
+        if (canAfford) {
+          adviceMsg = `<div style='background:#d1fae5; color:#065f46; border-radius:10px; padding:14px; font-size:1.25em; font-weight:bold; margin-bottom:16px;'>${t.recYes}</div>`;
+        } else {
+          // Actionable suggestions (localized)
+          let suggestions = [
+            (t===langData.th)
+              ? 'ลดค่าใช้จ่ายรายเดือนหรือค่าใช้จ่ายอื่น ๆ'
+              : 'Reduce monthly or other expenses',
+            (t===langData.th)
+              ? 'เพิ่มเงินดาวน์เพื่อให้ยอดกู้ลดลง'
+              : 'Increase your down payment to reduce the loan amount',
+            (t===langData.th)
+              ? 'พิจารณาบ้านที่ราคาถูกลงหรือผ่อนนานขึ้น'
+              : 'Consider a cheaper home or a longer loan term',
+            (t===langData.th)
+              ? 'ตรวจสอบอัตราดอกเบี้ยและค่าใช้จ่ายอื่น ๆ'
+              : 'Review interest rates and other costs',
+          ];
+          adviceMsg = `<div style='background:#fee2e2; color:#b91c1c; border-radius:10px; padding:14px; font-size:1.25em; font-weight:bold; margin-bottom:10px;'>${t.recNo}</div>` +
+            `<div style='background:#fff0f0; color:#b91c1c; border-radius:8px; padding:10px; font-size:1em; margin-bottom:16px;'>`+
+            `<b>${(t===langData.th)?'คำแนะนำ':'Suggestions'}:</b><ul style='margin:8px 0 0 18px;'>`+
+            suggestions.map(s=>`<li>${s}</li>`).join('')+
+            `</ul></div>`;
+        }
+
+        // Localized summary labels
+        resultDiv.innerHTML =
+          adviceMsg +
+          `<div style='font-size:1.1em; margin-bottom:10px;'><b>${t.chartTitle}</b></div>`+
+          `<div style='display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-bottom:12px;'>
+            <div style='background:#f3f4f6;padding:10px;border-radius:8px;'><b>${t.labels.principal}:</b> ${loan.toLocaleString()} ${cur}</div>
+            <div style='background:#f3f4f6;padding:10px;border-radius:8px;'><b>${t.labels.interest}:</b> ${interestAmount.toLocaleString()} ${cur}</div>
+            <div style='background:#f3f4f6;padding:10px;border-radius:8px;'><b>${t.downLabel}:</b> ${totalDown.toLocaleString()} ${cur}</div>
+            <div style='background:#f3f4f6;padding:10px;border-radius:8px;'><b>${t.taxLabel.replace(/ per Year.*/,'')}:</b> ${totalTax.toLocaleString(undefined,{maximumFractionDigits:2})} ${cur}</div>
+            <div style='background:#f3f4f6;padding:10px;border-radius:8px;'><b>${t.insLabel.replace(/ per Year.*/,'')}:</b> ${totalIns.toLocaleString(undefined,{maximumFractionDigits:2})} ${cur}</div>
+            <div style='background:#f3f4f6;padding:10px;border-radius:8px;'><b>${t.hoaLabel.replace(/ per Month.*/,'')}:</b> ${totalHOA.toLocaleString(undefined,{maximumFractionDigits:2})} ${cur}</div>
+            <div style='background:#f3f4f6;padding:10px;border-radius:8px;'><b>${langData[t===langData.th?'th':'en'].totalPaidLabel||'Total Paid'}:</b> ${(totalPayment+totalTax+totalIns+totalHOA+totalDown).toLocaleString(undefined,{maximumFractionDigits:2})} ${cur}</div>
+          </div>`+
+          `<div style='margin-bottom:8px;'>🧾 <b>${t.labels.monthlyPayment||'Monthly Mortgage (P&I)'}:</b> ${mPayment.toLocaleString(undefined,{maximumFractionDigits:2})} ${cur}</div>`+
+          `<div>🏠 <b>PITI (${langData[t===langData.th?'th':'en'].pitiLabel||'Monthly Housing Cost'}):</b> ${piti.toLocaleString(undefined,{maximumFractionDigits:2})} ${cur}</div>`+
+          `<div>💰 <b>${langData[t===langData.th?'th':'en'].totalPayableLabel||'Total Payable (P&I)'}:</b> ${totalPayment.toLocaleString(undefined,{maximumFractionDigits:2})} ${cur}</div>`+
+          `<div>📈 <b>${t.labels.interest||'Interest Paid (P&I)'}:</b> ${interestAmount.toLocaleString(undefined,{maximumFractionDigits:2})} ${cur}</div>`+
+          `<div>🏦 <b>${t.taxLabel.replace(/ per Year.*/,'')}:</b> ${totalTax.toLocaleString(undefined,{maximumFractionDigits:2})} ${cur}</div>`+
+          `<div>🛡️ <b>${t.insLabel.replace(/ per Year.*/,'')}:</b> ${totalIns.toLocaleString(undefined,{maximumFractionDigits:2})} ${cur}</div>`+
+          `<div>🏢 <b>${t.hoaLabel.replace(/ per Month.*/,'')}:</b> ${totalHOA.toLocaleString(undefined,{maximumFractionDigits:2})} ${cur}</div>`+
+          `<div>💵 <b>${t.downLabel}:</b> ${totalDown.toLocaleString(undefined,{maximumFractionDigits:2})} ${cur}</div>`+
+          `<div style='margin-top:10px;' class='muted'>${t.taxLabel.replace(/ per Year.*/,'')} ${ taxMonth.toLocaleString(undefined,{maximumFractionDigits:2}) } /mo, ${t.insLabel.replace(/ per Year.*/,'')} ${ insMonth.toLocaleString(undefined,{maximumFractionDigits:2}) } /mo, ${t.hoaLabel.replace(/ per Month.*/,'')} ${ hoaMonth.toLocaleString(undefined,{maximumFractionDigits:2}) } /mo.</div>`+
+          `<div class="badge">${pass28 ? t.pass28 : t.fail28}</div>`+
+          `<div class="badge">${pass36 ? t.pass36 : t.fail36}</div>`+
+          // Formula and MRR note
+          `<div style='margin-top:18px; background:#f3f4f6; border-radius:10px; padding:14px; font-size:1em; color:#374151;'>
+            <b>${t===langData.th ? 'สูตรคำนวณค่างวดผ่อนบ้าน' : 'Mortgage Payment Formula'}:</b><br>
+            <span style='font-family:monospace;'>M = P × r / (1 - (1 + r)<sup>-n</sup>)</span><br>
+            <span style='font-size:0.95em;'>${t===langData.th ? 'M = ค่างวดต่อเดือน, P = เงินกู้, r = อัตราดอกเบี้ยต่อเดือน, n = จำนวนเดือนที่ผ่อน' : 'M = monthly payment, P = loan amount, r = monthly interest rate, n = number of payments (months)'}</span>
+            <hr style='margin:12px 0;'>
+            <b>${t===langData.th ? 'หมายเหตุ' : 'Note'}:</b> ${t===langData.th ? 'อัตราดอกเบี้ย MRR คือ ดอกเบี้ยแบบลอยตัว (Floating Rate) ซึ่งดอกเบี้ยชนิดนี้จะมีการเปลี่ยนแปลงได้ตลอดเวลา ขึ้นอยู่กับตลาดและการบริหารของธนาคาร ทำให้สามารถคาดเดาหรือวางแผนได้ยาก' : 'MRR interest rate is a floating rate, which can change at any time depending on the market and bank management. This makes it difficult to predict or plan.'}
+          </div>`;
+
+        // Expanded chart: principal, interest, down, taxes, insurance, HOA (no other expenses)
+        if(chart) chart.destroy();
+        chart = new Chart(ctx,{
+          type:'doughnut',
+          data:{
+            labels:[
+              t.labels.principal,
+              t.labels.interest,
+              t.downLabel,
+              t.taxLabel.replace(/ per Year.*/,''),
+              t.insLabel.replace(/ per Year.*/,''),
+              t.hoaLabel.replace(/ per Month.*/,'')
+            ],
+            datasets:[{
+              data:[loan, interestAmount, totalDown, totalTax, totalIns, totalHOA],
+              backgroundColor:['#10b981','#ef4444','#f59e42','#60a5fa','#f472b6','#89b910ff'],
+              borderWidth:3
+            }]
+          },
+          options:{
+            responsive:true,
+            cutout:'65%',
+            plugins:{
+              legend:{position:'bottom', labels:{font:{size:16}}},
+              title:{display:true,text:t.chartTitle, font:{size:20}},
+            },
+            layout:{padding: {top:30,bottom:30,left:30,right:30}},
+          }
+        });
+        // Make chart visually balanced and responsive
+        if (t === langData.en) {
+          ctx.canvas.style.maxWidth = '320px';
+          ctx.canvas.style.maxHeight = '180px';
+          ctx.canvas.style.minHeight = '120px';
+        } else {
+          ctx.canvas.style.maxWidth = '400px';
+          ctx.canvas.style.maxHeight = '260px';
+          ctx.canvas.style.minHeight = '160px';
+        }
+      }
+
+      lastInputs = {
+        income, expenses, savings, price, downPayment: down, years,
+        rateType: type, interestYearly: rYear, interestMonthly: rMonth,
+        propTaxPctYear: taxPct*100, insYear, hoaMonth
+      };
+      lastResults = {
+        loanAmount: Math.round(loan),
+        totalMonths: n,
+        monthlyRate: i,
+        monthlyPayment: Math.round(mPayment),         // P & I
+        pitiMonthly: Math.round(piti),                // PITI
+        totalPaid: Math.round(totalPayment),          // P & I
+        totalInterest: Math.round(interestAmount),    // P & I
+        taxMonth: Math.round(taxMonth),
+        insMonth: Math.round(insMonth),
+        hoaMonth: Math.round(hoaMonth),
+        pass28, pass36, canAfford
+      };
+
+      return {inputs:lastInputs, results:lastResults};
+    }
+
+    // Calculate
+    form.addEventListener("submit",function(e){
+      e.preventDefault();
+      runCalculation(true);
+    });
+
+    // Save to History (Guest-aware)
+    document.getElementById("save-btn").addEventListener("click", ()=>{
+      if(!lastResults) runCalculation(false);
+      const lang = document.getElementById("lang").value;
+      // Compose rate text
+      let rateText = "";
+      if (lastInputs.rateType === 'yearly') {
+        rateText = `${lastInputs.interestYearly}%/yr`;
+      } else {
+        rateText = `${lastInputs.interestMonthly}%/mo`;
+      }
+      // Compose term text
+      let termTextShort = "";
+      if (lastInputs.rateType === 'yearly') {
+        termTextShort = `${lastInputs.years}y`;
+      } else {
+        termTextShort = `${lastInputs.years * 12}m`;
+      }
+      const title = (lang === "th")
+        ? `กู้บ้าน • ${termTextShort} @ ${rateText}`
+        : `Home • ${termTextShort} @ ${rateText}`;
+
+      const id = MMMHistory.save({
+        type: "home",
+        title,
+        inputs: lastInputs,
+        results: lastResults,
+        meta: { page: "plan-home.html", version: "1.1" }
+      });
+      if (id) alert(langData[lang].savedMsg);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>บัตรเครดิต | MindMyMoney</title>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root{
+      --brand:#10b981;
+      --ink:#0f172a;
+      --muted:#475569;
+      --paper:#ffffff;
+      --bg:#f7fafb;
+      --accent:#3b82f6;
+    }
+    html,body{margin:0}
+    body{font-family:'Prompt',sans-serif;background:var(--bg);color:var(--ink);line-height:1.8}
+    .navbar{position:sticky;top:0;z-index:10;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.06);display:flex;align-items:center;gap:12px;padding:12px 16px}
+    .brand{margin:0;color:var(--brand);font-weight:700;font-size:1.05rem}
+    .nav-right{margin-left:auto;display:flex;gap:10px;align-items:center}
+    .lang{padding:6px 10px;border:1px solid #cbd5e1;border-radius:9999px}
+    .btn{background:var(--accent);color:#fff;border:none;border-radius:9999px;padding:8px 14px;cursor:pointer}
+    .article{max-width:980px;margin:22px auto;background:var(--paper);border:1px solid #e2e8f0;border-radius:20px;padding:28px 22px;box-shadow:0 2px 12px rgba(0,0,0,.04)}
+    .kicker{color:var(--brand);font-weight:600;letter-spacing:.02em}
+    h1{font-size:1.6rem;margin:.25rem 0 1rem}
+    h2{font-size:1.25rem;margin:2rem 0 .5rem;color:#0f766e}
+    h3{font-size:1.05rem;margin:1rem 0 .25rem}
+    p{margin:.5rem 0;color:var(--ink)}
+    .muted{color:var(--muted)}
+    .figure{margin:20px 0}
+    .cap{color:var(--muted);font-size:.98rem;margin-top:6px}
+    ul,ol{margin:.25rem 0 .5rem 1.2rem}
+    .tip{background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:12px 14px;border-radius:12px}
+    .compare{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:24px 0}
+    .compare-card{background:#f7fafb;border-radius:14px;padding:18px 16px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+    .compare-title{font-weight:600;color:var(--accent);margin-bottom:8px}
+    .pros-cons{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:24px 0}
+    .pros,.cons{background:#f0fdf4;border-radius:14px;padding:16px 14px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+    .pros{border:1px solid #bbf7d0;color:#166534}
+    .cons{border:1px solid #fee2e2;color:#b91c1c;background:#fef2f2}
+    .qualify{background:#f7fafb;border-radius:14px;padding:16px 14px;margin:24px 0;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+    .money-table{width:100%;border-collapse:collapse;margin:18px 0}
+    .money-table th,.money-table td{border:1px solid #e2e8f0;padding:8px 12px;text-align:left}
+    .money-table th{background:#f0fdf4;color:#166534}
+    .money-table td{background:#fff}
+    footer{max-width:980px;margin:14px auto 26px;text-align:center;color:#64748b;font-size:.9rem}
+    @media(max-width:700px){
+      .compare,.pros-cons{grid-template-columns:1fr;}
+    }
+    /* Modal styles for image zoom */
+    .img-modal-bg {
+      position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;z-index:9999;
+    }
+    .img-modal-bg.active{display:flex;}
+    .img-modal-img {
+      max-width:90vw;max-height:90vh;border-radius:18px;box-shadow:0 4px 24px rgba(0,0,0,.18);background:#fff;padding:10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <div class="brand" id="brand">บัตรเครดิต</div>
+    <div class="nav-right">
+      <select class="lang" id="langSelect" onchange="selectLang()" style="font-family:'Prompt',sans-serif;font-size:1rem;">
+        <option value="th">ภาษาไทย</option>
+        <option value="en">English</option>
+      </select>
+      <button class="btn" onclick="location.href='index.html'">← <span id="backText">กลับหน้าแรก</span></button>
+    </div>
+  </div>
+  <div class="img-modal-bg" id="imgModal" onclick="closeImgModal()">
+    <img id="imgModalImg" class="img-modal-img" src="" alt="Zoomed image">
+  </div>
+  <article class="article">
+    <div class="kicker" id="kicker">MindMyMoney • Credit Card Guide</div>
+    <h1 id="mainTitle">บัตรเครดิต</h1>
+    <p class="muted" id="desc">บัตรเครดิต (Credit Card) คือ บัตรเครดิตอิเล็กทรอนิกส์ที่นำมาใช้แทนเงินสด โดยเป็นหนึ่งในประเภทของสินเชื่อ ให้บริการโดยธนาคาร หรือสถาบันทางการเงินต่างๆ</p>
+    <h2 id="purposeTitle">จุดประสงค์ของบัตรเครดิต</h2>
+    <ul id="purposeList">
+      <li>ใช้ชำระสินค้า/บริการโดยยืมเงินจากธนาคารก่อน แล้วจ่ายคืนตามสัญญา</li>
+      <li>หากไม่จ่ายคืนตามกำหนด จะถูกคิดดอกเบี้ยตามเงื่อนไข</li>
+      <li>ควรจ่ายเต็มจำนวนเพื่อไม่เสียดอกเบี้ยและสิทธิประโยชน์</li>
+    </ul>
+    <h2 id="compareTitle">บัตรเครดิต vs บัตรกดเงินสด</h2>
+    <div class="compare">
+      <div class="compare-card">
+        <div class="compare-title" id="creditCardTitle">บัตรเครดิต</div>
+        <p id="creditCardDesc">ใช้จ่ายค่าสินค้า/บริการโดยไม่ต้องใช้เงินสด ไม่เสียดอกเบี้ยหากจ่ายคืนตรงเวลา มีระยะปลอดดอกเบี้ย 30-50 วัน</p>
+      </div>
+      <div class="compare-card">
+        <div class="compare-title" id="cashCardTitle">บัตรกดเงินสด</div>
+        <p id="cashCardDesc">กดเงินสดจาก ATM ได้ทันที เสียดอกเบี้ยตั้งแต่วันแรกที่กด ดอกเบี้ยสูงกว่าบัตรเครดิตทั่วไป</p>
+      </div>
+    </div>
+    <h2 id="prosConsTitle">ข้อดี-ข้อเสียของบัตรเครดิต</h2>
+    <div class="pros-cons">
+      <div class="pros">
+        <strong id="prosTitle">ข้อดี</strong>
+        <ul id="prosList">
+          <li>ไม่ต้องพกเงินสด สะดวกต่อการใช้จ่าย</li>
+          <li>มีโปรโมชัน เช่น แต้มสะสม เครดิตเงินคืน ส่วนลด</li>
+          <li>สร้างประวัติเครดิตบูโร ช่วยให้ขอสินเชื่อในอนาคตง่ายขึ้น</li>
+          <li>ลดความเสี่ยงถูกขโมยเงิน มีระบบยืนยันตัวตนที่ปลอดภัย</li>
+        </ul>
+        <div class="figure"><img id="prosImg" src="22.jpg" alt="ข้อดีบัตรเครดิต" style="width:100%;border-radius:14px;box-shadow:0,0,0,.05;cursor:zoom-in" onclick="openImgModal(this)"><div class="cap" id="prosCap">ข้อดีของบัตรเครดิต</div></div>
+      </div>
+      <div class="cons">
+        <strong id="consTitle">ข้อเสีย</strong>
+        <ul id="consList">
+          <li>ไม่เหมาะกับคนไม่มีวินัยทางการเงิน</li>
+          <li>หากชำระล่าช้า ดอกเบี้ยจะเพิ่มขึ้น</li>
+          <li>บางบัตรมีค่าธรรมเนียมรายปี ควรศึกษาก่อนสมัคร</li>
+        </ul>
+        <div class="figure"><img id="consImg" src="23.jpg" alt="ข้อเสียบัตรเครดิต" style="width:100%;border-radius:14px;box-shadow:0,0,0,.05;cursor:zoom-in" onclick="openImgModal(this)"><div class="cap" id="consCap">ข้อเสียของบัตรเครดิต</div></div>
+      </div>
+    </div>
+    <h2 id="qualifyTitle">คุณสมบัติพื้นฐานก่อนสมัครบัตรเครดิต</h2>
+    <div class="qualify">
+      <ul id="qualifyList">
+        <li>อายุ 20 ปีขึ้นไป หรือที่ธนาคารกำหนด</li>
+        <li>ฐานเงินเดือน 15,000 บาทขึ้นไป หรือที่ธนาคารกำหนด</li>
+        <li>ทำงานมาอย่างน้อย 6 เดือน ใช้สลิปเงินเดือนและ Statement</li>
+        <li>ไม่มีประวัติหนี้ตกค้างหรือผิดชำระ</li>
+      </ul>
+      <div class="figure"><img id="qualifyImg" src="24.jpg" alt="คุณสมบัติสมัครบัตรเครดิต" style="width:100%;border-radius:14px;box-shadow:0,0,0,.05;cursor:zoom-in" onclick="openImgModal(this)"><div class="cap" id="qualifyCap">คุณสมบัติพื้นฐานก่อนสมัครบัตรเครดิต</div></div>
+    </div>
+    <h2>สาเหตุของการเกิดดอกเบี้ยบัตรเครดิต</h2>
+    <ul>
+      <li>ผ่อนชำระไม่ตรงเวลา</li>
+      <li>ผ่อนชำระขั้นต่ำ (3%, 5%, 10%) ทำให้เงินต้นคงเหลือและถูกคิดดอกเบี้ย</li>
+      <li>กดเงินสดจากบัตรเครดิต เสียดอกเบี้ยทันทีและมีค่าธรรมเนียม</li>
+    </ul>
+    <div class="tip">หลีกเลี่ยงดอกเบี้ยบัตรเครดิต: ชำระเต็มจำนวนและตรงเวลา ไม่ควรกดเงินสดจากบัตรเครดิตหากไม่จำเป็น</div>
+    <h2>การใช้จ่ายผ่านบัตรเครดิตโดยปลอดดอกเบี้ย</h2>
+    <ul>
+      <li>ชำระภายในระยะเวลาปลอดดอกเบี้ย (เช่น KTC 45 วัน)</li>
+      <li>เลือกผ่อน 0% ในช่วงโปรโมชั่น</li>
+      <li>ระวังค่าธรรมเนียมรายปี เลือกบัตรที่ไม่มีค่าธรรมเนียมรายปี</li>
+    </ul>
+    <h2>การคิดดอกเบี้ยและค่าธรรมเนียม</h2>
+    <p>ดอกเบี้ยและค่าธรรมเนียมรวมกันไม่เกิน 16% ต่อปี มีวิธีคำนวณ 2 แบบ:</p>
+    <ol>
+      <li>ชำระไม่เต็มจำนวน/ล่าช้า: คิดดอกเบี้ยตั้งแต่วันที่ธนาคารสำรองจ่ายให้ร้านค้า</li>
+      <li>เบิกถอนเงินสด: คิดดอกเบี้ยตั้งแต่วันที่เบิกถอน</li>
+    </ol>
+    <ul>
+      <li>ค่าธรรมเนียมแรกเข้า/รายปี</li>
+      <li>ค่าธรรมเนียมชำระเงินผ่านช่องทางต่าง ๆ</li>
+      <li>ค่าธรรมเนียมเบิกถอนเงินสด (ไม่เกิน 3% + VAT)</li>
+      <li>ค่าความเสี่ยงแปลงสกุลเงิน 2-2.5%</li>
+      <li>ค่าใช้จ่ายอื่น ๆ ตามจริง เช่น ค่าติดตามทวงถามหนี้</li>
+    </ul>
+    <h2>วงเงินบัตรเครดิต</h2>
+    <table class="money-table">
+      <thead>
+        <tr>
+          <th>รายได้ต่อเดือน</th>
+          <th>วงเงินอนุมัติ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>15,000 - &lt;30,000 บาท</td>
+          <td>1.5 เท่าของรายได้เฉลี่ยต่อเดือน</td>
+        </tr>
+        <tr>
+          <td>30,000 - &lt;50,000 บาท</td>
+          <td>3 เท่าของรายได้เฉลี่ยต่อเดือน</td>
+        </tr>
+        <tr>
+          <td>50,000 บาทขึ้นไป</td>
+          <td>5 เท่าของรายได้เฉลี่ยต่อเดือน</td>
+        </tr>
+      </tbody>
+    </table>
+  </article>
+  <footer id="footerText">MindMyMoney • เอกสารให้ความรู้สำหรับผู้สมัครบัตรเครดิต</footer>
+  <script>
+    function openImgModal(img){
+      var modal = document.getElementById('imgModal');
+      var modalImg = document.getElementById('imgModalImg');
+      modalImg.src = img.src;
+      modal.classList.add('active');
+    }
+    function closeImgModal(){
+      var modal = document.getElementById('imgModal');
+      modal.classList.remove('active');
+    }
+    document.addEventListener('keydown',function(e){
+      if(e.key==='Escape')closeImgModal();
+    });
+
+    // Language data
+    const langData = {
+      th: {
+        brand: 'บัตรเครดิต',
+        back: 'กลับหน้าแรก',
+        kicker: 'MindMyMoney • Credit Card Guide',
+        mainTitle: 'บัตรเครดิต',
+        desc: 'บัตรเครดิต (Credit Card) คือ บัตรเครดิตอิเล็กทรอนิกส์ที่นำมาใช้แทนเงินสด โดยเป็นหนึ่งในประเภทของสินเชื่อ ให้บริการโดยธนาคาร หรือสถาบันทางการเงินต่างๆ',
+        purposeTitle: 'จุดประสงค์ของบัตรเครดิต',
+        purposeList: [
+          'ใช้ชำระสินค้า/บริการโดยยืมเงินจากธนาคารก่อน แล้วจ่ายคืนตามสัญญา',
+          'หากไม่จ่ายคืนตามกำหนด จะถูกคิดดอกเบี้ยตามเงื่อนไข',
+          'ควรจ่ายเต็มจำนวนเพื่อไม่เสียดอกเบี้ยและสิทธิประโยชน์'
+        ],
+        compareTitle: 'บัตรเครดิต vs บัตรกดเงินสด',
+        creditCardTitle: 'บัตรเครดิต',
+        creditCardDesc: 'ใช้จ่ายค่าสินค้า/บริการโดยไม่ต้องใช้เงินสด ไม่เสียดอกเบี้ยหากจ่ายคืนตรงเวลา มีระยะปลอดดอกเบี้ย 30-50 วัน',
+        cashCardTitle: 'บัตรกดเงินสด',
+        cashCardDesc: 'กดเงินสดจาก ATM ได้ทันที เสียดอกเบี้ยตั้งแต่วันแรกที่กด ดอกเบี้ยสูงกว่าบัตรเครดิตทั่วไป',
+        prosConsTitle: 'ข้อดี-ข้อเสียของบัตรเครดิต',
+        prosTitle: 'ข้อดี',
+        prosList: [
+          'ไม่ต้องพกเงินสด สะดวกต่อการใช้จ่าย',
+          'มีโปรโมชัน เช่น แต้มสะสม เครดิตเงินคืน ส่วนลด',
+          'สร้างประวัติเครดิตบูโร ช่วยให้ขอสินเชื่อในอนาคตง่ายขึ้น',
+          'ลดความเสี่ยงถูกขโมยเงิน มีระบบยืนยันตัวตนที่ปลอดภัย'
+        ],
+        prosImg: '22.jpg',
+        prosCap: 'ข้อดีของบัตรเครดิต',
+        consTitle: 'ข้อเสีย',
+        consList: [
+          'ไม่เหมาะกับคนไม่มีวินัยทางการเงิน',
+          'หากชำระล่าช้า ดอกเบี้ยจะเพิ่มขึ้น',
+          'บางบัตรมีค่าธรรมเนียมรายปี ควรศึกษาก่อนสมัคร'
+        ],
+        consImg: '23.jpg',
+        consCap: 'ข้อเสียของบัตรเครดิต',
+        qualifyTitle: 'คุณสมบัติพื้นฐานก่อนสมัครบัตรเครดิต',
+        qualifyList: [
+          'อายุ 20 ปีขึ้นไป หรือที่ธนาคารกำหนด',
+          'ฐานเงินเดือน 15,000 บาทขึ้นไป หรือที่ธนาคารกำหนด',
+          'ทำงานมาอย่างน้อย 6 เดือน ใช้สลิปเงินเดือนและ Statement',
+          'ไม่มีประวัติหนี้ตกค้างหรือผิดชำระ'
+        ],
+        qualifyImg: '24.jpg',
+        qualifyCap: 'คุณสมบัติพื้นฐานก่อนสมัครบัตรเครดิต',
+        footer: 'MindMyMoney • เอกสารให้ความรู้สำหรับผู้สมัครบัตรเครดิต',
+        langBtn: 'English'
+      },
+      en: {
+        brand: 'Credit Card',
+        back: 'Back to Home',
+        kicker: 'MindMyMoney • Credit Card Guide',
+        mainTitle: 'Credit Card',
+        desc: 'A credit card is an electronic card used instead of cash, provided by banks or financial institutions as a type of loan.',
+        purposeTitle: 'Purpose of Credit Card',
+        purposeList: [
+          'Pay for goods/services by borrowing from the bank and repay as agreed.',
+          'Interest will be charged if not repaid on time.',
+          'Pay in full to avoid interest and maximize benefits.'
+        ],
+        compareTitle: 'Credit Card vs Cash Card',
+        creditCardTitle: 'Credit Card',
+        creditCardDesc: 'Pay for goods/services without cash. No interest if paid on time. Interest-free period 30-50 days.',
+        cashCardTitle: 'Cash Card',
+        cashCardDesc: 'Withdraw cash from ATM instantly. Interest charged from day one. Higher interest than credit card.',
+        prosConsTitle: 'Pros & Cons of Credit Card',
+        prosTitle: 'Pros',
+        prosList: [
+          'No need to carry cash, convenient for spending.',
+          'Promotions such as reward points, cashback, discounts.',
+          'Build credit history, easier future loan approval.',
+          'Reduce risk of theft, secure authentication system.'
+        ],
+        prosImg: '42.jpg',
+        prosCap: 'Pros of Credit Card',
+        consTitle: 'Cons',
+        consList: [
+          'Not suitable for those lacking financial discipline.',
+          'Late payment increases interest.',
+          'Some cards have annual fees, check before applying.'
+        ],
+        consImg: '44.jpg',
+        consCap: 'Cons of Credit Card',
+        qualifyTitle: 'Basic Qualifications for Credit Card Application',
+        qualifyList: [
+          'Age 20 or above (or as required by bank)',
+          'Minimum salary 15,000 THB (or as required by bank)',
+          'At least 6 months of employment, use payslip and statement',
+          'No outstanding or defaulted debts'
+        ],
+        qualifyImg: '46.jpg',
+        qualifyCap: 'Basic qualifications for credit card application',
+        footer: 'MindMyMoney • Credit Card Guide for Applicants',
+        langBtn: 'ภาษาไทย'
+      }
+    };
+    let currentLang = 'th';
+    document.getElementById('langSelect').value = currentLang;
+    function selectLang(){
+      currentLang = document.getElementById('langSelect').value;
+      updateLang();
+    }
+    function updateLang(){
+      const d = langData[currentLang];
+      document.getElementById('brand').textContent = d.brand;
+      document.getElementById('backText').textContent = d.back;
+      document.getElementById('kicker').textContent = d.kicker;
+      document.getElementById('mainTitle').textContent = d.mainTitle;
+      document.getElementById('desc').textContent = d.desc;
+      document.getElementById('purposeTitle').textContent = d.purposeTitle;
+      setList('purposeList', d.purposeList);
+      document.getElementById('compareTitle').textContent = d.compareTitle;
+      document.getElementById('creditCardTitle').textContent = d.creditCardTitle;
+      document.getElementById('creditCardDesc').textContent = d.creditCardDesc;
+      document.getElementById('cashCardTitle').textContent = d.cashCardTitle;
+      document.getElementById('cashCardDesc').textContent = d.cashCardDesc;
+      document.getElementById('prosConsTitle').textContent = d.prosConsTitle;
+      document.getElementById('prosTitle').textContent = d.prosTitle;
+      setList('prosList', d.prosList);
+      document.getElementById('prosImg').src = d.prosImg;
+      document.getElementById('prosCap').textContent = d.prosCap;
+      document.getElementById('consTitle').textContent = d.consTitle;
+      setList('consList', d.consList);
+      document.getElementById('consImg').src = d.consImg;
+      document.getElementById('consCap').textContent = d.consCap;
+      document.getElementById('qualifyTitle').textContent = d.qualifyTitle;
+      setList('qualifyList', d.qualifyList);
+      document.getElementById('qualifyImg').src = d.qualifyImg;
+      document.getElementById('qualifyCap').textContent = d.qualifyCap;
+      document.getElementById('footerText').textContent = d.footer;
+    }
+    // เรียกใช้ updateLang ครั้งแรก
+    updateLang();
+    function setList(id, arr){
+      const ul = document.getElementById(id);
+      ul.innerHTML = arr.map(x=>`<li>${x}</li>`).join('');
+    }
+  </script>
+</body>
+</html>
