@@ -1,3 +1,4 @@
+final project SMTE high school
 #Abstract 
 Computer Project on MindMyMoney. The project is guided by two main objectives: 
 1) to develop a user-friendly and informative platform that teaches users about various types 
