@@ -98,7 +98,7 @@ $uname  = $isLoggedIn ? ($_SESSION['username'] ?? 'User') : 'Guest';
 </head>
 <body>
 
-<!-- 🧠 NEW: ซิงก์สถานะ login จาก PHP session เข้า localStorage ตั้งแต่เปิดหน้า -->
+<!--ซิงก์สถานะ login จาก PHP session เข้า localStorage ตั้งแต่เปิดหน้า -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const isLoggedIn = <?= $isLoggedIn ? 'true' : 'false' ?>;
@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.removeItem('mmm_user_email');
   }
 
-  // ✅ เรียกใช้ UI หลังตั้งค่าเสร็จ
+  // เรียกใช้ UI
   applyGuestModeUI();
 });
 </script>
