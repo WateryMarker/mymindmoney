@@ -20,7 +20,7 @@ $username = $_POST['username'];
 $email = $_POST['email'];
 $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-// ✅ ตรวจสอบว่าตาราง users และคอลัมน์ email มีจริงหรือไม่
+
 $check = $conn->prepare("SELECT * FROM users WHERE email = ?");
 if (!$check) {
     die("❌ Prepare failed: " . $conn->error); // 🔍 แสดง error แบบชัดเจน
