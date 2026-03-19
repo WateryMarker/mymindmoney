@@ -164,7 +164,7 @@
     function changeLanguage() {
       const lang = document.getElementById("lang-select").value;
       const t = text[lang];
-      // persist language for cross pages / guest messages
+  
       localStorage.setItem('lang', lang);
       localStorage.setItem('language', lang);
 
@@ -321,7 +321,7 @@
         e.preventDefault();
         if (document.referrer) {
           history.back();
-          setTimeout(()=>{ // fallback หากเบราว์เซอร์ไม่ย้อนกลับ
+          setTimeout(()=>{ 
             if (document.referrer === "" || document.referrer === location.href) {
               location.href = DASHBOARD;
             }
