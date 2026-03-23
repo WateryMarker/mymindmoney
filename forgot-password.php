@@ -1,6 +1,6 @@
 <?php
 // forgot-password.php
-// หน้านี้ให้ผู้ใช้กรอกอีเมลเพื่อขอรีเซ็ตรหัสผ่าน
+
 ?>
 <!DOCTYPE html>
 <html lang="th">
