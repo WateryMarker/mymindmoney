@@ -258,7 +258,7 @@
       const el = document.getElementById(id);
       if(!el) return;
       if(Array.isArray(arr[0])){
-        // For nested lists (ol_interest)
+
         el.innerHTML = arr.map(item=>{
           if(Array.isArray(item)){
             return '<ul>' + item.map(sub=>`<li>${sub}</li>`).join('') + '</ul>';
